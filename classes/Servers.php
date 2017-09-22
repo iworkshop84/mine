@@ -11,7 +11,7 @@ class Servers
     public $Players;
     public $Info;
 
-    public function ResolveSRV( $Address, $Port=25565 )
+    public function ResolveSRV($Address)
     {
         if(ip2long($Address) !== false)
         {

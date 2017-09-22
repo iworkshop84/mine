@@ -4,197 +4,174 @@ require_once __DIR__ . '/autoload.php';
 use App\Models\ExceptionM;
 use App\Classes\View;
 use App\Classes\MinecraftQuery;
-use App\Classes\MinecraftQueryException;
 use App\Classes\MinecraftPing;
-use App\Classes\MinecraftPingException;
-use App\Classes\Servers;
 
-/*
-// Edit this ->
-define( 'MQ_SERVER_ADDR', 'sv4.ex-server.ru' );
-define( 'MQ_SERVER_PORT', 25681);
-define( 'MQ_TIMEOUT', 1 );
-// Edit this <-
 
 
 
-try
-{
-    $Query = new MinecraftPing( 'play.bullmc.ru', 25565 );
+/*
+ * mcmwc.ru:25565
+ *  'serverVersion' => string 'Waterfall 1.8.x, 1.9.x, 1.10.x, 1.11.x, 1.12.x'
+ * 'name' => string 'Waterfall 1.8.x, 1.9.x, 1.10.x, 1.11.x, 1.12.x'
+ *  'Version' => string 'Waterfall 1.8.x, 1.9.x, 1.10.x, 1.11.x, 1.12.x'
+ * query - false
+ *
+ * playdard.ru:25565
+ *  'serverVersion' => string 'Waterfall 1.8.x, 1.9.x, 1.10.x, 1.11.x, 1.12.x'
+ *  'name' => string 'Waterfall 1.8.x, 1.9.x, 1.10.x, 1.11.x, 1.12.x'
+ * 'Version' => string 'Waterfall 1.8.x, 1.9.x, 1.10.x, 1.11.x, 1.12.x'
+ * query - false
+ *
+ * tmsv.ru
+ * 'serverVersion' => string 'BotFilter 1.8-1.12.1 by vk.com Leymooo_s'
+ *  'name' => string 'BotFilter 1.8-1.12.1 by vk.com Leymooo_s'
+ * 'Version' => string 'BotFilter 1.8-1.12.1 by vk.com Leymooo_s'
+ * 'Version' => string 'BotFilter 1.8-1.12.1 by vk.com Leymooo_s'
+ *  'Software' => string 'Vanilla'
+ *
+ * mc.thewd.ru
+ *  'serverVersion' => string '1.8.8'
+ * 'version' => 'name' => string 'Spigot 1.8.8'
+ * 'Version' => string '1.8.8'
+ * 'Version' => string '1.11.2'
+ * 'Software' => string 'CraftBukkit on Bukkit 1.11.2-R0.1-SNAPSHOT'
+ *
+ *  mc.mineland.net
+ *  'serverVersion' => string 'BungeeCord 1.8.x-1.12.x'
+ * 'version' =>  'name' => string 'BungeeCord 1.8.x-1.12.x'
+ *  'Version' => string 'BungeeCord 1.8.x-1.12.x'
+ *  query - false
+ *
+ * mc.randomcraft.ru - 51.254.103.123:25565
+ * 'serverVersion' => string 'Use 1.12, Luke'
+ * 'version' => 'name' => string 'Use 1.12, Luke'
+ * 'Version' => string 'Use 1.12, Luke'
+ * query - false
+ *
+ *
+ * 87.98.173.96:25565
+ * 'serverVersion' => string '1.5.2'
+ *  ping - false
+ * 'Version' => string '1.5.2'
+ *  query - false
+ *
+ * play.crazylife.su
+ * 'serverVersion' => string 'BungeeCord 1.7.x, 1.8.x, 1.9.x, 1.10.x, 1.11.x'
+ * 'version' =>  'name' => string 'BungeeCord 1.7.x, 1.8.x, 1.9.x, 1.10.x, 1.11.x'
+ * 'Version' => string 'BungeeCord 1.7.x, 1.8.x, 1.9.x, 1.10.x, 1.11.x'
+ * 'Version' => string 'BungeeCord 1.7.x, 1.8.x, 1.9.x, 1.10.x, 1.11.x'
+ * 'Software' => string 'Vanilla'
+ *
+ * 91.121.35.3:25565
+ * 'serverVersion' => string 'BungeeCord 1.8'
+ * 'version' => 'name' => string 'BungeeCord 1.8'
+ *  'Version' => string 'BungeeCord 1.8'
+ *  'Version' => string '1.8'
+ *  'Software' => string 'Vanilla'
+ *
+ *
+ *
+ * new list servers
+ * 1.12.2
+ *  все три кроме квери
+ *  все методы
+ *  все методы
+ *
+ * 1.12.1
+    все три кроме квери
+    все три кроме квери
+    все три кроме квери
+ *
+ * 1.12
+ *  все методы
+ *  все методы
+ *  все три кроме квери
+ *
+ *  1.11.2
+ *  все методы
+ *  все методы
+ *  все методы
+ *  второй и четвёртый
+ *
+ *
+ *
+ *
+ *
+ */
 
-    var_dump( $Query->Query() );
-}
-catch( MinecraftPingException $e )
-{
-    echo $e->getMessage();
-}
-finally
-{
-    if( $Query )
+
+
+
+
+$ip = '87.98.173.96';
+$port = 25565;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// этот блок я буду использовать для пинга сервера
+    $Query = new MinecraftPing($ip, $port);
+
+    $res = $Query->QueryLast();
+
+    var_dump($res);
+    if($Query)
     {
         $Query->Close();
     }
-}
 
-
-$Query = new MinecraftQuery( );
-
-try
-{
-    $Query->Connect( 'play.bullmc.ru', 25565 );
-
-    print_r( $res = $Query->GetInfo());
-
-    print_r( $Query->GetPlayers());
-}
-catch( MinecraftQueryException $e )
-{
-    echo $e->getMessage( );
-}
-
-
-
-$Address = 'play.bullmc.ru';
-
-
-
-
-
-
-$Record = dns_get_record( 'mc.mythicalworld.su', DNS_A );
-
-if( empty( $Record ) )
-{
-    return;
-}
-if( isset( $Record[ 0 ][ 'ip' ] ) )
-{
-    $Address = $Record[ 0 ][ 'ip' ];
-}
-
-var_dump($Address);
-
-
-*/
+echo '+++++++++++++++++++++++++++++++++++++++++++++++<br/>';
 /*
-$Port = 25571;
-$Timeout = 3;
 
-$res = new Servers();
-// Не забыть сделать очистку урла от http:// и www
-$ip = $res->ResolveSRV('mc.mythicalworld.su');
+    $Query = new MinecraftPing($ip, $port);
 
-var_dump($ip);
+    $res = $Query->Query();
+    var_dump($res);
 
-
-$res->Socket = fsockopen( 'udp://' . $ip, (int)$Port, $ErrNo, $ErrStr, $Timeout );
-
-var_dump($res);
-var_dump($res->Socket);
-
-FClose( $res->Socket );
-
-
-function formatMOTD($motd){
-    $search  = array('§0', '§1', '§2', '§3', '§4', '§5', '§6', '§7', '§8', '§9', '§a', '§b', '§c', '§d', '§e', '§f', '§l', '§m', '§n', '§o', '§k', '§r');
-    $replace = array('<font color="#000000">', '<font color="#0000AA">', '<font color="#00AA00">', '<font color="#00AAAA">', '<font color="#aa00aa">', '<font color="#ffaa00">', '<font color="#aaaaaa">', '<font color="#555555">', '<font color="#5555ff">', '<font color="#55ff55">', '<font color="#55ffff">', '<font color="#ff5555">', '<font color="#ff55ff">', '<font color="#ffff55">', '<font color="#ffffff">', '<font color="#000000">', '<b>', '<u>', '<i>', '<font color="#000000">', '<font color="#000000">');
-    $motd  = str_replace($search, $replace, $motd);
-
-    return $motd;
-}
-
-function QueryMinecraft($ip, $port = 25565) {
-//made by Fabian
-
-    @$socket = fsockopen("tcp://" . $ip, $port, $errno, $errstr, 3);
-    if (!$socket) { return array('status' => 0); }
-    socket_set_timeout($socket, 5);
-    fwrite($socket, "\xFE\x01"); //Send the server list ping request (two bytes)
-    @$data = fread($socket, 1024); //Get the info and store it in $data
-
-    if ($data != false && substr($data, 0, 1) == "\xFF") //Ensure we're getting a kick message as expected
-    {
-        $data = substr($data, 9); //Remove packet, length and starting characters
-        $data = explode("\x00\x00", $data); //0000 separated info
-        $protocolVersion = $data[0]; //Get it all into separate variables
-        @$serverVersion = mb_convert_encoding($data[1], 'UTF-8', 'UCS-2');;
-        @$motd = $data[2];
-        $motd = mb_convert_encoding($motd, 'UTF-8', 'UCS-2');
-        @$players = mb_convert_encoding($data[3], 'UTF-8', 'UCS-2');
-        @$max_players = mb_convert_encoding($data[4], 'UTF-8', 'UCS-2');
-
-
-        sleep(0.2);
-        return array('status' => 1,'HostName' => formatMOTD($motd), 'Players' => $players, 'MaxPlayers' => $max_players, 'serverVersion' => $serverVersion);
-    } else { return array('status' => 0); }
-}
-
-
-
-$res = QueryMinecraft('join.mc-chronos.net');
-var_dump($res);
-
-
-
-
-
-try
-{
-    $Query = new MinecraftPing( 'join.mc-chronos.net' );
-
-    var_dump( $Query->Query() );
-}
-catch( MinecraftPingException $e )
-{
-    echo $e->getMessage();
-}
-finally
-{
-    if( $Query )
+    if($Query)
     {
         $Query->Close();
     }
-}
 
 
+echo '+++++++++++++++++++++++++++++++++++++++++++++++<br/>';
 
 
-$Query = new MinecraftQuery( );
+    $Query = new MinecraftPing($ip, $port);
 
-try
-{
-    $Query->Connect( 'join.mc-chronos.net', 25565 );
+    $res2 = $Query->QueryOldPre17();
+    var_dump($res2);
 
-    print_r( $Query->GetInfo( ) );
-    print_r( $Query->GetPlayers( ) );
-}
-catch( MinecraftQueryException $e )
-{
-    echo $e->getMessage( );
-}
-
-
-$socket = stream_socket_client(sprintf('tcp://%s:%u', 'join.mc-chronos.net', '25565'), $errno, $errstr, 1);
-    fwrite($socket, "\xfe\x01");
-        $data = fread($socket, 1024);
-    fclose($socket);
-        $stats = new \stdClass;
-    // Is this a disconnect with the ping?
-    if ($data == false AND substr($data, 0, 1) != "\xFF") {
-        $stats->is_online = false;
-        return $stats;
+    if($Query)
+    {
+        $Query->Close();
     }
-    $data = substr($data, 9);
-    $data = mb_convert_encoding($data, 'auto', 'UCS-2');
-    $data = explode("\x00", $data);
-        $stats->is_online = true;
-    list($stats->protocol_version, $stats->game_version, $stats->motd, $stats->online_players, $stats->max_players) = $data;
-    var_dump($stats) ;
-
 */
+echo '+++++++++++++++++++++++++++++++++++++++++++++++<br/>';
 
+// этот блок у меня будет использоваться при добавлении сервера и обновлении информации
 
+    $Query = new MinecraftQuery();
+    $Query->Connect($ip, $port);
 
+    var_dump($Query->GetInfo());
+    //var_dump($Query->GetPlayers());
 
 
 

@@ -3,7 +3,7 @@
 
 namespace App\Classes;
 
-use App\Classes\MinecraftQueryException;
+
 
 
 class MinecraftQuery
@@ -22,73 +22,78 @@ class MinecraftQuery
     private $Players;
     private $Info;
 
-    public function Connect( $Ip, $Port = 25565, $Timeout = 3 )
+    public function Connect($ip, $Port = 25565, $Timeout = 2)
     {
-        if( !is_int( $Timeout ) || $Timeout < 0 )
+        if(!is_int($Timeout) || $Timeout < 0)
         {
-            throw new MinecraftQueryException( 'Timeout must be an integer.' );
+            throw new \Exception( 'Timeout must be an integer.' );
         }
 
-        $this->Socket = @FSockOpen( 'udp://' . $Ip, (int)$Port, $ErrNo, $ErrStr, $Timeout );
+        $this->Socket = @FSockOpen('udp://' . self::ResolveSRV($ip), (int)$Port, $ErrNo, $ErrStr, $Timeout);
 
-        if( $ErrNo || $this->Socket === false )
+        if($ErrNo || $this->Socket === false)
         {
-            throw new MinecraftQueryException( 'Could not create socket: ' . $ErrStr );
+            return false;
+            //throw new \Exception( 'Could not create socket: ' . $ErrStr );
         }
 
-        Stream_Set_Timeout( $this->Socket, $Timeout );
-        Stream_Set_Blocking( $this->Socket, true );
+        Stream_Set_Timeout($this->Socket, $Timeout);
+        Stream_Set_Blocking($this->Socket, true);
 
         try
         {
-            $Challenge = $this->GetChallenge( );
+            $Challenge = $this->GetChallenge();
 
-            $this->GetStatus( $Challenge );
+            $this->GetStatus($Challenge);
         }
             // We catch this because we want to close the socket, not very elegant
-        catch( MinecraftQueryException $e )
+        catch( \Exception $e )
         {
-            FClose( $this->Socket );
+            FClose($this->Socket);
 
-            throw new MinecraftQueryException( $e->getMessage( ) );
+            throw new \Exception($e->getMessage());
         }
 
-        FClose( $this->Socket );
+        fclose($this->Socket);
     }
 
-    public function GetInfo( )
+
+    public function GetInfo()
     {
-        return isset( $this->Info ) ? $this->Info : false;
+        return isset($this->Info) ? $this->Info : false;
     }
 
-    public function GetPlayers( )
+    public function GetPlayers()
     {
-        return isset( $this->Players ) ? $this->Players : false;
+        return isset($this->Players) ? $this->Players : false;
     }
 
-    private function GetChallenge( )
+    private function GetChallenge()
     {
-        $Data = $this->WriteData( self :: HANDSHAKE );
+        $Data = $this->WriteData(self :: HANDSHAKE);
 
-        if( $Data === false )
+
+        if($Data === false)
         {
-            throw new MinecraftQueryException( "Ебучий случай!!Failed to receive challenge." );
+           return false;
+            //throw new \Exception( "Ебучий случай!!Failed to receive challenge." );
         }
 
-        return Pack( 'N', $Data );
+        return Pack('N', $Data);
     }
 
-    private function GetStatus( $Challenge )
+    private function GetStatus($Challenge)
     {
-        $Data = $this->WriteData( self :: STATISTIC, $Challenge . Pack( 'c*', 0x00, 0x00, 0x00, 0x00 ) );
+        $Data = $this->WriteData(self :: STATISTIC, $Challenge . Pack( 'c*', 0x00, 0x00, 0x00, 0x00));
 
         if( !$Data )
         {
-            throw new MinecraftQueryException( "Failed to receive status." );
+            return false;
+            //throw new \Exception( "Failed to receive status." );
         }
 
         $Last = "";
-        $Info = Array( );
+        $Info = Array();
 
         $Data    = SubStr( $Data, 11 ); // splitnum + 2 int
         $Data    = Explode( "\x00\x00\x01player_\x00\x00", $Data );
@@ -109,78 +114,99 @@ class MinecraftQuery
             'hostip'     => 'HostIp'
         );
 
-        foreach( $Data as $Key => $Value )
+        foreach($Data as $Key => $Value)
         {
             if( ~$Key & 1 )
             {
-                if( !Array_Key_Exists( $Value, $Keys ) )
+                if( !Array_Key_Exists($Value, $Keys))
                 {
                     $Last = false;
                     continue;
                 }
 
-                $Last = $Keys[ $Value ];
-                $Info[ $Last ] = "";
+                $Last = $Keys[$Value];
+                $Info[$Last] = "";
             }
-            else if( $Last != false )
+            else if($Last != false )
             {
-                $Info[ $Last ] = $Value;
+                $Info[$Last] = $Value;
             }
         }
 
         // Ints
-        $Info[ 'Players' ]    = IntVal( $Info[ 'Players' ] );
-        $Info[ 'MaxPlayers' ] = IntVal( $Info[ 'MaxPlayers' ] );
-        $Info[ 'HostPort' ]   = IntVal( $Info[ 'HostPort' ] );
+        $Info['Players']    = IntVal($Info['Players']);
+        $Info['MaxPlayers'] = IntVal($Info['MaxPlayers']);
+        $Info['HostPort']   = IntVal($Info['HostPort']);
 
         // Parse "plugins", if any
-        if( $Info[ 'Plugins' ] )
+        if( $Info['Plugins'] )
         {
-            $Data = Explode( ": ", $Info[ 'Plugins' ], 2 );
+            $Data = Explode(": ", $Info['Plugins'], 2);
 
-            $Info[ 'RawPlugins' ] = $Info[ 'Plugins' ];
-            $Info[ 'Software' ]   = $Data[ 0 ];
+            $Info['RawPlugins'] = $Info['Plugins'];
+            $Info['Software']   = $Data[0];
 
-            if( Count( $Data ) == 2 )
+            if( Count($Data) == 2)
             {
-                $Info[ 'Plugins' ] = Explode( "; ", $Data[ 1 ] );
+                $Info['Plugins'] = Explode("; ", $Data[1]);
             }
         }
         else
         {
-            $Info[ 'Software' ] = 'Vanilla';
+            $Info['Software'] = 'Vanilla';
         }
 
         $this->Info = $Info;
 
         if( $Players )
         {
-            $this->Players = Explode( "\x00", $Players );
+            $this->Players = Explode("\x00", $Players);
         }
     }
 
-    private function WriteData( $Command, $Append = "" )
+    private function WriteData($Command, $Append = "")
     {
-        $Command = Pack( 'c*', 0xFE, 0xFD, $Command, 0x01, 0x02, 0x03, 0x04 ) . $Append;
-        $Length  = StrLen( $Command );
+        $Command = Pack('c*', 0xFE, 0xFD, $Command, 0x01, 0x02, 0x03, 0x04) . $Append;
+        $Length  = StrLen($Command);
 
-        if( $Length !== FWrite( $this->Socket, $Command, $Length ) )
+        if( $Length !== FWrite($this->Socket, $Command, $Length))
         {
-            throw new MinecraftQueryException( "Failed to write on socket." );
+            return false;
+            //throw new \Exception( "Failed to write on socket." );
         }
 
-        $Data = FRead( $this->Socket, 2048 );
+        $Data = FRead($this->Socket, 2048);
 
         if( $Data === false )
         {
-            throw new MinecraftQueryException( "Failed to read from socket." );
+            return false;
+            //throw new \Exception( "Failed to read from socket." );
         }
 
-        if( StrLen( $Data ) < 5 || $Data[ 0 ] != $Command[ 2 ] )
+        if(StrLen($Data) < 5 || $Data[0] != $Command[2])
         {
             return false;
         }
 
-        return SubStr( $Data, 5 );
+        return SubStr($Data, 5);
     }
+
+    private function ResolveSRV($ip)
+    {
+        if(ip2long($ip) !== false)
+        {
+            return $ip;
+        }
+        $Record = dns_get_record($ip, DNS_A);
+        if(empty($Record))
+        {
+            return false;
+        }
+        if(isset($Record[0]['ip']))
+        {
+            return $ip = $Record[0]['ip'];
+        }
+
+    }
+
 }
