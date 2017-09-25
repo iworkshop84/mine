@@ -62,6 +62,23 @@ class AbstractM
         return $res;
     }
 
+    public function insert()
+    {
+        $arr = $this->data;
+
+        $ins =[];
+        foreach ($arr as $key=>$val){
+            $ins[':' . $key] = $val;
+        }
+
+        $sql = 'INSERT INTO '. static::$table .' ('. implode(', ', array_keys($arr)) .') 
+        VALUES 
+        ('. implode(', ', array_keys($ins)) .')';
+
+        $db = new DB();
+        $db->execute($sql, $ins);
+        return $db->lastInsId();
+    }
 
 
 }

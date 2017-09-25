@@ -43,13 +43,15 @@ class MinecraftPing
         }
         $this->Connect();
     }
+    /*
     public function __destruct()
     {
         $this->Close();
     }
+    */
     public function Close()
     {
-        if($this->Socket !== null)
+        if($this->Socket != null)
         {
             fclose($this->Socket);
             $this->Socket = null;

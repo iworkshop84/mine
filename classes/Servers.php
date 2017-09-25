@@ -7,24 +7,22 @@ namespace App\Classes;
 class Servers
 {
 
-    public $Socket;
-    public $Players;
-    public $Info;
 
-    public function ResolveSRV($Address)
+
+    public function ResolveSRV($address)
     {
-        if(ip2long($Address) !== false)
+        if(ip2long($address) !== false)
+        {
+            return $address;
+        }
+        $record = dns_get_record($address, DNS_A );
+        if(empty($record))
         {
             return false;
         }
-        $Record = dns_get_record($Address, DNS_A );
-        if(empty($Record))
+        if(isset($record[0]['ip']))
         {
-            return false;
-        }
-        if(isset($Record[0]['ip']))
-        {
-           return $Address = $Record[0]['ip'];
+           return $address = $record[0]['ip'];
         }
     }
 
