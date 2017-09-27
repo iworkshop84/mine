@@ -6,7 +6,7 @@ namespace App\Classes;
 
 
 
-class MinecraftQuery
+class ServerQuery
 {
     /*
      * Class written by xPaw
@@ -22,7 +22,12 @@ class MinecraftQuery
     private $Players;
     private $Info;
 
-    public function Connect($ip, $Port = 25565, $Timeout = 2)
+    public function __construct($ip, $Port)
+    {
+        $this->connectUdp($ip, $Port);
+    }
+
+    public function connectUdp($ip, $Port = 25565, $Timeout = 2)
     {
         if(!is_int($Timeout) || $Timeout < 0)
         {
@@ -57,6 +62,14 @@ class MinecraftQuery
         fclose($this->Socket);
     }
 
+    public function close()
+    {
+        if($this->Socket != null)
+        {
+            fclose($this->Socket);
+            $this->Socket = null;
+        }
+    }
 
     public function GetInfo()
     {

@@ -1,11 +1,11 @@
 <?php
-//error_reporting(E_ALL & ~E_NOTICE & ~E_WARNING);
+error_reporting(E_ALL & ~E_NOTICE & ~E_WARNING);
 require_once __DIR__ . '/autoload.php';
 
 use App\Models\ExceptionM;
 use App\Classes\View;
-use App\Classes\MinecraftQuery;
-use App\Classes\MinecraftPing;
+use App\Classes\ServerQuery;
+use App\Classes\ServerPing;
 
 
 
@@ -100,52 +100,52 @@ $port = 25565;
 
 
 // этот блок я буду использовать для пинга сервера
-    $Query = new MinecraftPing($ip, $port);
+    $pingNew = new ServerPing($ip, $port);
 
-    $res = $Query->QueryLast();
+    $res = $pingNew->pingMy();
 
     var_dump($res);
-    if($Query)
+    if($pingNew)
     {
-        $Query->Close();
+        $pingNew->close();
     }
 
 echo '+++++++++++++++++++++++++++++++++++++++++++++++<br/>';
 /*
 
-    $Query = new MinecraftPing($ip, $port);
+    $pingNew = new ServerPing($ip, $port);
 
-    $res = $Query->Query();
+    $res = $pingNew->pingNew();
     var_dump($res);
 
-    if($Query)
+    if($pingNew)
     {
-        $Query->Close();
+        $pingNew->close();
     }
 
 
 echo '+++++++++++++++++++++++++++++++++++++++++++++++<br/>';
 
 
-    $Query = new MinecraftPing($ip, $port);
+    $pingNew = new ServerPing($ip, $port);
 
-    $res2 = $Query->QueryOldPre17();
+    $res2 = $pingNew->pingOld17();
     var_dump($res2);
 
-    if($Query)
+    if($pingNew)
     {
-        $Query->Close();
+        $pingNew->close();
     }
 /
 echo '+++++++++++++++++++++++++++++++++++++++++++++++<br/>';
 
 // этот блок у меня будет использоваться при добавлении сервера и обновлении информации
 
-    $Query = new MinecraftQuery();
-    $Query->Connect($ip, $port);
+    $pingNew = new ServerQuery();
+    $pingNew->connect($ip, $port);
 
-    var_dump($Query->GetInfo());
-    //var_dump($Query->GetPlayers());
+    var_dump($pingNew->GetInfo());
+    //var_dump($pingNew->GetPlayers());
 
 
 

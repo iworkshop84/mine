@@ -5,7 +5,7 @@ namespace App\Classes;
 
 
 
-class MinecraftPing
+class ServerPing
 {
     /*
      * Queries Minecraft server
@@ -23,8 +23,8 @@ class MinecraftPing
      * This method can be used to get server-icon.png too.
      * Something like this:
      *
-     * $Server = new MinecraftPing( 'localhost' );
-     * $Info = $Server->Query();
+     * $Server = new ServerPing( 'localhost' );
+     * $Info = $Server->pingNew();
      * echo '<img width="64" height="64" src="' . Str_Replace( "\n", "", $Info[ 'favicon' ] ) . '">';
      *
      */
@@ -32,24 +32,40 @@ class MinecraftPing
     private $ServerAddress;
     private $ServerPort;
     private $Timeout;
-    public function __construct($Address, $Port = 25565, $Timeout = 2, $ResolveSRV = true)
+
+    public function __construct($Address, $Port = 25565, $Timeout = 2)
     {
         $this->ServerAddress = $Address;
         $this->ServerPort = (int)$Port;
         $this->Timeout = (int)$Timeout;
-        if($ResolveSRV)
-        {
-            $this->ResolveSRV();
-        }
-        $this->Connect();
+        $this->ResolveSRV();
+        $this->connectTcp();
     }
+
+
+
+
     /*
-    public function __destruct()
-    {
-        $this->Close();
-    }
-    */
-    public function Close()
+  public function __construct($Address, $Port = 25565, $Timeout = 2, $ResolveSRV = true)
+  {
+      $this->ServerAddress = $Address;
+      $this->ServerPort = (int)$Port;
+      $this->Timeout = (int)$Timeout;
+      if($ResolveSRV)
+      {
+          $this->ResolveSRV();
+      }
+      $this->connectTcp();
+  }
+  /*
+  public function __destruct()
+  {
+      $this->close();
+  }
+  */
+
+
+    public function close()
     {
         if($this->Socket != null)
         {
@@ -57,7 +73,7 @@ class MinecraftPing
             $this->Socket = null;
         }
     }
-    public function Connect()
+    public function connectTcp()
     {
         //$connectTimeout = $this->Timeout;
         $this->Socket = @fsockopen('tcp://' . $this->ServerAddress, $this->ServerPort, $errno, $errstr, $this->Timeout);
@@ -72,7 +88,7 @@ class MinecraftPing
     }
 
 
-    public function Query()
+    public function pingNew()
     {
         $TimeStart = microtime(true); // for read timeout purposes
         // See http://wiki.vg/Protocol (Status Ping)
@@ -134,7 +150,7 @@ class MinecraftPing
     }
 
 
-    public function QueryOldPre17()
+    public function pingOld17()
     {
         fwrite( $this->Socket, "\xFE\x01" );
         $Data = fread( $this->Socket, 512 );
@@ -168,7 +184,7 @@ class MinecraftPing
     }
 
 
-    public function QueryLast()
+    public function pingMy()
     {
         //$this->Socket = fsockopen("tcp://" . $this->ServerAddress, $this->ServerPort, $errno, $errstr, 3);
         if (!$this->Socket) {
@@ -192,7 +208,7 @@ class MinecraftPing
                 'HostName' => $motd,
                 'Players' => $players,
                 'MaxPlayers' => $max_players,
-                'serverVersion' => $serverVersion);
+                'Version' => $serverVersion);
 
         }
         else

@@ -12,3 +12,7 @@
 <?php if(!empty($items)): ?>
 <a href="<?= '/Servers/One/' . $items?>">Добавленный сервер</a>
 <?php endif; ?>
+
+<?php if(isset($error)): ?>
+    <?= $error; ?>
+<?php endif; ?>
