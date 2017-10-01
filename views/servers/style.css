@@ -1,0 +1,174 @@
+HTML, BODY, DIV, SPAN, APPLET, OBJECT, IFRAME, H1, H2, H3, H4, H5, H6, P, BLOCKQUOTE, PRE, A, ABBR, ACRONYM, ADDRESS, BIG, CITE, CODE, DEL, DFN, EM, FONT, IMG, INS, KBD, Q, S, SAMP, SMALL, STRIKE, STRONG, SUB, SUP, TT, VAR, B, U, I, CENTER, DL, DT, DD, OL, UL, LI, FIELDSET, FORM, LABEL, LEGEND {margin: 0;padding: 0;border: 0;outline: 0;font-size: 100%;vertical-align: baseline;background: transparent;}
+BODY {line-height: 1;}
+UL {list-style: none;}
+:focus {outline: 0;}
+INS {text-decoration: none;}
+DEL {text-decoration: line-through;}
+input::-moz-focus-inner {border: 0;}
+.clear {
+    clear: both;
+}
+hr.clear {
+    padding: 0;
+    margin: 0;
+    height: 1px;
+    overflow: hidden;
+    border: 0;
+}
+.none {
+    display: none;
+}
+
+a {
+    color: #0e73c0;
+    text-decoration: none;
+
+}
+
+a:hover {
+    color: #5da60e;
+    text-decoration: underline;
+}
+
+p{
+    margin: 0 0 10px 0;
+}
+
+
+h1, h2, h3, h4, h5, h6 {
+    color: #000000;
+    margin: 0 0 10px 0;
+    line-height: 18px;
+    font-weight: normal;
+}
+h1{
+    font-size: 16px;
+}
+h2{
+    font-size: 16px;
+}
+h3{
+    font-size: 14px;
+    font-weight: bold;
+}
+h4{
+    font-size: 13px;
+}
+h5{
+    font-size: 12px;
+}
+h6{
+    font-size: 11px;
+}
+h1 a, h2 a {
+    color: #000000;
+    text-decoration: none;
+}
+h1 a:hover, h2 a:hover {
+    color: #000000;
+    text-decoration: underline;
+}
+
+
+
+/* BODY */
+
+body {
+    color: #4c4a46;
+    font: 300 14px/17px Roboto,sans-serif;
+    line-height: 19px;
+
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+#page {
+    text-align: left;
+    margin: 0 auto;
+    width: 980px;
+
+}
+
+#header {
+   /*width: 980px; */
+    height: 230px;
+    background: #F4F4F4;
+}
+
+.headerback{
+     height: 70px;
+     background: #0a0854;
+     background: url('images/header.jpg') repeat;
+}
+
+.headermenu{
+
+    height: 70px;
+    background: #252525;
+}
+
+.topmenu{
+    width: 980px;
+    font-size: 24px;
+    text-transform: uppercase;
+    margin: 0 auto;
+
+
+
+}
+
+/*
+ padding: 5px 0 0 0;
+    color: #ffffff;
+    display: block;
+    text-align: left;
+    text-decoration: none;
+*/
+
+
+.logo{
+    text-align: center;
+    height: 70px;
+}
+
+.logo a{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 640px;
+    height: 70px;
+    background: url('images/hlogo.png') no-repeat;
+}
+
+#posts {
+    float: left;
+    width: 980px;
+    padding: 15px 0 11px 16px;
+}
+
+#sidebar{
+    float: right;
+    width: 233px;
+}
+#servers{
+    display: block;
+    text-align: left;
+}
+
+.server{
+    display: block;
+    text-align: left;
+}
+
+#versionlist{
+    margin-left: auto;
+    margin-right: auto;
+    width: 980px;
+
+ }
+
+.version{
+    float: left;
+    padding: 0 0 0 5px;
+}

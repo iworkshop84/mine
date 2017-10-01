@@ -9,7 +9,8 @@ class AbstractM
 {
     protected static $table;
 
-    protected $data = [];
+    // поменял свойство на паблик!
+    public $data = [];
 
     public function __set($k, $v)
     {
@@ -78,6 +79,34 @@ class AbstractM
         $db = new DB();
         $db->execute($sql, $ins);
         return $db->lastInsId();
+    }
+
+    public function update()
+    {
+        $arr = $this->data;
+
+        // делаем массив для подготовленного выражения
+        $ins =[];
+        $rools =[];
+        foreach ($arr as $key=>$val){
+            $ins[':' . $key] = $val;
+            $rools[$key] = $key .' = :' . $key;
+        }
+
+        // Удаляем из массива условий ключ id(он у нас всегда будет идти в свойствах первый)
+        $where = array_shift($rools);
+
+
+        $sql = 'UPDATE '. static::$table .' 
+        SET
+        '. implode(', ', ($rools)) .'
+        WHERE 
+        ('. $where .')';
+
+
+        $db = new DB();
+        return $db->execute($sql, $ins);
+
     }
 
 

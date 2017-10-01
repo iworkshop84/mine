@@ -10,14 +10,23 @@ use App\Classes\ServerQuery;
 
 class Servers
 {
-    public function actionAll()
+    public function actionAll($version = null)
     {
 
+        $versionList = ServersModel::findServerList();
+
+        if(empty($version)){
         $items = ServersModel::findAll();
+        }else{
+        $items = ServersModel::findAllInColumn('version', $version);
+        }
         $view = new View();
         $view->items = $items;
+        $view->versionList = $versionList;
+
 
         $view->display('servers/all.php');
+
     }
 
 
@@ -41,8 +50,7 @@ class Servers
     {
         if(isset($_POST['addserver'])){
 
-            if(!empty($_POST['server']))
-            {
+            if(!empty($_POST['server'])) {
                 // удаляем лишние пробелы из начала и конца и лишние символы из адреса
                 // заменить потом этот блок на preg_replace
                 $adress = str_ireplace(' ', '', $_POST['server']);
@@ -62,12 +70,25 @@ class Servers
                 $ping = new ServerPing($adress[0], $adress[1]);
                 $query = new ServerQuery($adress[0], $adress[1]);
 
-                if($res = $ping->pingMy())
-                {
 
                 $server = new ServersModel();
-                $server->serverPrepData($res);
                 $server->serverPrepAdress($adress[0], $adress[1]);
+
+
+                $check = ServersModel::findOneFromTwoColumn('ip', 'port',
+                    $server->data['ip'], $server->data['port']);
+
+
+                if(!empty($check))
+                {
+                    $item = $check->data['id'];
+
+                }elseif($res = $ping->pingMy())
+                {
+
+                    //$server = new ServersModel();
+                    $server->serverPrepData($res);
+                    //$server->serverPrepAdress($adress[0], $adress[1]);
 
                 $item = $server->insert();
                     if($ping)
@@ -77,9 +98,9 @@ class Servers
 
                 }elseif($res = $ping->pingOld17())
                 {
-                    $server = new ServersModel();
+                    //$server = new ServersModel();
                     $server->serverPrepData($res);
-                    $server->serverPrepAdress($adress[0], $adress[1]);
+                    //$server->serverPrepAdress($adress[0], $adress[1]);
 
                     $item = $server->insert();
                     if($ping)
@@ -89,9 +110,9 @@ class Servers
 
                 }elseif($res = $query->GetInfo())
                 {
-                    $server = new ServersModel();
+                    //$server = new ServersModel();
                     $server->serverPrepData($res);
-                    $server->serverPrepAdress($adress[0], $adress[1]);
+                    //$server->serverPrepAdress($adress[0], $adress[1]);
 
                     $item = $server->insert();
                     if($query)
