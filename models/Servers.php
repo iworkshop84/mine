@@ -74,17 +74,7 @@ class Servers
     }
 
 
-    public static function findOneFromTwoColumn($column1,$column2, $value1, $value2)
-    {
-        $class = get_called_class();
-        $sql = 'SELECT * FROM '. static::$table . ' WHERE '. $column1 .'=:val1 AND '. $column2 .'=:val2';
-        $db = new DB;
 
-        $db->setClassName($class);
-        $res = $db->query($sql, [':val1' => $value1, ':val2' => $value2])[0];
-
-        return $res;
-    }
 
 
 

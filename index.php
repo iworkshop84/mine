@@ -1,5 +1,6 @@
 <?php
 error_reporting(E_ALL & ~E_NOTICE & ~E_WARNING);
+session_start();
 require_once __DIR__ . '/autoload.php';
 
 use App\Models\ExceptionM;
@@ -44,3 +45,4 @@ catch (ExceptionM $err)
     }
     $view->display('servers/error.php');
 }
+    //var_dump($_SESSION);

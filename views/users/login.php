@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="/views/servers/style.css" type="text/css" media="screen" />
 
-    <title>Добавить сервер</title>
+    <title>Авторизация</title>
 </head>
 <body>
 <div id="header">
@@ -26,22 +26,17 @@
 
     <div id="posts">
 
+        <form action="/Users/Login" method="post" enctype="multipart/form-data">
+            <p> <label for="login"> Логин: </label>
+                <input type="text" id="login" name="login"></p>
+            <p> <label for="password"> Пароль: </label>
+                <input type="password" id="password" name="password"></p>
 
 
-        <form action="/Servers/Add" method="post" enctype="multipart/form-data">
-            <p> <label for="server"> Адрес: </label>
-                <input type="text" id="server" name="server"></p>
-
-            <p> <button type="submit" name="addserver">Отправить</button></p>
+            <p> <button type="submit" name="loginuser">Войти</button></p>
         </form>
 
-        <?php if(!empty($items)): ?>
-            <a href="<?= '/Servers/One/' . $items?>">Ваш добавленный сервер</a>
-        <?php endif; ?>
 
-        <?php if(isset($error)): ?>
-            <?= $error; ?>
-        <?php endif; ?>
 
 
     </div>

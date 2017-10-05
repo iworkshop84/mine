@@ -14,6 +14,10 @@
         <div class="topmenu">
             <a href="<?= '/' ?>">Главная страница</a>
             <a href="<?= '/Servers/Add/' ?>">Добавить сервер</a>
+            <a href="<?= '/Users/Register' ?>">Зарегистрироваться</a>
+            <a href="<?= '/Users/Login' ?>">Авторизация</a>
+            <a href="<?= '/Users/Profile' ?>">Профиль</a>
+            <a href="<?= '/Users/Logout' ?>">Выйти</a>
         </div>
     </div>
 
