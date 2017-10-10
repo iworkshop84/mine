@@ -20,8 +20,9 @@ foreach ($items as $item){
 
     if($res = $ping->pingMy())
         {
-            $server->serverUpdData($res);
             $server->id = $item->id;
+            $server->serverUpdData($res);
+
 
             $item = $server->update();
         if($ping)
@@ -31,9 +32,9 @@ foreach ($items as $item){
 
     }elseif($res = $ping->pingOld17())
         {
-
-            $server->serverUpdData($res);
             $server->id = $item->id;
+            $server->serverUpdData($res);
+
 
             $item = $server->update();
         if($ping)
@@ -43,9 +44,9 @@ foreach ($items as $item){
 
     }elseif($res = $query->GetInfo())
         {
-
-            $server->serverUpdData($res);
             $server->id = $item->id;
+            $server->serverUpdData($res);
+
 
             $item = $server->update();
         if($query)
@@ -57,7 +58,7 @@ foreach ($items as $item){
         $server->id = $item->id;
         $server->players = 0;
         $server->online = 0;
-        $server->maxplayers = 0;
+        //$server->maxplayers = 0;
 
         $item = $server->update();
 

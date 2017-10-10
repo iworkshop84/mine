@@ -122,4 +122,23 @@ class AbstractM
     }
 
 
+    public function delete()
+    {
+        $arr = $this->data;
+
+        $ins =[];
+        $where =[];
+        foreach ($arr as $key=>$val){
+            $ins[':' . $key] = $val;
+            $where[$key] = $key .' = :' . $key;
+        }
+
+        $sql = 'DELETE FROM '. static::$table .' 
+        WHERE 
+        ('. implode(', ', ($where)) .')';
+
+        $db = new DB();
+        $db->execute($sql, $ins);
+    }
+
 }

@@ -1,16 +1,15 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: iworkshop
- * Date: 01.10.2017
- * Time: 12:16
- */
+
 
 namespace App\Controllers;
 
 use App\Models\ExceptionM;
+use App\Models\Properties;
 use App\Models\Users as UserModel;
+use App\Models\Servers as ServersModel;
 use App\Classes\View;
+use App\Classes\ServerPing;
+use App\Classes\ServerQuery;
 
 class Users
 {
@@ -108,6 +107,7 @@ class Users
         exit;
     }
 
+
     public function actionProfile(){
 
         $user = new UserModel();
@@ -123,6 +123,8 @@ class Users
         }
 
         $item = $user->findOneInColumn('id', $_SESSION['uid']);
+
+
 
         if(isset($_POST['edituser'])) {
 
@@ -161,8 +163,249 @@ class Users
         $view->items = $item;
         $view->error = $error;
         $view->display('users/profile.php');
+    }
+
+
+
+
+
+    public function actionServers(){
+
+        $user = new UserModel();
+
+        if(!isset($_SESSION['token']) || !($user->checkUserToken($_SESSION['uid'], $_SESSION['token']))) {
+
+            unset($_SESSION['uid']);
+            unset($_SESSION['login']);
+            unset($_SESSION['token']);
+
+            header('Location: /Users/Login');
+            exit;
+        }
+
+        $serverlist = ServersModel::findAllInColumn('uid', $_SESSION['uid']);
+
+
+        //var_dump($serverlist);
+
+
+        if(isset($_POST['checkserver'])) {
+
+            if(!empty($_POST['server'])) {
+                // удаляем лишние пробелы из начала и конца и лишние символы из адреса
+                // заменить потом этот блок на preg_replace
+                $adress = str_ireplace(' ', '', $_POST['server']);
+                $adress = str_ireplace('http://', '', $adress);
+                $adress = str_ireplace('https://', '', $adress);
+                $adress = str_ireplace('tcp://', '', $adress);
+                $adress = str_ireplace('udp://', '', $adress);
+                $adress = str_ireplace('/', '', $adress);
+
+                $adress = explode(':', $adress);
+                if (!$adress[1]) {
+                    $adress[1] = 25565;
+                }
+
+
+                $ping = new ServerPing($adress[0], $adress[1]);
+                $query = new ServerQuery($adress[0], $adress[1]);
+
+
+                $server = new ServersModel();
+                $server->serverPrepAdress($adress[0], $adress[1]);
+
+                $check = ServersModel::findOneFromTwoColumn('ip', 'port',
+                    $server->ip, $server->port);
+
+
+             if(!$check)
+             {
+                $error = 'Сервер не найден в рейтинге или указан не верный айпи:порт.';
+             }
+             elseif ($res = $ping->pingMy())
+             {
+                 $pattern = '/uid'. $_SESSION['uid'] .'/';
+                 preg_match($pattern, $res['HostName'], $matches);
+
+                 if(!empty($matches))
+                 {
+                     $check->uid = $_SESSION['uid'];
+                     $check->update();
+                     header('Location: /Users/Servers');
+                     exit;
+                 }
+                 if($ping)
+                 {
+                     $ping->close();
+                 }
+             }
+             elseif ($res = $ping->pingOld17())
+             {
+
+                 $pattern = '/uid'. $_SESSION['uid'] .'/';
+                 preg_match($pattern, $res['HostName'], $matches);
+
+                 if(!empty($matches))
+                 {
+                     $check->uid = $_SESSION['uid'];
+                     $check->update();
+                     header('Location: /Users/Servers');
+                     exit;
+                 }
+                 if($ping)
+                 {
+                     $ping->close();
+                 }
+             }
+             elseif($res = $query->GetInfo())
+             {
+                 $pattern = '/uid'. $_SESSION['uid'] .'/';
+                 preg_match($pattern, $res['HostName'], $matches);
+
+                 if(!empty($matches))
+                 {
+                     $check->uid = $_SESSION['uid'];
+                     $check->update();
+                     header('Location: /Users/Servers');
+                     exit;
+                 }
+                 if($query)
+                 {
+                     $query->close();
+                 }
+
+
+             }else{
+                 $error = 'Сервер не доступен или офлайн.';
+             }
+            }
+        }
+
+
+        $view = new View();
+        $view->items = $serverlist;
+        $view->error = $error;
+        $view->display('users/serverlist.php');
+    }
+
+
+
+
+    public function actionSedit($id = null)
+    {
+        $user = new UserModel();
+
+        if(!isset($_SESSION['token']) || !($user->checkUserToken($_SESSION['uid'], $_SESSION['token']))) {
+
+            unset($_SESSION['uid']);
+            unset($_SESSION['login']);
+            unset($_SESSION['token']);
+
+            header('Location: /Users/Login');
+            exit;
+        }
+
+        $server = ServersModel::findOneInColumn('id', $id);
+        $serverlist = ServersModel::findServerList();
+        $mainproplistall = ServersModel::findMpropList();
+
+        $mplistexist = Properties::findAllInServmp($server->id);
+
+        $mplistarr = [];
+        foreach ($mplistexist as $k=>$v)
+        {
+            $mplistarr[] = ($v->data['mpropid']);
+        }
+
+
+        if($_SESSION['uid'] != $server->uid)
+        {
+            header('Location: /Users/Servers');
+            exit;
+        }
+
+
+        if(isset($_POST['editserver'])) {
+
+            if(!empty($_POST['name']))
+            {
+            $server->name = $_POST['name'];
+            }
+
+            if(isset($_POST['slogan']))
+            {
+                $server->slogan = $_POST['slogan'];
+            }
+
+            if(isset($_POST['host']))
+            {
+                $server->host = $_POST['host'];
+            }
+
+            if(isset($_POST['description']))
+            {
+                $server->description = $_POST['description'];
+            }
+
+            if(isset($_POST['site']))
+            {
+                $server->site = $_POST['site'];
+            }
+
+            if(isset($_POST['vk']))
+            {
+                $server->vk = $_POST['vk'];
+            }
+
+            if(isset($_POST['youtube']))
+            {
+                $server->youtube = $_POST['youtube'];
+            }
+
+            if(isset($_POST['version']))
+            {
+                $server->version = $_POST['version'];
+            }
+
+            if(isset($_POST['mainprop']))
+            {
+               $mplist = new Properties();
+               $mplist->data = $_POST['mainprop'];
+
+               $mplist->deleteMlist($server->id);
+               $mplist->insertMlist($server->id);
+
+
+            }
+
+
+
+
+
+
+
+
+            $server->update();
+
+            header('Location: /Users/Sedit/'. $server->id);
+            exit;
+
+        }
+
+
+
+
+
+        $view = new View();
+        $view->items = $server;
+        $view->serverlist = $serverlist;
+        $view->mainproplistall = $mainproplistall;
+        $view->mplistarr = $mplistarr;
+        //$view->error = $error;
+        $view->display('users/serveredit.php');
 
     }
+
 
 
 }

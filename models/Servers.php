@@ -20,6 +20,11 @@ class Servers
         $this->maxplayers = $data['MaxPlayers'];
         $this->online = 1;
 
+        if(!empty($_SESSION['uid']))
+        {
+            $this->uid = $_SESSION['uid'];
+        }
+
         // очищаем версию сервера от разного мусора
         $pattern = '/([0-9]+\.[0-9]+\.[0-9]+)|([0-9]+\.[0-9]+)/';
         preg_match($pattern, $data['Version'], $matches);
@@ -27,6 +32,7 @@ class Servers
         // закидываем в объект версию сервера
         $this->version = $matches[0];
 
+        // если каким то макаром версии сервера всё же нет - ставил дефолтную
         if(!isset($this->version)){
             $this->version = '1.12';
         }
@@ -73,9 +79,13 @@ class Servers
         return $db->query($sql);
     }
 
-
-
-
-
+    public static function findMpropList()
+    {
+        $class = get_called_class();
+        $sql = 'SELECT * FROM mainprop';
+        $db = new DB;
+        $db->setClassName($class);
+        return $db->query($sql);
+    }
 
 }
