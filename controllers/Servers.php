@@ -7,6 +7,7 @@ use App\Models\Servers as ServersModel;
 use App\Classes\View;
 use App\Classes\ServerPing;
 use App\Classes\ServerQuery;
+use App\Models\Properties;
 
 class Servers
 {
@@ -14,16 +15,18 @@ class Servers
     {
 
         $versionList = ServersModel::findServerList();
+        $mainpropList = Properties::findAllServmp();
 
         if(empty($version)){
         $items = ServersModel::findAll();
         }else{
         $items = ServersModel::findAllInColumn('version', $version);
         }
+
         $view = new View();
         $view->items = $items;
         $view->versionList = $versionList;
-
+        $view->mainpropList = $mainpropList;
 
         $view->display('servers/all.php');
 

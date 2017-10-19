@@ -10,6 +10,7 @@ class Properties
     extends AbstractM
 {
 
+
     public function insertMlist($id)
     {
         $arr = $this->data;
@@ -35,6 +36,14 @@ class Properties
         $db->execute($sql, [':id' => $id]);
     }
 
+    public static function findAllServmp()
+    {
+        $class = get_called_class();
+        $sql = 'SELECT * FROM mainprop';
+        $db = new DB;
+        $db->setClassName($class);
+        return $db->query($sql);
+    }
 
     public static function findAllInServmp($id)
     {

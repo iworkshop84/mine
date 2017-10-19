@@ -273,8 +273,6 @@ class Users
                  {
                      $query->close();
                  }
-
-
              }else{
                  $error = 'Сервер не доступен или офлайн.';
              }

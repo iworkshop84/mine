@@ -75,100 +75,876 @@ h1 a:hover, h2 a:hover {
 
 body {
     color: #4c4a46;
-    font: 300 14px/17px Roboto,sans-serif;
+    font: 300 14px/17px Roboto, sans-serif;
     line-height: 19px;
-
     text-align: center;
     margin: 0;
     padding: 0;
 }
 
-#page {
-    text-align: left;
-    margin: 0 auto;
-    width: 980px;
-
-}
 
 #header {
-   /*width: 980px; */
-    height: 230px;
+    /*height: 230px;*/
     background: #F4F4F4;
 }
 
-.headerback{
-     height: 70px;
-     background: #0a0854;
-     background: url('images/header.jpg') repeat;
-}
 
-.headermenu{
-
+#headermenu{
     height: 70px;
-    background: #252525;
+    background: #494F5C;
 }
 
-.topmenu{
-    width: 980px;
-    font-size: 24px;
-    text-transform: uppercase;
-    margin: 0 auto;
-
-
-
-}
-
-/*
- padding: 5px 0 0 0;
-    color: #ffffff;
-    display: block;
-    text-align: left;
-    text-decoration: none;
-*/
-
-
-.logo{
-    text-align: center;
-    height: 70px;
-}
-
-.logo a{
-    display: block;
+#headernav{
+    width: 1250px;
     margin-left: auto;
     margin-right: auto;
-    width: 640px;
+}
+
+#logo{
+    float: left;
     height: 70px;
+    width: 250px;
     background: url('images/hlogo.png') no-repeat;
+}
+
+#topmenu{
+    float: left;
+    width: 650px;
+    font-size: 16px;
+    margin: 0 auto;
+
+}
+
+#topmenu a{
+    float: left;
+    display: block;
+    height: 70px;
+    line-height: 70px;
+    padding:0 10px 0 10px;
+    color: #fff; /* цвет текста */
+    text-decoration: none; /* убирать подчёркивание у ссылок */
+    user-select: none; /* убирать выделение текста */
+    background: #494F5C; /* фон кнопки */
+    outline: none; /* убирать контур в Mozilla */
+}
+
+#topmenu a:hover {
+    background: #6A7283;
+}
+/* при наведении курсора мышки */
+#topmenu a:active {
+    background: #6A7283;
+} /* при нажатии */
+
+
+#topmenu a.servadd {
+    color: #6cd046;
+    background: #363639;
+}
+
+
+#authmenu{
+    float: right;
+    width: 350px;
+    font-size: 16px;
+    margin: 0 auto;
+
+}
+
+
+
+#authmenu a{
+    float: right;
+    display: block;
+    height: 70px;
+    line-height: 70px;
+    padding:0 10px 0 10px;
+    color: #fff; /* цвет текста */
+    text-decoration: none; /* убирать подчёркивание у ссылок */
+    user-select: none; /* убирать выделение текста */
+    background: #494F5C; /* фон кнопки */
+    outline: none; /* убирать контур в Mozilla */
+}
+
+#authmenu a:hover {
+    background: #6A7283;
+}
+/* при наведении курсора мышки */
+#authmenu a:active {
+    background: #6A7283;
+} /* при нажатии */
+
+#topnav{
+    height: 230px;
+    background: #F4F4F4;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#navlist {
+    margin-left: auto;
+    margin-right: auto;
+    width: 1250px;
+}
+
+#site-about{
+    text-align: left;
+    float: left;
+    width: 400px;
+    height: 220px;
+    padding: 10px 10px 0 0;
+    border-right: 1px solid #ddd;
+}
+
+#versionlist{
+    font-size: 12px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px 0 0 0;
+    float: left;
+    width:830px;
+}
+
+#mainproplist{
+    font-size: 12px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 5px 0 0 0;
+    float: left;
+    width:830px;
+
+}
+
+.params{
+    float: left;
+    height:52px;
+    display: inline-block;
+    width: 115px;
+    text-align: center;
+    border-radius: 2px;
+    padding:2px 0 0 0;
+}
+
+.label{
+    line-height: 14px;
+    padding: 1px 7px 2px;
+    height: auto;
+    background: #ffffff;
+    border: 1px solid #d1d1d1 !important;
+    width: 100px;
+}
+
+.version{
+    float: left;
+    padding: 2px 1px 2px 1px;
+    display: block;
+    line-height: 16px;
+    text-decoration: none; /* убирать подчёркивание у ссылок */
+    user-select: none; /* убирать выделение текста */
+    outline: none; /* убирать контур в Mozilla */
+}
+
+.version a{
+    font-size: 12px;
+    padding: 1px 5px 1px 5px;
+    height: auto;
+    background-color: #fff;
+    border: 1px solid #d1d1d1;
+}
+
+.version a:active{
+    text-decoration: underline;
+
+}
+
+.version a:hover{
+    text-decoration: none;
+    background: #5cb85c;
+    color: #fff !important;
+    border: 1px solid #4da54d !important;
+}
+
+
+
+
+
+
+#page {
+    text-align: left;
+    margin: 0 auto;
+    width: 1250px;
+
 }
 
 #posts {
     float: left;
-    width: 980px;
-    padding: 15px 0 11px 16px;
+    width: 1250px;
+    padding: 15px 0 11px 0;
 }
 
-#sidebar{
-    float: right;
-    width: 233px;
+#serverheader{
+    float: left;
+    text-align: left;
+    width: 1248px;
+    height:18px;
+    padding:3px 0 3px 0;
+    background: #F5F5F5;
+    border: 1px solid #d1d1d1;
+    font-size: 12px;
+    font-weight: bold;
+
 }
+#shcount{
+    float: left;
+    text-align: center;
+    padding:0 5px 0 5px;
+    width: 50px;
+}
+
+#shname{
+    float: left;
+    padding:0 5px 0 5px;
+    width: 250px;
+}
+#shulname{
+    float: left;
+    padding:0 5px 0 5px;
+    width: 260px;
+}
+
+#shproph{
+    float: left;
+    padding:0 5px 0 5px;
+    width: 550px;
+}
+
+#shstatus{
+    float: left;
+    padding:0 5px 0 5px;
+    width: 110px;
+}
+#shulstatus{
+    float: left;
+    padding:0 5px 0 5px;
+    width: 110px;
+}
+#shuladress{
+    float: left;
+    padding:0 5px 0 5px;
+    width: 190px;
+}
+
+#shplayers{
+    float: left;
+    padding:0 5px 0 5px;
+    width: 110px;
+    text-align: center;
+}
+#shulplayers{
+    float: left;
+    padding:0 5px 0 5px;
+    width: 110px;
+    text-align: left;
+}
+
+#shversion{
+    float: left;
+    padding:0 5px 0 5px;
+    width: 110px;
+    text-align: center;
+}
+#shulversion{
+    float: left;
+    padding:0 5px 0 5px;
+    width: 110px;
+
+}
+
+
+#shreith{
+    float: left;
+    padding:0 5px 0 5px;
+    width: 110px;
+    text-align: center;
+}
+
+#shulreith{
+    float: left;
+    padding:0 5px 0 5px;
+    width: 110px;
+}
+
+
+
 #servers{
     display: block;
     text-align: left;
+    width: 1250px;
 }
 
 .server{
     display: block;
     text-align: left;
+    border: 1px solid #d1d1d1;
+    height: 120px;
 }
 
-#versionlist{
+.scount{
+    float: left;
+    width:50px;
+    height: 20px;
+    padding: 40px 0 40px 5px;
+    font-size: 28px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.sulcount{
+    float: left;
+    width:50px;
+    height: 18px;
+    padding: 12px 0 10px 5px;
+    font-size: 18px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.namelabel{
+    float: left;
+    width:270px;
+    /*height: 125px;*/
+    padding: 10px 0 10px 0;
+}
+
+.suledit{
+    float: left;
+    padding:10px 0px 0 0px;
+    width: 110px;
+}
+
+
+.sname{
+    font-size: 14px;
+    text-align: left;
+    font-weight: bold;
+
+}
+
+.sulname{
+    float: left;
+    font-size: 16px;
+    text-align: left;
+    padding: 10px 0 0 0;
+    width:280px;
+}
+
+.sulstatus{
+    float: left;
+    font-size: 16px;
+    text-align: left;
+    padding: 10px 0 0 0;
+    width:120px;
+}
+
+.sulstatus span.offline{
+    font-size: 13px;
+    display: inline-block;
+    color: red;
+    font-weight:bold;
+}
+
+.sulstatus span.online{
+    font-size: 14px;
+    display: inline-block;
+    color: green;
+    font-weight: lighter;
+}
+
+.sulipport{
+    float: left;
+    font-size: 14px;
+    text-align: left;
+    padding: 10px 0 0 0;
+    width:200px;
+}
+
+.sulipport span.host{
+    margin: 0px 0 0 0px;
+    font-size: 14px;
+    display: inline-block;
+    padding:0 4px 0 4px;
+    background-color: #444;
+    color: #ffffff;
+    border-radius: 3px;
+}
+
+.sulipport span.ip{
+    margin: 0px 0 0 0px;
+    font-size: 14px;
+    display: inline-block;
+    padding:0 4px 0 4px;
+    background-color: #444;
+    color: #ffffff;
+    border-radius: 3px;
+}
+
+.sulplayers{
+    font-size: 14px;
+    padding:10px 0 0 0;
+    float: left;
+    width: 120px;
+}
+
+.sulversion{
+    font-size: 14px;
+    padding:10px 0 0 0;
+    float: left;
+    width: 100px;
+}
+
+.slogan{
+    font-style: italic;
+    font-size: 12px;
+    margin: 3px 0 0 0;
+}
+
+.sipport{
+    margin: 3px 0 0 3px;
+    font-size: 12px;
+    display: inline-block;
+    padding:0 4px 0 4px;
+    background-color: #444;
+    color: #ffffff;
+    border-radius: 3px;
+}
+
+.shostport{
+    margin: 3px 0 0 0;
+    font-size: 12px;
+    display: inline-block;
+    padding:0 4px 0 4px;
+    background-color: #444;
+    color: #ffffff;
+    border-radius: 3px;
+}
+
+.smainprop{
+    padding: 10px 5px 10px 5px;
+    width: 550px;
+    float: left;
+    /*height: 125px;*/
+}
+.splayers{
+    padding: 40px 5px 40px 5px;
+    float: left;
+    height: 25px;
+    color: #008000;
+    text-align: center;
+    width: 110px;
+    vertical-align: middle;
+}
+
+.sversion{
+    padding: 40px 5px 40px 5px;
+    float: left;
+    height: 25px;
+    color: #0e73c0;
+    text-align: center;
+    width: 110px;
+}
+
+#servertitle {
+    padding: 10px 0 10px 0;
+}
+
+#servertitle h1{
+    font-size: 24px;
+    color: #555 !important;
+}
+
+#serverslogan{
+    font-size: 14px;
+    color: #666;
+    padding: 10px 0 0 0;
+}
+
+.oservere{
+    font-size: 20px;
+    text-transform: uppercase;
+    color:#4a4a49;
+    text-align: center;
+    margin: 10px 0;
+    background: url('images/grey_line.png') repeat-x center;
+}
+
+.oservere span{
+    background: white;
+    display: inline-block;
+    padding: 0 10px;
+}
+
+.serverfullinfo{
+
+}
+
+.serverfullinfo span.header{
+    width: 120px;
+    float: left;
+    font-weight: bold;
+}
+
+.serverfullinfo span.host{
+    margin: 3px 0 0 0px;
+    font-size: 14px;
+    display: inline-block;
+    padding:0 4px 0 4px;
+    background-color: #444;
+    color: #ffffff;
+    border-radius: 3px;
+}
+
+.serverfullinfo span.ip{
+    margin: 3px 0 0 0;
+    font-size: 14px;
+    display: inline-block;
+    padding:0 4px 0 4px;
+    background-color: #444;
+    color: #ffffff;
+    border-radius: 3px;
+}
+
+.serverfullinfo span.offline{
+    margin: 3px 0 0 0;
+    font-size: 14px;
+    display: inline-block;
+    color: red;
+    font-weight: bold;
+}
+
+.serverfullinfo span.online{
+    margin: 3px 0 0 0;
+    font-size: 14px;
+    display: inline-block;
+    color: green;
+    font-weight: bold;
+}
+
+.serverfullinfo span.players{
+    margin: 3px 0 0 0;
+    font-size: 14px;
+    display: inline-block;
+
+}
+
+.serverfullinfo span.servsite{
+    margin: 3px 0 0 0;
+    font-size: 14px;
+    display: inline-block;
+
+}
+
+.serverfullinfo span.servvk{
+    margin: 3px 0 0 0;
+    font-size: 14px;
+    display: inline-block;
+}
+
+.serverfullinfo span.servversion{
+    margin: 3px 0 0 0;
+    font-size: 14px;
+    display: inline-block;
+}
+
+.serverdesc{
+    padding:10px 0 10px 0px;
+}
+
+#userauth{
+    width: 300px;
+    padding: 100px 0 0 0;
     margin-left: auto;
     margin-right: auto;
-    width: 980px;
+}
 
- }
+#userauth h1{
+    margin: 0 0 20px 0;
+    font-size: 24px;
+    color:#575757;
+    text-shadow:0 1px 0 #fff;
+    text-align: center;
+}
 
-.version{
+.formgrup{
+    padding: 5px 0 5px 0;
+}
+
+#auth{
+    width: 300px;
+
+}
+
+
+#auth input.forminput{
+    width: 300px;
+    padding:5px 8px 5px 8px;
+    height: 20px;
+    border-color: #c1c1c1;
+    line-height: 20px;
+    font-size: 14px;
+    border-radius: 2px;
+    box-shadow: none;
+}
+
+.forminput{
+    display: block;
+    color: #555;
+    background-color: #fff;
+    border: 1px solid #ccc;
+}
+
+a.knopka {
+    color: #fff; /* цвет текста */
+    text-decoration: none; /* убирать подчёркивание у ссылок */
+    user-select: none; /* убирать выделение текста */
+    background: rgb(212,75,56); /* фон кнопки */
+    padding: .7em 1.5em; /* отступ от текста */
+    outline: none; /* убирать контур в Mozilla */
+}
+
+
+
+#userauth .btn {
+    font-size: 14px;
+    width: 318px;
+    color: #fff; /* цвет текста */
+    text-transform: uppercase;
+    user-select: none; /* убирать выделение текста */
+    background: #3eb100; /* фон кнопки */
+    border: 1px solid;
+    border-color: #379300;
+    padding: .7em 1.5em; /* отступ от текста */
+    outline: none; /* убирать контур в Mozilla */
+}
+
+#userauth .btn:hover {
+    background: green;
+    border-color: green;
+} /* при наведении курсора мышки */
+#userauth .btn:active {
+    background: #3E5E7F;
+    border-color: #3E5E7F;
+} /* при нажатии */
+
+
+#userprofile{
     float: left;
-    padding: 0 0 0 5px;
+}
+
+.userproftitle{
+    width: 150px;
+    text-align: left;
+    font-size: 14px;
+    font-weight: bold;
+    float: left;
+    padding:10px 0 0 0;
+}
+
+#proph input.forminput{
+    width: 300px;
+    padding:5px 8px 5px 8px;
+    height: 20px;
+    border-color: #c1c1c1;
+    line-height: 20px;
+    font-size: 14px;
+    border-radius: 2px;
+    box-shadow: none;
+}
+
+#proph input.forminput:disabled{
+    background-color: #dddddd;
+}
+
+.userformgrup{
+    padding: 5px 0 5px 0;
+    float: left;
+    width: 320px;
+}
+
+.buttomform{
+    padding: 5px 0 5px 0;
+    margin-right: auto;
+    margin-left: auto;
+    width: 150px;
+}
+
+#proph .btn {
+    font-size: 14px;
+    width: 130px;
+    color: #fff; /* цвет текста */
+    text-transform: uppercase;
+    user-select: none; /* убирать выделение текста */
+    background: #3eb100; /* фон кнопки */
+    border: 1px solid;
+    border-color: #379300;
+    padding: 10px 20px; /* отступ от текста */
+    outline: none; /* убирать контур в Mozilla */
+}
+
+#proph .btn:hover {
+    background: green;
+    border-color: green;
+} /* при наведении курсора мышки */
+#proph .btn:active {
+    background: #3E5E7F;
+    border-color: #3E5E7F;
+}
+
+.serveruserlist{
+    display: block;
+    text-align: left;
+    border: 1px solid #d1d1d1;
+    height: 40px;
+}
+
+#serverapruvtext{
+    float: left;
+    text-align: left;
+}
+
+#serverlistapp{
+    width: 300px;
+    padding: 10px 0 0 0;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#serverlistapp .btn {
+    font-size: 14px;
+    width: 318px;
+    color: #fff; /* цвет текста */
+    text-transform: uppercase;
+    user-select: none; /* убирать выделение текста */
+    background: #3eb100; /* фон кнопки */
+    border: 1px solid;
+    border-color: #379300;
+    padding: .7em 1.5em; /* отступ от текста */
+    outline: none; /* убирать контур в Mozilla */
+}
+
+#serverlistapp .btn:hover {
+    background: green;
+    border-color: green;
+} /* при наведении курсора мышки */
+#serverlistapp .btn:active {
+    background: #3E5E7F;
+    border-color: #3E5E7F;
+}
+
+#warning{
+    background: #FCF8E3;
+    float: left;
+    width: 100%;
+    margin: 10px 0 10px 0;
+    padding:5px 0 5px 0;
+    border: 1px solid #efebd7;
+}
+
+#warning p{
+   margin: 5px;
+}
+
+#edit-server{
+
+}
+
+.editservertextblock{
+    float: left;
+    text-align: left;
+    width: 35%;
+    padding: 0 60px 20px 0;
+}
+
+.editservertextblock span.estitle{
+    float: left;
+    font-size: 14px;
+    font-weight: bold;
+    width: 100%;
+    padding: 10px 0 10px 0;
+}
+
+.editservertextblock span.estext{
+    float: left;
+    font-size: 14px;
+    color: #555;
+    width: 100%;
+    line-height: 1.5;
+}
+
+.servereditfield{
+    padding: 40px 0 10px 0;
+    float: left;
+    width: 60%;
+}
+
+#edit-server input.setextfield{
+    width: 720px;
+    padding:5px 8px 5px 8px;
+    height: 20px;
+    border-color: #c1c1c1;
+    line-height: 20px;
+    font-size: 14px;
+    border-radius: 2px;
+    box-shadow: none;
+}
+
+.setextfield{
+    display: block;
+    color: #555;
+    background-color: #fff;
+    border: 1px solid #ccc;
+}
+
+#edit-server select.seversion{
+    width: 400px;
+    padding:5px 8px 5px 8px;
+    color: #555;
+    height: 30px;
+    border-color: #c1c1c1;
+    line-height: 20px;
+    font-size: 14px;
+    border-radius: 2px;
+    box-shadow: none;
+}
+
+#edit-server select.semproph{
+    width: 400px;
+    padding:5px 8px 5px 8px;
+    color: #555;
+    border-color: #c1c1c1;
+    line-height: 20px;
+    font-size: 14px;
+    border-radius: 2px;
+    box-shadow: none;
+}
+
+#edit-server .btn {
+    font-size: 14px;
+    width: 300px;
+    color: #fff; /* цвет текста */
+    text-transform: uppercase;
+    user-select: none; /* убирать выделение текста */
+    background: #3eb100; /* фон кнопки */
+    border: 1px solid;
+    border-color: #379300;
+    padding: 10px 20px; /* отступ от текста */
+    outline: none; /* убирать контур в Mozilla */
+}
+
+#edit-server .btn:hover {
+    background: green;
+    border-color: green;
+}
+#edit-server .btn:active {
+    background: #3E5E7F;
+    border-color: #3E5E7F;
 }

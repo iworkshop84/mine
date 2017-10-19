@@ -3,55 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="/views/servers/style.css" type="text/css" media="screen" />
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
 
-    <title>Профиль</title>
+    <title>Профиль - сервера Майнкрафт</title>
+    <meta name="description" content="MinecraftRait.ru – это самый лучший мониторинг Майнкрафт серверов в рунете. У нас удобный поиск серверов и объективный рейтинг лучших серверов Minecraft." />
+    <meta name="keywords" content="мониторинг серверов, майнкрафт, ip адреса, сервера minecraft, айпи серверов, топ, список, лучшие сервера, рейтинг" />
 </head>
+
 <body>
 <div id="header">
 
+    <div id="headermenu">
+        <div id="headernav">
 
-    <div class="headermenu">
-        <div class="topmenu">
-            <a href="<?= '/' ?>">Главная страница</a>
-            <a href="<?= '/Servers/Add/' ?>">Добавить сервер</a>
-            <a href="<?= '/Users/Register' ?>">Зарегистрироваться</a>
-            <a href="<?= '/Users/Login' ?>">Авторизация</a>
-            <a href="<?= '/Users/Profile' ?>">Профиль</a>
-            <a href="<?= '/Users/Servers' ?>">Список серверов</a>
-            <a href="<?= '/Users/Logout' ?>">Выйти</a>
+            <div id="logo"></div>
+            <div id="topmenu">
+
+                <a href="<?= '/' ?>">Сервера Майнкрафт</a>
+                <a href="<?= '/Servers/Add/' ?>" class="servadd">Добавить сервер</a>
+
+            </div>
+
+            <div id="authmenu">
+                <?php if(isset($_SESSION['uid'])): ?>
+                    <ul>
+                        <li> <a href="<?= '/Users/Logout' ?>">Выйти</a></li>
+                        <li><a href="<?= '/Users/Profile' ?>">Профиль</a></li>
+                        <li><a href="<?= '/Users/Servers' ?>">Список серверов</a></li>
+
+                    </ul>
+                <?php else: ?>
+                    <ul>
+                        <li><a href="<?= '/Users/Register' ?>">Регистрация</a></li>
+                        <li><a href="<?= '/Users/Login' ?>">Войти</a></li>
+                    </ul>
+
+                <?php endif; ?>
+            </div>
 
         </div>
     </div>
-
 </div>
+
+
+<div class="clear"></div>
+
 <div id="page">
 
     <div id="posts">
+        <div class="oservere">
+            <span>Профиль</span>
+        </div>
+        <div id="userprofile">
 
+        <form action="/Users/Profile" method="post" enctype="multipart/form-data" id="proph">
+             <div class="userproftitle"> Логин: </div>
+            <div class="userformgrup"><input class="forminput" type="text" id="login" name="login" disabled value="<?= $items->login ?>"></div>
+            <div class="clear"></div>
+            <div class="userproftitle"> Email: </div>
+            <div class="userformgrup"><input class="forminput" type="email" id="email" name="email" value="<?= $items->email ?>"></div>
+            <div class="clear"></div>
 
-
-        <form action="/Users/Profile" method="post" enctype="multipart/form-data">
-            <p> <label for="login"> Логин: </label>
-                <input type="text" id="login" name="login" disabled value="<?= $items->login ?>"></p>
-            <p> <label for="email"> Email: </label>
-                <input type="email" id="email" name="email" value="<?= $items->email ?>"></p>
-            <p>Сменить пароль:</p>
-            <p> <label for="oldpassword"> Старый пароль: </label>
-                <input type="text" id="oldpassword" name="oldpassword"></p>
-            <p> <label for="newpassword"> Новый пароль: </label>
-                <input type="text" id="newpassword" name="newpassword"></p>
-            <p> <label for="reppassword"> Повторите пароль: </label>
-                <input type="text" id="reppassword" name="reppassword"></p>
-
-            <p> <button type="submit" name="edituser">Отправить</button></p>
+            <p>Смена пароля:</p>
+            <div class="clear"></div>
+            <div class="userproftitle"> Старый пароль: </div>
+            <div class="userformgrup"><input class="forminput" type="password" id="oldpassword" name="oldpassword"></div>
+            <div class="clear"></div>
+            <div class="userproftitle"> Новый пароль: </div>
+            <div class="userformgrup"><input class="forminput" type="password" id="newpassword" name="newpassword"></div>
+            <div class="clear"></div>
+            <div class="userproftitle"> Повторите пароль: </div>
+                <div class="userformgrup"><input class="forminput" type="password" id="reppassword" name="reppassword"></div>
+            <div class="clear"></div>
+            <div class="buttomform"> <button class="btn" type="submit" name="edituser">Отправить</button></div>
         </form>
 
         <?php if(isset($error)): ?>
             <?= $error; ?>
         <?php endif; ?>
 
-    </div>
 
+
+        </div>
+    </div>
 </div>
 
 </body>
