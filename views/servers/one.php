@@ -113,12 +113,22 @@
             <p>
                 <span class="header">Сайт сервера:</span>
                 <span class="servsite">
+                    <?php
+                    if(empty(preg_match('~^(http://)|(https://)~', $items->site))){
+                        $items->site = "http://" . $items->site;
+                    }
+                    ?>
                     <a href="<?= $items->site ?>"><?= $items->site; ?></a>
                 </span>
             </p>
             <p>
                 <span class="header">Сервер в ВК:</span>
                 <span class="servvk">
+                    <?php
+                    if(empty(preg_match('~^(http://)|(https://)~', $items->vk))){
+                        $items->vk = "https://" . $items->vk;
+                    }
+                    ?>
                     <a href="<?= $items->vk ?>"><?= $items->vk; ?></a>
                 </span>
             </p>
