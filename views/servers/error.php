@@ -5,9 +5,9 @@
     <link rel="stylesheet" href="/views/servers/style.css" type="text/css" media="screen" />
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
 
-    <title><?= $items->name ?> - сервер Майнкрафт</title>
-    <meta name="description" content="<?= $items->name ?> - айпи адрес, отзывы и описание сервера на мониторинге Майнкрафт" />
-    <meta name="keywords" content="ip адрес, сервера minecraft, рейтинг, описание" />
+    <title>Ошибка! - сервера Майнкрафт</title>
+    <meta name="description" content="MinecraftRait.ru – это самый лучший мониторинг Майнкрафт серверов в рунете. У нас удобный поиск серверов и объективный рейтинг лучших серверов Minecraft." />
+    <meta name="keywords" content="мониторинг серверов, майнкрафт, ip адреса, сервера minecraft, айпи серверов, топ, список, лучшие сервера, рейтинг" />
 </head>
 
 <body>
@@ -57,22 +57,15 @@
 
     <div id="posts">
 
-        <h1><?= 'Ошибка'; ?></h1>
+        <h1><?= 'Ошибка!'; ?></h1>
 
         <div><b><?= $error; ?></b></div>
 
-
-
-
-
-
         </div>
 
-
-
-    </div>
-
 </div>
+
+
 
 </body>
 </html>

@@ -45,12 +45,15 @@ class Users
             elseif(isset($user->login) && isset($user->password) && isset($user->email)){
 
                 $user->access = 1;
-                $userid = $user->insert();
+                $user->regtime = date('Y:m:d H:i:s', time());
+                $user->insert();
+
+                header('Location: /users/login');
+                exit;
             }
         }
 
         $view = new View();
-        $view->items = $userid;
         $view->error = $error;
 
         $view->display('users/register.php');
@@ -123,8 +126,6 @@ class Users
         }
 
         $item = $user->findOneInColumn('id', $_SESSION['uid']);
-
-
 
         if(isset($_POST['edituser'])) {
 
@@ -375,13 +376,6 @@ class Users
 
 
             }
-
-
-
-
-
-
-
 
             $server->update();
 

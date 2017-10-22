@@ -11,9 +11,38 @@ $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 $pathParts = explode('/', $path);
 
 
-$ctrl = !empty($pathParts[1]) ? $pathParts[1] : 'Servers';
-$act = !empty($pathParts[2]) ? $pathParts[2] : 'All';
+$ctrl = !empty($pathParts[1]) ? $pathParts[1] : 'servers';
+$act = !empty($pathParts[2]) ? $pathParts[2] : 'all';
 $id = !empty($pathParts[3]) ? $pathParts[3] : null;
+
+// приводим строки к нужному нам виду, всё в нижний регистр, первый символ в верхний
+$ctrl = ucfirst(mb_strtolower($ctrl));
+$act = ucfirst(mb_strtolower($act));
+
+
+/*
+$time = '2017-10-10 01:10:01';
+$uptime = 90;
+
+echo strtotime($time);
+echo '<br/>';
+echo time();
+echo '<br/>';
+$timedif = (time() - strtotime($time));
+echo '<br/>';
+//$timedif = $timedif / 600;
+echo $timedif;
+
+$x = (600*100)/(int)$timedif;
+echo '<br/>';
+//echo number_format($x, 2);
+echo $x;
+echo '<br/>';
+echo $uptime - $x;
+
+die;
+*/
+
 
 $controllerClassName = 'App\\Controllers\\' . $ctrl;
 
@@ -45,4 +74,3 @@ catch (ExceptionM $err)
     }
     $view->display('servers/error.php');
 }
-    //var_dump($_SESSION);

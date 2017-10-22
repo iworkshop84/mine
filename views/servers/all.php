@@ -41,8 +41,6 @@
 
             <?php endif; ?>
 
-
-
         </div>
 
         </div>
@@ -64,7 +62,15 @@
         </span>
         <?php foreach ($versionList as $version): ?>
             <div class="version">
-                <a href="<?= '/Servers/All/' . $version->urls ?>" title="Сервера Майнкрафт версии <?= $version->version ?>"><?= $version->version; ?></a>
+                <a href="<?= '/servers/all/' . $version->urls ?>" title="Сервера Майнкрафт версии <?= $version->version ?>"
+                <?php
+                $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+                $res = preg_replace('/[^0-9.]/', '', $path);
+                if($res === $version->version){
+                    echo 'class="activeurl"';
+                }
+                ?>
+                ><?= $version->version; ?></a>
             </div>
         <?php endforeach; ?>
 
@@ -77,7 +83,7 @@
         </span>
             <?php foreach ($mainpropList as $mainprop): ?>
                 <div class="version">
-                    <a href="<?= '/Servers/All/' . $mainprop->title ?>" title="Сервера Майнкрафт c <?= $mainprop->name ?>"><?= $mainprop->name; ?></a>
+                    <a href="<?= '/servers/all/' . $mainprop->title ?>" title="Сервера Майнкрафт c <?= $mainprop->name ?>"><?= $mainprop->name; ?></a>
                 </div>
             <?php endforeach; ?>
      </div>
@@ -108,7 +114,7 @@
                 <div class="scount"><?= $key + 1 . '.'; ?></div>
                 <div class="namelabel">
                     <div class="sname">
-                        <a href="<?= '/Servers/One/' . $item->id ?>"><?= substr($item->name, 0, 100) . '...' ?></a>
+                        <a href="<?= '/servers/one/' . $item->id ?>"><?= substr($item->name, 0, 100) . '...' ?></a>
                     </div>
                     <div class="slogan">
                         <?= substr($item->slogan, 0, 120); ?>

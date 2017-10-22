@@ -264,7 +264,19 @@ body {
     border: 1px solid #4da54d !important;
 }
 
+.version a.activeurl{
+    text-decoration: none;
+    background: #5cb85c;
+    color: #fff !important;
+    border: 1px solid #4da54d !important;
+}
 
+.version a.activeurl:hover{
+    text-decoration: line-through;
+    background: #5cb85c;
+    color: #fff !important;
+    border: 1px solid #4da54d !important;
+}
 
 
 
@@ -630,7 +642,7 @@ body {
 }
 
 .serverfullinfo span.players{
-    margin: 3px 0 0 0;
+   /* margin: 0px 0 0 0;*/
     font-size: 14px;
     display: inline-block;
 

@@ -82,9 +82,33 @@
                 <span class="online">Онлайн</span>
                 <?php endif; ?>
             </p>
+
+            <p>
+                <span class="header">Аптайп:</span>
+                <span class="players"><?= $items->uptime .'%'; ?></span>
+            </p>
             <p>
                 <span class="header">Игроков:</span>
                     <span class="players"><?= $items->players . ' из ' . $items->maxplayers ?></span>
+            </p>
+            <p>
+                <span class="header">Проверялся:</span>
+                <span class="players">
+                    <?php
+                    $startTime = date_create($items->updtime);
+                    $endTime   = date_create();
+                    $diff = date_diff($startTime, $endTime);
+                    $timepust = $diff->format('%i');
+
+                    if(($timepust == 0) ||($timepust > 4)){
+                        echo $timepust . ' минут назад';
+                    }elseif($timepust == 1){
+                        echo $timepust . ' минуту назад';
+                    }else {
+                        echo $timepust . ' минуты назад';
+                    }
+                    ?>
+                </span>
             </p>
             <p>
                 <span class="header">Сайт сервера:</span>
@@ -108,9 +132,16 @@
                 <span>Описание</span>
             </div>
             <div class="clear"></div>
-<div class="serverdesc">
-    <?= $items->description; ?>
-</div>
+                <div class="serverdesc">
+                    <?php
+                    if(!empty($items->description)){
+                        echo $items->description;
+                    }else{
+                        echo 'Владелец сервера «' . $items->name . '» ещё не добавил описание. 
+                              Если это ваш сервер, добавьте к нему описание в <a href="/users/servers">личном кабинете</a>.';
+                    }
+                    ?>
+                </div>
 
 
 

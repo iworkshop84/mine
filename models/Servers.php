@@ -19,6 +19,7 @@ class Servers
         $this->players = $data['Players'];
         $this->maxplayers = $data['MaxPlayers'];
         $this->online = 1;
+        $this->regtime = date('Y:m:d H:i:s', time());
 
         if(!empty($_SESSION['uid']))
         {
@@ -40,10 +41,10 @@ class Servers
 
     public function serverUpdData($data)
     {
-
         $this->players = $data['Players'];
         $this->maxplayers = $data['MaxPlayers'];
         $this->online = 1;
+        $this->updtime = date('Y:m:d H:i:s', time());
 
     }
 
