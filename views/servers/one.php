@@ -100,7 +100,7 @@
                     $diff = date_diff($startTime, $endTime);
                     $timepust = $diff->format('%i');
 
-                    if(($timepust == 0) ||($timepust > 4)){
+                    if(($timepust == 0) || ($timepust > 4)){
                         echo $timepust . ' минут назад';
                     }elseif($timepust == 1){
                         echo $timepust . ' минуту назад';
@@ -114,7 +114,7 @@
                 <span class="header">Сайт сервера:</span>
                 <span class="servsite">
                     <?php
-                    if(empty(preg_match('~^(http://)|(https://)~', $items->site))){
+                    if((empty(preg_match('~^(http://)|(https://)~', $items->site)) && !empty($items->site))){
                         $items->site = "http://" . $items->site;
                     }
                     ?>
@@ -125,7 +125,7 @@
                 <span class="header">Сервер в ВК:</span>
                 <span class="servvk">
                     <?php
-                    if(empty(preg_match('~^(http://)|(https://)~', $items->vk))){
+                    if((empty(preg_match('~^(http://)|(https://)~', $items->vk)) && !empty($items->vk))){
                         $items->vk = "https://" . $items->vk;
                     }
                     ?>
