@@ -20,28 +20,7 @@ $ctrl = ucfirst(mb_strtolower($ctrl));
 $act = ucfirst(mb_strtolower($act));
 
 
-/*
-$time = '2017-10-10 01:10:01';
-$uptime = 90;
 
-echo strtotime($time);
-echo '<br/>';
-echo time();
-echo '<br/>';
-$timedif = (time() - strtotime($time));
-echo '<br/>';
-//$timedif = $timedif / 600;
-echo $timedif;
-
-$x = (600*100)/(int)$timedif;
-echo '<br/>';
-//echo number_format($x, 2);
-echo $x;
-echo '<br/>';
-echo $uptime - $x;
-
-die;
-*/
 
 
 $controllerClassName = 'App\\Controllers\\' . $ctrl;

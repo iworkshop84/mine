@@ -89,4 +89,46 @@ class Servers
         return $db->query($sql);
     }
 
+
+
+    public static function findAllOrdVotes()
+    {
+        $class = get_called_class();
+        $sql = 'SELECT * FROM '. static::$table .' ORDER BY votes DESC';
+        $db = new DB;
+        $db->setClassName($class);
+        return $db->query($sql);
+    }
+
+
+    public static function findAllInColumnOrdVotes($column, $value)
+    {
+        $class = get_called_class();
+        $sql = 'SELECT * FROM '. static::$table . ' WHERE '. $column .'=:val ORDER BY votes DESC';
+        $db = new DB;
+
+        $db->setClassName($class);
+        return $db->query($sql, [':val' => $value]);
+    }
+
+    public function updateAllConst()
+    {
+        $arr = $this->data;
+
+        // делаем массив для подготовленного выражения
+        $ins =[];
+        $rools =[];
+        foreach ($arr as $key=>$val){
+            $ins[':' . $key] = $val;
+            $rools[$key] = $key .' = :' . $key;
+        }
+        $sql = 'UPDATE '. static::$table .' 
+        SET
+        '. implode(', ', ($rools)) .'';
+
+        $db = new DB();
+        return $db->execute($sql, $ins);
+
+    }
+
 }

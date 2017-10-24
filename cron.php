@@ -9,7 +9,7 @@ use App\Classes\ServerQuery;
 $server = new ServersModel();
 
 $items = ServersModel::findAll();
-//var_dump($items);
+
 
 
 foreach ($items as $item){

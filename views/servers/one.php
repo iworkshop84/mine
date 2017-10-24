@@ -59,6 +59,7 @@
             <?= $items->slogan ?>
         </div>
     </div>
+    <div id="mainserverinfo">
 
         <div class="oservere">
             <span>О сервере</span>
@@ -82,7 +83,10 @@
                 <span class="online">Онлайн</span>
                 <?php endif; ?>
             </p>
-
+            <p>
+                <span class="header">Голосов:</span>
+                <span class="players"><?= $items->votes; ?></span>
+            </p>
             <p>
                 <span class="header">Аптайп:</span>
                 <span class="players"><?= $items->uptime .'%'; ?></span>
@@ -118,7 +122,7 @@
                         $items->site = "http://" . $items->site;
                     }
                     ?>
-                    <a href="<?= $items->site ?>"><?= $items->site; ?></a>
+                    <a href="<?= $items->site ?>"target="_blank"><?= $items->site; ?></a>
                 </span>
             </p>
             <p>
@@ -129,7 +133,7 @@
                         $items->vk = "https://" . $items->vk;
                     }
                     ?>
-                    <a href="<?= $items->vk ?>"><?= $items->vk; ?></a>
+                    <a href="<?= $items->vk ?>" target="_blank"><?= $items->vk; ?></a>
                 </span>
             </p>
             <p>
@@ -152,15 +156,13 @@
                     }
                     ?>
                 </div>
-
-
-
-
-
-
         </div>
 
-
+    </div>
+<div id="rightsidebar">
+    <button class="serveronevote" href='/servers/vote/<?=$items->id ?>' onclick="window.open('/servers/vote/<?=$items->id ?>', '', 'toolbar=0,location=0,status=0,left=+500,top=50,menubar=0,scrollbars=yes,resizable=0,width=800,height=600'); return false;">
+        Голосовать за сервер</button>
+</div>
 
     </div>
 

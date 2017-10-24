@@ -692,8 +692,9 @@ body {
 
 #auth{
     width: 300px;
-
 }
+
+
 
 
 #auth input.forminput{
@@ -957,6 +958,103 @@ a.knopka {
     border-color: green;
 }
 #edit-server .btn:active {
+    background: #3E5E7F;
+    border-color: #3E5E7F;
+}
+
+#mainserverinfo{
+   float: left;
+   width: 850px;
+}
+
+#rightsidebar{
+    float: left;
+    width: 390px;
+    padding:0 0 0 10px;
+}
+
+#rightsidebar button.serveronevote{
+    font-size: 14px;
+    width: 100%;
+    color: #fff; /* цвет текста */
+    text-transform: uppercase;
+    user-select: none; /* убирать выделение текста */
+    background: #3eb100; /* фон кнопки */
+    border: 1px solid;
+    border-color: #379300;
+    padding: .7em 1.5em; /* отступ от текста */
+    outline: none; /* убирать контур в Mozilla */
+}
+
+#rightsidebar button.serveronevote:hover {
+    background: green;
+    border-color: green;
+} /* при наведении курсора мышки */
+#rightsidebar button.serveronevote:active {
+    background: #3E5E7F;
+    border-color: #3E5E7F;
+}
+
+#votetitle{
+    width: 750px;
+    padding: 20px 0 0 20px;
+}
+
+#votetitle span.text{
+    font-size: 18px;
+}
+#votetitle span.name{
+    font-size: 25px;
+    color: #0e73c0;
+}
+
+#votecount{
+    padding:100px 0 0 300px;
+}
+
+#votecount span.text{
+    font-size: 38px;
+    color: #777;
+}
+
+#votecount span.count{
+    font-size: 44px;
+    padding: 0 0 0 10px;
+}
+
+#vstoptext{
+    float: left;
+    padding:20px 0 0 220px;
+}
+
+#vstoptext span.text{
+    font-size: 18px;
+    color:#a94442;
+}
+
+#vote{
+    width: 300px;
+    padding: 20px 0 0 250px;
+}
+
+#vote button.serveronevote{
+    font-size: 14px;
+    width: 100%;
+    color: #fff; /* цвет текста */
+    text-transform: uppercase;
+    user-select: none; /* убирать выделение текста */
+    background: #3eb100; /* фон кнопки */
+    border: 1px solid;
+    border-color: #379300;
+    padding: .7em 1.5em; /* отступ от текста */
+    outline: none; /* убирать контур в Mozilla */
+}
+
+#vote button.serveronevote:hover {
+    background: green;
+    border-color: green;
+} /* при наведении курсора мышки */
+#vote button.serveronevote:active {
     background: #3E5E7F;
     border-color: #3E5E7F;
 }

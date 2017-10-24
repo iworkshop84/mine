@@ -8,6 +8,7 @@ use App\Classes\View;
 use App\Classes\ServerPing;
 use App\Classes\ServerQuery;
 use App\Models\Properties;
+use App\Models\Votes;
 
 class Servers
 {
@@ -18,9 +19,9 @@ class Servers
         $mainpropList = Properties::findAllServmp();
 
         if(empty($version)){
-        $items = ServersModel::findAll();
+        $items = ServersModel::findAllOrdVotes();
         }else{
-        $items = ServersModel::findAllInColumn('version', $version);
+        $items = ServersModel::findAllInColumnOrdVotes('version', $version);
         }
 
         $view = new View();
@@ -29,8 +30,10 @@ class Servers
         $view->mainpropList = $mainpropList;
 
         $view->display('servers/all.php');
-
     }
+
+
+
 
 
     public function actionOne($id = null)
@@ -46,6 +49,40 @@ class Servers
         $view = new View();
         $view->items = $item;
         $view->display('servers/one.php');
+
+    }
+
+
+    public function actionVote($id = null){
+
+        $item = ServersModel::findOneInColumn('id', $id);
+
+
+        if(empty($item))
+        {
+            throw new ExceptionM ('Запись не найдена', 1);
+        }
+
+
+        if(isset($_POST['uservote'])){
+            $result = Votes::findVotepList($_SERVER['REMOTE_ADDR']);
+
+
+            if(empty($result)){
+                $item->votes++;
+                $item->update();
+
+                $vote = new Votes();
+                $vote->ip = $_SERVER['REMOTE_ADDR'];
+                $vote->insert();
+
+
+            }
+        }
+
+        $view = new View();
+        $view->items = $item;
+        $view->display('servers/vote.php');
 
     }
 

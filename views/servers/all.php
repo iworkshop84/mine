@@ -132,7 +132,7 @@
                 <div class="splayers"><?= $item->players .' из '. $item->maxplayers;?></div>
 
                 <div class="sversion"><?= $item->version ?></div>
-
+                <div class="sversion"><?= $item->votes ?></div>
             </div>
         <?php endforeach; ?>
         </div>

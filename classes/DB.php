@@ -50,4 +50,9 @@ class DB{
         return $this->dbh->lastInsertId();
     }
 
+    public function truncateTable($table)
+    {
+        // пока пусть висит в воздухе
+    }
+
 }
