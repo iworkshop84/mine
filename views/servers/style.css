@@ -80,8 +80,16 @@ body {
     text-align: center;
     margin: 0;
     padding: 0;
+    height: 100%;
 }
 
+.wrapper {
+
+}
+
+.content {
+    min-height: calc(100vh - 70px);
+}
 
 #header {
     /*height: 230px;*/
@@ -175,7 +183,7 @@ body {
 } /* при нажатии */
 
 #topnav{
-    height: 230px;
+    height: 170px;
     background: #F4F4F4;
     margin-left: auto;
     margin-right: auto;
@@ -191,7 +199,7 @@ body {
     text-align: left;
     float: left;
     width: 400px;
-    height: 220px;
+    height: 160px;
     padding: 10px 10px 0 0;
     border-right: 1px solid #ddd;
 }
@@ -285,6 +293,7 @@ body {
     text-align: left;
     margin: 0 auto;
     width: 1250px;
+
 
 }
 
@@ -1058,3 +1067,17 @@ a.knopka {
     background: #3E5E7F;
     border-color: #3E5E7F;
 }
+
+.footer{
+    padding:10px 0 0 0;
+
+}
+
+#fcopywrait{
+    float: right;
+    padding: 25px 10px 0 0;
+    color: #dddddd;
+
+
+}
+

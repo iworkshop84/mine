@@ -11,6 +11,8 @@
 </head>
 
 <body>
+
+<div class="content">
 <div id="header">
 
     <div id="headermenu">
@@ -20,7 +22,7 @@
         <div id="topmenu">
 
                 <a href="<?= '/' ?>">Сервера Майнкрафт</a>
-                <a href="<?= '/Servers/Add/' ?>" class="servadd">Добавить сервер</a>
+                <a href="<?= '/servers/add/' ?>" class="servadd">Добавить сервер</a>
 
         </div>
 
@@ -28,15 +30,15 @@
 
             <?php if(isset($_SESSION['uid'])): ?>
                 <ul>
-                    <li> <a href="<?= '/Users/Logout' ?>">Выйти</a></li>
-                    <li><a href="<?= '/Users/Profile' ?>">Профиль</a></li>
-                    <li><a href="<?= '/Users/Servers' ?>">Список серверов</a></li>
+                    <li> <a href="<?= '/users/logout' ?>">Выйти</a></li>
+                    <li><a href="<?= '/users/profile' ?>">Профиль</a></li>
+                    <li><a href="<?= '/users/servers' ?>">Список серверов</a></li>
 
                 </ul>
             <?php else: ?>
                 <ul>
-                    <li><a href="<?= '/Users/Register' ?>">Регистрация</a></li>
-                    <li><a href="<?= '/Users/Login' ?>">Войти</a></li>
+                    <li><a href="<?= '/users/register' ?>">Регистрация</a></li>
+                    <li><a href="<?= '/users/login' ?>">Войти</a></li>
                 </ul>
 
             <?php endif; ?>
@@ -46,6 +48,7 @@
         </div>
     </div>
 </div>
+
 <div id="topnav">
     <div id="navlist">
 
@@ -60,9 +63,11 @@
         <span class="params">
             <span class="label">Все версии</span>
         </span>
-        <?php foreach ($versionList as $version): ?>
+       <?php foreach ($versionList as $version): ?>
             <div class="version">
-                <a href="<?= '/servers/all/' . $version->urls ?>" title="Сервера Майнкрафт версии <?= $version->version ?>"
+                <a href="<?= '/servers/all/' . $version->urls ?>"
+                   title="Сервера Майнкрафт версии <?= $version->version ?>"
+
                 <?php
                 $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
                 $res = preg_replace('/[^0-9.]/', '', $path);
@@ -71,9 +76,9 @@
                 }
                 ?>
                 ><?= $version->version; ?></a>
+
             </div>
         <?php endforeach; ?>
-
     </div>
 
 
@@ -83,7 +88,16 @@
         </span>
             <?php foreach ($mainpropList as $mainprop): ?>
                 <div class="version">
-                    <a href="<?= '/servers/all/' . $mainprop->title ?>" title="Сервера Майнкрафт c <?= $mainprop->name ?>"><?= $mainprop->name; ?></a>
+                    <a href="<?= '/servers/properties/' . $mainprop->title ?>" title="Сервера Майнкрафт c <?= $mainprop->name ?>"
+                        <?php
+                        $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+
+                        $res = strripos($path, $mainprop->title);
+                        if($res){
+                            echo 'class="activeurl"';
+                        }
+                        ?>
+                    ><?= $mainprop->name; ?></a>
                 </div>
             <?php endforeach; ?>
      </div>
@@ -92,8 +106,6 @@
 </div>
 
 <div class="clear"></div>
-
-
 
 <div id="page">
 
@@ -136,8 +148,21 @@
             </div>
         <?php endforeach; ?>
         </div>
+    </div>
+</div>
+</div>
+<div class="clear"></div>
 
+<div class="footer">
+    <div id="headermenu">
+        <div id="headernav">
 
+            <div id="logo"></div>
+            <div id="fcopywrait">
+                Сервера майнкрафт с модами - © 2017-<?=  date('Y');?> Minecraft Rait - Мониторинг серверов Майнкрафт
+            </div>
+
+        </div>
     </div>
 
 </div>

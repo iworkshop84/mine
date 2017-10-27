@@ -21,8 +21,6 @@ $act = ucfirst(mb_strtolower($act));
 
 
 
-
-
 $controllerClassName = 'App\\Controllers\\' . $ctrl;
 
 

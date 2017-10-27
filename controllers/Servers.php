@@ -32,7 +32,28 @@ class Servers
         $view->display('servers/all.php');
     }
 
+    public function actionProperties($mprop = null)
+    {
+        $versionList = ServersModel::findServerList();
+        $mainpropList = Properties::findAllServmp();
 
+        if(empty($mprop)){
+            $items = ServersModel::findAllOrdVotes();
+        }else{
+            $items = ServersModel::findAllMPropOrdVotes($mprop);
+        }
+
+
+
+        $view = new View();
+
+        $view->items = $items;
+        $view->versionList = $versionList;
+        $view->mainpropList = $mainpropList;
+
+        $view->display('servers/all.php');
+
+    }
 
 
 
@@ -135,7 +156,6 @@ class Servers
                     {
                         $ping->close();
                     }
-
                 }elseif($res = $ping->pingOld17())
                 {
                     //$server = new ServersModel();

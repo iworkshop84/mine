@@ -11,6 +11,7 @@
 </head>
 
 <body>
+<div class="content">
 <div id="header">
 
     <div id="headermenu">
@@ -20,25 +21,27 @@
             <div id="topmenu">
 
                 <a href="<?= '/' ?>">Сервера Майнкрафт</a>
-                <a href="<?= '/Servers/Add/' ?>" class="servadd">Добавить сервер</a>
+                <a href="<?= '/servers/add/' ?>" class="servadd">Добавить сервер</a>
 
             </div>
 
             <div id="authmenu">
+
                 <?php if(isset($_SESSION['uid'])): ?>
                     <ul>
-                        <li> <a href="<?= '/Users/Logout' ?>">Выйти</a></li>
-                        <li><a href="<?= '/Users/Profile' ?>">Профиль</a></li>
-                        <li><a href="<?= '/Users/Servers' ?>">Список серверов</a></li>
+                        <li> <a href="<?= '/users/logout' ?>">Выйти</a></li>
+                        <li><a href="<?= '/users/profile' ?>">Профиль</a></li>
+                        <li><a href="<?= '/users/servers' ?>">Список серверов</a></li>
 
                     </ul>
                 <?php else: ?>
                     <ul>
-                        <li><a href="<?= '/Users/Register' ?>">Регистрация</a></li>
-                        <li><a href="<?= '/Users/Login' ?>">Войти</a></li>
+                        <li><a href="<?= '/users/register' ?>">Регистрация</a></li>
+                        <li><a href="<?= '/users/login' ?>">Войти</a></li>
                     </ul>
 
                 <?php endif; ?>
+
             </div>
 
         </div>
@@ -139,7 +142,7 @@
             <p>
                 <span class="header">Версия:</span>
                 <span class="servversion">
-                  <a href="<?= '/Servers/All/' . $items->version ?>" title="Сервера Майнкрафт c <?= $items->version ?>"><?= $items->version; ?></a>
+                  <a href="<?= '/servers/all/' . $items->version ?>" title="Сервера Майнкрафт c <?= $items->version ?>"><?= $items->version; ?></a>
                 </span>
             </p>
             <div class="oservere">
@@ -159,14 +162,26 @@
         </div>
 
     </div>
-<div id="rightsidebar">
-    <button class="serveronevote" href='/servers/vote/<?=$items->id ?>' onclick="window.open('/servers/vote/<?=$items->id ?>', '', 'toolbar=0,location=0,status=0,left=+500,top=50,menubar=0,scrollbars=yes,resizable=0,width=800,height=600'); return false;">
-        Голосовать за сервер</button>
-</div>
-
+        <div id="rightsidebar">
+            <button class="serveronevote" href='/servers/vote/<?=$items->id ?>' onclick="window.open('/servers/vote/<?=$items->id ?>', '', 'toolbar=0,location=0,status=0,left=+500,top=50,menubar=0,scrollbars=yes,resizable=0,width=800,height=600'); return false;">
+                Голосовать за сервер</button>
+        </div>
     </div>
-
 </div>
 
+</div>
+<div class="clear"></div>
+
+<div class="footer">
+    <div id="headermenu">
+        <div id="headernav">
+
+            <div id="logo"></div>
+            <div id="fcopywrait">
+                Сервера майнкрафт с модами - © 2017-<?=  date('Y');?> Minecraft Rait - Мониторинг серверов Майнкрафт
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

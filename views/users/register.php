@@ -20,32 +20,34 @@
             <div id="topmenu">
 
                 <a href="<?= '/' ?>">Сервера Майнкрафт</a>
-                <a href="<?= '/Servers/Add/' ?>" class="servadd">Добавить сервер</a>
+                <a href="<?= '/servers/add/' ?>" class="servadd">Добавить сервер</a>
 
             </div>
 
             <div id="authmenu">
+
                 <?php if(isset($_SESSION['uid'])): ?>
                     <ul>
-                        <li> <a href="<?= '/Users/Logout' ?>">Выйти</a></li>
-                        <li><a href="<?= '/Users/Profile' ?>">Профиль</a></li>
-                        <li><a href="<?= '/Users/Servers' ?>">Список серверов</a></li>
+                        <li> <a href="<?= '/users/logout' ?>">Выйти</a></li>
+                        <li><a href="<?= '/users/profile' ?>">Профиль</a></li>
+                        <li><a href="<?= '/users/servers' ?>">Список серверов</a></li>
 
                     </ul>
                 <?php else: ?>
                     <ul>
-                        <li><a href="<?= '/Users/Register' ?>">Регистрация</a></li>
-                        <li><a href="<?= '/Users/Login' ?>">Войти</a></li>
+                        <li><a href="<?= '/users/register' ?>">Регистрация</a></li>
+                        <li><a href="<?= '/users/login' ?>">Войти</a></li>
                     </ul>
 
                 <?php endif; ?>
+
             </div>
 
         </div>
     </div>
 </div>
 
-
+<div class="clear"></div>
 <div id="page">
 
     <div id="posts">

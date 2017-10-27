@@ -111,6 +111,20 @@ class Servers
         return $db->query($sql, [':val' => $value]);
     }
 
+
+    public static function findAllMPropOrdVotes($value)
+    {
+        $class = get_called_class();
+        $sql = 'SELECT servers.* FROM `servers`, `mainprop`, `servermp`  
+        WHERE mainprop.title =:val AND mainprop.id = servermp.mpropid AND servermp.servid = servers.id';
+        $db = new DB;
+
+        $db->setClassName($class);
+        return $db->query($sql, [':val' => $value]);
+    }
+
+
+
     public function updateAllConst()
     {
         $arr = $this->data;
