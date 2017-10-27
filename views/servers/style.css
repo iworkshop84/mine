@@ -949,6 +949,31 @@ a.knopka {
     border: 1px solid #ccc;
 }
 
+#edit-server .setextfield:focus{
+    background: #ffe; /* Цвет фона */
+    border: 1px solid #29B0D9; /* Параметры рамки */
+
+}
+/*
+#edit-server textarea{
+    height: 180px;
+    width: 730px;
+    font-size: 16px;
+}
+*/
+
+#auth .forminput:focus{
+    background: #ffe; /* Цвет фона */
+    border: 1px solid #29B0D9; /* Параметры рамки */
+
+}
+
+#proph .forminput:focus{
+    background: #ffe; /* Цвет фона */
+    border: 1px solid #29B0D9; /* Параметры рамки */
+
+}
+
 #edit-server select.seversion{
     width: 400px;
     padding:5px 8px 5px 8px;

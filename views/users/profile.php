@@ -58,7 +58,7 @@
         </div>
         <div id="userprofile">
 
-        <form action="/Users/Profile" method="post" enctype="multipart/form-data" id="proph">
+        <form action="/users/profile" method="post" enctype="multipart/form-data" id="proph">
              <div class="userproftitle"> Логин: </div>
             <div class="userformgrup"><input class="forminput" type="text" id="login" name="login" disabled value="<?= $items->login ?>"></div>
             <div class="clear"></div>
