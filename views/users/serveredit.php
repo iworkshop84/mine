@@ -18,9 +18,6 @@
             plugins: 'lists advlist',
             toolbar: 'undo, redo | bold, italic, underline, strikethrough | bullist, numlist | alignleft, aligncenter, alignright | outdent, indent | fontselect',
             menubar: false
-
-
-
         });
     </script>
 

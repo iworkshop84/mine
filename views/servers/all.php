@@ -89,7 +89,7 @@
         </span>
             <?php foreach ($mainpropList as $mainprop): ?>
                 <div class="version">
-                    <a href="<?= '/servers/properties/' . $mainprop->title ?>" title="Сервера Майнкрафт c <?= $mainprop->name ?>"
+                    <a href="<?= '/servers/properties/' . $mainprop->title ?>" title="Сервера Майнкрафт c настройками <?= $mainprop->name ?>"
                         <?php
                         $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 

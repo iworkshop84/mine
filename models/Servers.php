@@ -116,7 +116,19 @@ class Servers
     {
         $class = get_called_class();
         $sql = 'SELECT servers.* FROM `servers`, `mainprop`, `servermp`  
-        WHERE mainprop.title =:val AND mainprop.id = servermp.mpropid AND servermp.servid = servers.id';
+        WHERE mainprop.title =:val AND mainprop.id = servermp.mpropid AND servermp.servid = servers.id ORDER BY votes DESC';
+        $db = new DB;
+
+        $db->setClassName($class);
+        return $db->query($sql, [':val' => $value]);
+    }
+
+
+    public static function findServerMProp($value)
+    {
+        $class = get_called_class();
+        $sql = 'SELECT mainprop.* FROM `servers`, `servermp`, `mainprop`  
+        WHERE servers.id =:val AND servers.id = servermp.servid AND servermp.mpropid = mainprop.id';
         $db = new DB;
 
         $db->setClassName($class);

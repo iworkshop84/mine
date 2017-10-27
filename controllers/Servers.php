@@ -32,6 +32,7 @@ class Servers
         $view->display('servers/all.php');
     }
 
+
     public function actionProperties($mprop = null)
     {
         $versionList = ServersModel::findServerList();
@@ -67,8 +68,12 @@ class Servers
             throw new ExceptionM ('Запись не найдена', 1);
         }
 
+        $mainprop = ServersModel::findServerMProp($id);
+
+
         $view = new View();
         $view->items = $item;
+        $view->mainprops = $mainprop;
         $view->display('servers/one.php');
 
     }

@@ -117,6 +117,8 @@
                     ?>
                 </span>
             </p>
+
+            <?php if(!empty($items->site)):?>
             <p>
                 <span class="header">Сайт сервера:</span>
                 <span class="servsite">
@@ -128,6 +130,9 @@
                     <a href="<?= $items->site ?>"target="_blank"><?= $items->site; ?></a>
                 </span>
             </p>
+            <?php endif;?>
+
+            <?php if(!empty($items->vk)):?>
             <p>
                 <span class="header">Сервер в ВК:</span>
                 <span class="servvk">
@@ -139,12 +144,34 @@
                     <a href="<?= $items->vk ?>" target="_blank"><?= $items->vk; ?></a>
                 </span>
             </p>
+            <?php endif;?>
+
+            <?php if(!empty($mainprops)):?>
+            <p>
+                <span class="header">Основное:</span>
+                <div class="servmprop">
+
+                   <?php foreach ($mainprops as $mainprop): ?>
+                       <div class="servermprop">
+                    <a href="<?= '/servers/properties/' . $mainprop->title ?>"
+                       title="Сервера Майнкрафт с настройками <?= $mainprop->name ?>">
+                        <?= $mainprop->name; ?></a>
+                        </div>
+                   <?php endforeach; ?>
+                </div>
+            </p>
+            <?php endif;?>
+
+
             <p>
                 <span class="header">Версия:</span>
                 <span class="servversion">
-                  <a href="<?= '/servers/all/' . $items->version ?>" title="Сервера Майнкрафт c <?= $items->version ?>"><?= $items->version; ?></a>
+                  <a href="<?= '/servers/all/' . $items->version ?>" title="Сервера Майнкрафт версии <?= $items->version ?>"><?= $items->version; ?></a>
                 </span>
             </p>
+
+
+
             <div class="oservere">
                 <span>Описание</span>
             </div>

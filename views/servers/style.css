@@ -287,6 +287,43 @@ body {
 }
 
 
+.servermprop{
+    float: left;
+    font-size: 14px;
+    padding:0 3px 0 0;
+    height: auto;
+    background-color: #fff;
+
+}
+
+.servermprop a{
+
+
+    font-size: 14px;
+    padding: 1px 5px 1px 5px;
+    height: auto;
+    color: white;
+    background-color: #3E5E7F;
+    border: 1px solid #3E5E7F;
+
+
+
+}
+
+.servermprop a:active{
+    text-decoration: underline;
+
+}
+
+.servermprop a:hover{
+    text-decoration: none;
+    background: #5cb85c;
+    color: #fff !important;
+    border: 1px solid #4da54d !important;
+}
+
+
+
 
 
 #page {
@@ -695,6 +732,12 @@ body {
 
 .serverfullinfo span.servversion{
     margin: 3px 0 0 0;
+    font-size: 14px;
+    display: inline-block;
+}
+
+.serverfullinfo .servmprop{
+    /*float: left;*/
     font-size: 14px;
     display: inline-block;
 }
