@@ -87,7 +87,7 @@
                     <div class="sulvotes"><?= $item->votes ?></div>
 
                     <div class="suledit"><a href="<?= '/users/sedit/' . $item->id ?>">Редактировать</a></div>
-
+                    <div class="suldelete"><a href="<?= '/users/sdelete/' . $item->id ?>">Удалить</a></div>
                 </div>
             <?php endforeach; ?>
         </div>

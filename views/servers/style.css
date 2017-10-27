@@ -439,8 +439,13 @@ body {
 
 .suledit{
     float: left;
-    padding:10px 0px 0 0px;
+    padding:10px 0 0 0;
     width: 110px;
+}
+.suldelete{
+    float: left;
+    padding:10px 0 0 30px;
+    width: 80px;
 }
 
 

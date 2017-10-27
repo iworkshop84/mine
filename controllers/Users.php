@@ -180,7 +180,7 @@ class Users
             unset($_SESSION['login']);
             unset($_SESSION['token']);
 
-            header('Location: /Users/Login');
+            header('Location: /users/login');
             exit;
         }
 
@@ -232,7 +232,7 @@ class Users
                  {
                      $check->uid = $_SESSION['uid'];
                      $check->update();
-                     header('Location: /Users/Servers');
+                     header('Location: /users/servers');
                      exit;
                  }
                  if($ping)
@@ -250,7 +250,7 @@ class Users
                  {
                      $check->uid = $_SESSION['uid'];
                      $check->update();
-                     header('Location: /Users/Servers');
+                     header('Location: /users/servers');
                      exit;
                  }
                  if($ping)
@@ -267,7 +267,7 @@ class Users
                  {
                      $check->uid = $_SESSION['uid'];
                      $check->update();
-                     header('Location: /Users/Servers');
+                     header('Location: /users/servers');
                      exit;
                  }
                  if($query)
@@ -300,7 +300,7 @@ class Users
             unset($_SESSION['login']);
             unset($_SESSION['token']);
 
-            header('Location: /Users/Login');
+            header('Location: /users/login');
             exit;
         }
 
@@ -319,7 +319,7 @@ class Users
 
         if($_SESSION['uid'] != $server->uid)
         {
-            header('Location: /Users/Servers');
+            header('Location: /users/servers');
             exit;
         }
 
@@ -379,15 +379,10 @@ class Users
 
             $server->update();
 
-            header('Location: /Users/Sedit/'. $server->id);
+            header('Location: /users/sedit/'. $server->id);
             exit;
 
         }
-
-
-
-
-
         $view = new View();
         $view->items = $server;
         $view->serverlist = $serverlist;
@@ -399,5 +394,39 @@ class Users
     }
 
 
+
+    public function actionSdelete($id = null){
+
+        $user = new UserModel();
+
+        if(!isset($_SESSION['token']) || !($user->checkUserToken($_SESSION['uid'], $_SESSION['token']))) {
+
+            unset($_SESSION['uid']);
+            unset($_SESSION['login']);
+            unset($_SESSION['token']);
+
+            header('Location: /Users/Login');
+            exit;
+        }
+
+        $serverlist = ServersModel::findOneInColumn('id', $id);
+
+        if(empty($id) || empty($serverlist))
+        {
+            throw new ExceptionM ('Запись не найдена', 1);
+        }
+
+        if($serverlist->uid != $_SESSION['uid'])
+        {
+            throw new ExceptionM ('За121212пись не найдена', 1);
+        }
+
+        $serverlist->serverDelete($id);
+        header('Location: /users/servers/');
+        exit;
+
+
+
+    }
 
 }

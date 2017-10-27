@@ -145,4 +145,12 @@ class Servers
 
     }
 
+    public function serverDelete($id){
+
+        $sql = 'DELETE FROM servers WHERE id =:val';
+
+        $db = new DB();
+        $db->execute($sql, [':val' => $id]);
+    }
+
 }
