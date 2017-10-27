@@ -20,14 +20,22 @@ $ctrl = ucfirst(mb_strtolower($ctrl));
 $act = ucfirst(mb_strtolower($act));
 
 
+try
+{
 
 $controllerClassName = 'App\\Controllers\\' . $ctrl;
 
+    if(!class_exists($controllerClassName)){
+        throw new ExceptionM ('Такой страницы на сайте нет', 1);
+    }
 
-try
-{
     $controller = new $controllerClassName;
+
     $method = 'action' . $act;
+
+    if(!method_exists($controller, $method)){
+        throw new ExceptionM ('Такой страницы на сайте нет', 1);
+    }
 
     if(!empty($id))
     {

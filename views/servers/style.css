@@ -88,7 +88,7 @@ body {
 }
 
 .content {
-    min-height: calc(100vh - 70px);
+    min-height: calc(100vh - 80px);
 }
 
 #header {
@@ -523,6 +523,13 @@ body {
     width: 100px;
 }
 
+.sulvotes{
+    font-size: 14px;
+    padding:10px 0 0 35px;
+    float: left;
+    width: 100px;
+}
+
 .slogan{
     font-style: italic;
     font-size: 12px;
@@ -570,6 +577,17 @@ body {
     float: left;
     height: 25px;
     color: #0e73c0;
+    text-align: center;
+    width: 110px;
+}
+
+.svotes{
+    padding: 40px 5px 40px 5px;
+    float: left;
+    height: 25px;
+
+    font-weight: bold;
+    color: #555;
     text-align: center;
     width: 110px;
 }

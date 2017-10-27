@@ -69,7 +69,7 @@
                 <div class="serveruserlist">
                     <div class="sulcount"><?= $key + 1 . '.'; ?></div>
                     <div class="sulname">
-                        <a href="<?= '/Servers/One/' . $item->id ?>"><?= substr($item->name, 0, 45) . '...' ?></a>
+                        <a href="<?= '/servers/one/' . $item->id ?>"><?= substr($item->name, 0, 45) . '...' ?></a>
                     </div>
                     <div class="sulipport">
 
@@ -84,9 +84,9 @@
                     </div>
                     <div class="sulplayers"><?= $item->players . ' из ' . $item->maxplayers ?></div>
                     <div class="sulversion"><?= $item->version ?></div>
-                    <div class="sulversion"></div>
+                    <div class="sulvotes"><?= $item->votes ?></div>
 
-                    <div class="suledit"><a href="<?= '/Users/Sedit/' . $item->id ?>">Редактировать</a></div>
+                    <div class="suledit"><a href="<?= '/users/sedit/' . $item->id ?>">Редактировать</a></div>
 
                 </div>
             <?php endforeach; ?>
@@ -116,7 +116,7 @@
         <div class="clear"></div>
 
         <div id="serverlistapp">
-        <form action="/Users/Servers" method="post" enctype="multipart/form-data" id="auth">
+        <form action="/users/servers" method="post" enctype="multipart/form-data" id="auth">
 
             <div class="formgrup"><input class="forminput" type="text" id="server" name="server" placeholder="ip:порт"></div>
 

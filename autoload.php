@@ -8,7 +8,6 @@ function my_autoload($class)
     $path = implode(DIRECTORY_SEPARATOR, $classParts) . '.php';
     if(file_exists($path))
     {
-        // var_dump($path);
         require $path;
     }
 }

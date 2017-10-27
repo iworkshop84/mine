@@ -13,6 +13,7 @@
 <body>
 
 <div class="content">
+
 <div id="header">
 
     <div id="headermenu">
@@ -114,7 +115,7 @@
         <div id="serverheader">
             <div id="shcount">#</div>
             <div id="shname">Сервер</div>
-            <div id="shproph">Сборка</div>
+            <div id="shproph">Баннер</div>
             <div id="shplayers">Игроков</div>
             <div id="shversion">Версия</div>
             <div id="shreith">Рейтинг</div>
@@ -126,7 +127,7 @@
                 <div class="scount"><?= $key + 1 . '.'; ?></div>
                 <div class="namelabel">
                     <div class="sname">
-                        <a href="<?= '/servers/one/' . $item->id ?>"><?= substr($item->name, 0, 100) . '...' ?></a>
+                        <a href="<?= '/servers/one/' . $item->id; ?>"><?= substr($item->name, 0, 100) . '...' ?></a>
                     </div>
                     <div class="slogan">
                         <?= substr($item->slogan, 0, 120); ?>
@@ -134,17 +135,23 @@
 
 
                 <?php if(!empty($item->host)): ?>
-                <div class="shostport"><?= $item->host . ':' . $item->port ?></div>
+                <div class="shostport"><?= $item->host . ':' . $item->port; ?></div>
                 <?php endif; ?>
-                <div class="sipport"><?= $item->ip . ':' . $item->port ?></div>
+                <div class="sipport"><?= $item->ip . ':' . $item->port; ?></div>
                 </div>
 
                 <div class="smainprop"></div>
 
                 <div class="splayers"><?= $item->players .' из '. $item->maxplayers;?></div>
 
-                <div class="sversion"><?= $item->version ?></div>
-                <div class="sversion"><?= $item->votes ?></div>
+                <div class="sversion">
+                    <a href="<?= '/servers/all/' . $item->version; ?>"
+                       title="Сервера Майнкрафт версии <?= $item->version; ?>"
+
+                    ><?= $item->version; ?></a>
+
+                </div>
+                <div class="svotes"><?= $item->votes; ?></div>
             </div>
         <?php endforeach; ?>
         </div>
@@ -164,7 +171,6 @@
 
         </div>
     </div>
-
 </div>
 
 </body>

@@ -11,6 +11,7 @@
 </head>
 
 <body>
+<div class="content">
 <div id="header">
 
     <div id="headermenu">
@@ -52,7 +53,7 @@
     <div id="posts">
         <div id="userauth">
             <h1>Вход в личный кабинет</h1>
-        <form action="/Users/Login" method="post" enctype="multipart/form-data" id="auth">
+        <form action="/users/login" method="post" enctype="multipart/form-data" id="auth">
 
             <div class="formgrup"><input class="forminput" type="text" id="login" name="login" placeholder="Логин"></div>
 
@@ -63,7 +64,21 @@
         </form>
         </div>
     </div>
+</div>
 
+</div>
+<div class="clear"></div>
+<div class="footer">
+    <div id="headermenu">
+        <div id="headernav">
+
+            <div id="logo"></div>
+            <div id="fcopywrait">
+                Сервера майнкрафт с модами - © 2017-<?=  date('Y');?> Minecraft Rait - Мониторинг серверов Майнкрафт
+            </div>
+
+        </div>
+    </div>
 </div>
 
 </body>
