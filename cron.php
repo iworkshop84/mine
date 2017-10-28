@@ -27,7 +27,7 @@ foreach ($items as $item){
             $uptime = $item->downtime * 100 / $fulluptime;
             $uptime = 100 - $uptime;
             $server->uptime = number_format($uptime, 2);
-
+            $server->downtime = $item->downtime;
 
             $item = $server->update();
         if($ping)
@@ -44,6 +44,7 @@ foreach ($items as $item){
             $uptime = $item->downtime * 100 / $fulluptime;
             $uptime = 100 - $uptime;
             $server->uptime = number_format($uptime, 2);
+            $server->downtime = $item->downtime;
 
             $item = $server->update();
         if($ping)
@@ -60,7 +61,7 @@ foreach ($items as $item){
             $uptime = $item->downtime * 100 / $fulluptime;
             $uptime = 100 - $uptime;
             $server->uptime = number_format($uptime, 2);
-
+            $server->downtime = $item->downtime;
 
             $item = $server->update();
         if($query)
@@ -81,7 +82,6 @@ foreach ($items as $item){
 
         $server->uptime = number_format($uptime, 2);
         $server->downtime = $downtime;
-
 
         $item = $server->update();
 
