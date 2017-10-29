@@ -1,0 +1,14 @@
+User-agent: Yandex
+Disallow: /cgi-bin
+Disallow: /classes/
+Disallow: /controllers/
+Disallow: /models/
+
+Host: minecraftrait.ru
+
+User-agent: *
+Disallow: /cgi-bin
+Disallow: /classes/
+Disallow: /controllers/
+Disallow: /models/
+
