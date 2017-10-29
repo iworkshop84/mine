@@ -75,7 +75,7 @@
 
 
 
-            <form id="edit-server" action="/Users/Sedit/<?= $items->id ?>" method="post" enctype="multipart/form-data">
+            <form id="edit-server" action="/users/sedit/<?= $items->id ?>" method="post" enctype="multipart/form-data">
 
                 <div class="editservertextblock">
                     <span class="estitle">Основные параметры</span>

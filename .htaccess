@@ -6,6 +6,8 @@ RewriteBase /
 RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
 RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
 
+Options All -Indexes
+
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 
@@ -15,3 +17,23 @@ RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index\.php\ HTTP/ [OR]
 RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index\.html\ HTTP/
 RewriteRule ^index\.php$ / [R=301,L]
 </IfModule>
+
+<Files cron.php>
+order allow,deny
+deny from all
+</Files>
+
+<Files crondayvote.php>
+order allow,deny
+deny from all
+</Files>
+
+<Files cronmonthcvote.php>
+order allow,deny
+deny from all
+</Files>
+
+<Files autoload.php>
+order allow,deny
+deny from all
+</Files>

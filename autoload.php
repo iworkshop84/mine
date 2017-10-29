@@ -1,6 +1,5 @@
 <?php
 
-
 function my_autoload($class)
 {
     $classParts = explode('\\', $class);

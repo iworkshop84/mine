@@ -54,7 +54,7 @@
     <div id="posts">
         <div id="userauth">
             <h1>Добавить сервер</h1>
-        <form action="/Servers/Add" method="post" enctype="multipart/form-data" id="auth">
+        <form action="/servers/add" method="post" enctype="multipart/form-data" id="auth">
 
             <div class="formgrup"><input class="forminput" type="text" id="server" name="server" placeholder="Адрес:Порт"></div>
 
@@ -63,7 +63,7 @@
         </div>
 
         <?php if(!empty($items)): ?>
-            <a href="<?= '/Servers/One/' . $items?>">Ваш добавленный сервер</a>
+            <a href="<?= '/servers/one/' . $items?>">Ваш добавленный сервер</a>
         <?php endif; ?>
 
         <?php if(isset($error)): ?>

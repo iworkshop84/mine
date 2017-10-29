@@ -55,7 +55,7 @@
 
         <div id="userauth">
             <h1>Регистрация</h1>
-        <form action="/Users/Register" method="post" enctype="multipart/form-data" id="auth">
+        <form action="/users/register" method="post" enctype="multipart/form-data" id="auth">
 
             <div class="formgrup"><input class="forminput" type="text" id="login" name="login" placeholder="Логин:"></div>
 
