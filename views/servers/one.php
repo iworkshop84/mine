@@ -197,8 +197,52 @@
             <?php endif;?>
             <div class="clear"></div>
 
-            <button class="serveronevote" href='/servers/vote/<?=$items->id ?>' onclick="window.open('/servers/vote/<?=$items->id ?>', '', 'toolbar=0,location=0,status=0,left=+500,top=50,menubar=0,scrollbars=yes,resizable=0,width=800,height=600'); return false;">
+            <button class="serveronevote" href='/servers/vote/<?= $items->id; ?>' onclick="window.open('/servers/vote/<?=$items->id ?>', '', 'toolbar=0,location=0,status=0,left=+500,top=50,menubar=0,scrollbars=yes,resizable=0,width=800,height=600'); return false;">
                 Голосовать за сервер</button>
+            <div class="clear"></div>
+            <?php
+            /*
+            $url = 'https://www.youtube.com/watch?v=_imOsDY7X9U&list=PLyq3mTLSYg59wT8Ku1dJ5mqMQeS550CIM';
+            $url1 = 'https://youtu.be/_imOsDY7X9U';
+
+            $parsed_url = parse_url($url);
+            $parsed_url1 = parse_url($url1);
+            var_dump($parsed_url);
+            var_dump($parsed_url1);
+           $res = parse_str($parsed_url['query'], $parsed_query);
+           var_dump($parsed_query);
+            echo '<iframe src="http://www.youtube.com/embed/' . $parsed_query['v'] . '"
+            width="400" height="300" frameborder="0"></iframe>';
+            */
+            ?>
+
+
+
+            <div class="servervideo">
+            <?php if(!empty($items->youtube))
+            {
+                $parsed_url = parse_url($items->youtube);
+                parse_str($parsed_url['query'], $parsed_query);
+
+                if(!empty($parsed_url['query']))
+                {
+                    parse_str($parsed_url['query'], $parsed_query);
+                    echo '<iframe src="http://www.youtube.com/embed/' . $parsed_query['v'] . '"
+                            width="390" height="260" frameborder="0"></iframe>';
+                }else{
+                $parsed_path = mb_substr($parsed_url['path'], 1);
+                    echo '<iframe src="http://www.youtube.com/embed/' . $parsed_path . '"
+                            width="390" height="260" frameborder="0"></iframe>';
+
+                }
+
+
+            }
+
+            ?>
+            </div>
+
+
 
         </div>
     </div>

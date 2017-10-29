@@ -67,11 +67,13 @@
 <div id="page">
 
     <div id="posts">
-
+        <div id="servertitle"> <h1><?= $items->name ?></h1></div>
         <div id="warning">
             <p>Пожалуйста, указывайте параметры, которые действительно присутствуют на вашем сервере!</p>
         </div>
         <div class="clear"></div>
+
+
 
             <form id="edit-server" action="/Users/Sedit/<?= $items->id ?>" method="post" enctype="multipart/form-data">
 
@@ -200,8 +202,8 @@
                     <span class="estitle">Видео сервера</span>
                     <span class="estext">
                         Вы можете разместить ссылку на видео-обзор сервера с YouTube.
-                        Ссылка должна быть в формате: <b>https://www.youtube.com/embed/кодВидео.</b>
-                        Копируйте эту ссылку только из раздела "Поделиться->HTML-код", иначе видео не будет работать
+                        Для этого скопируйте ссылку из раздела "Поделиться" или же из адресной строки. <br/>Работать будут оба варианта.
+
                     </span>
                 </div>
                 <div class="servereditfield"><input class="setextfield" type="text" id="youtube" name="youtube" value="<?= $items->youtube ?>"></div>
