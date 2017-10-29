@@ -140,9 +140,17 @@
                 <div class="sipport"><?= $item->ip . ':' . $item->port; ?></div>
                 </div>
 
-                <div class="smainprop"></div>
+                <div class="smainprop">
+                    <?php if(!empty($item->banner)):?>
+                        <div class="servereditbanner"><img src="/../upload/banners/<?= $item->banner; ?>" alt="Баннер сервера майнкрафт <?= $item->name ?>" title="Баннер сервера майнкрафт <?= $item->name ?>"></div>
+                    <?php endif;?>
+                </div>
+
+
 
                 <div class="splayers"><?= $item->players .' из '. $item->maxplayers;?></div>
+
+
 
                 <div class="sversion">
                     <a href="<?= '/servers/all/' . $item->version; ?>"

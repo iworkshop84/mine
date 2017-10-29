@@ -366,6 +366,34 @@ class Users
                 $server->version = $_POST['version'];
             }
 
+            if(!empty($_FILES['banner']['name']))
+            {
+                if(($_FILES['banner']['type'] == 'image/jpeg')
+                    || ($_FILES['banner']['type'] == 'image/png')
+                    || ($_FILES['banner']['type'] == 'image/gif'))
+                {
+                    if($_FILES['banner']['error'] == 0)
+                    {
+                        if($_FILES['banner']['size'] < 2000000)
+                        {
+                            if(is_uploaded_file($_FILES['banner']['tmp_name']))
+                            {
+                                $extension = explode('/', $_FILES['banner']['type']);
+                                $bannername = 'serverbanner' . time() . '.' . $extension[1];
+
+                                $uploadfile = move_uploaded_file($_FILES['banner']['tmp_name'],
+                                    __DIR__ . '/../upload/banners/' . $bannername);
+                                    if($uploadfile)
+                                    {
+                                        $server->banner = $bannername;
+                                    }
+                            }
+                        }
+                    }
+                }
+            }
+
+
             if(isset($_POST['mainprop']))
             {
                $mplist = new Properties();

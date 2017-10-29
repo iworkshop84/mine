@@ -18,6 +18,29 @@ $id = !empty($pathParts[3]) ? $pathParts[3] : null;
 // приводим строки к нужному нам виду, всё в нижний регистр, первый символ в верхний
 $ctrl = ucfirst(mb_strtolower($ctrl));
 $act = ucfirst(mb_strtolower($act));
+/*
+?>
+
+
+    <form action="/" method="post" enctype="multipart/form-data">
+        <p> <label for="image"> Добавить файл: </label>
+            <input type="file" id="image" name="image"></p>
+        <p> <button type="submit">Отправить</button></p>
+    </form>
+
+
+<?php
+
+
+
+var_dump($_POST);
+var_dump($_FILES);
+
+die;
+*/
+
+
+
 
 
 try

@@ -189,9 +189,17 @@
         </div>
 
     </div>
+
         <div id="rightsidebar">
+
+            <?php if(!empty($items->banner)):?>
+                <div class="serverpagebanner"><img src="/../upload/banners/<?= $items->banner; ?>" alt="Баннер сервера майнкрафт <?= $items->name ?>" title="Баннер сервера майнкрафт <?= $items->name ?>"></div>
+            <?php endif;?>
+            <div class="clear"></div>
+
             <button class="serveronevote" href='/servers/vote/<?=$items->id ?>' onclick="window.open('/servers/vote/<?=$items->id ?>', '', 'toolbar=0,location=0,status=0,left=+500,top=50,menubar=0,scrollbars=yes,resizable=0,width=800,height=600'); return false;">
                 Голосовать за сервер</button>
+
         </div>
     </div>
 </div>

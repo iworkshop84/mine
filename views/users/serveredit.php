@@ -164,6 +164,19 @@
 
 
                 <div class="editservertextblock">
+                    <span class="estitle">Баннер</span>
+                    <span class="estext">
+                        Баннер вашего сервера в формате gif, png или jpg размером 468x60 пикселей.
+                    </span>
+                </div>
+                <div class="servereditfield"><input class="setextfield" type="file" id="banner" name="banner"></div>
+                <?php if(!empty($items->banner)):?>
+                    <div class="servereditbanner"><img src="/../upload/banners/<?= $items->banner; ?>" alt="баннер <?= $items->name ?>" ></div>
+                <?php endif;?>
+                <div class="clear"></div>
+
+
+                <div class="editservertextblock">
                     <span class="estitle">Сайт сервера</span>
                     <span class="estext">
                         Ссылка на сайт вашего сервера в формате: <b>http://site.ru, http://www.site.ru или http://сайт.рф</b>
