@@ -328,37 +328,45 @@ class Users
 
             if(!empty($_POST['name']))
             {
-            $server->name = $_POST['name'];
+                $name = strip_tags($_POST['name']);
+                $server->name = $name;
             }
 
             if(isset($_POST['slogan']))
             {
-                $server->slogan = $_POST['slogan'];
+                $slogan = strip_tags($_POST['slogan']);
+                $server->slogan = $slogan;
             }
 
             if(isset($_POST['host']))
             {
-                $server->host = $_POST['host'];
+                $host = strip_tags($_POST['host']);
+                $server->host = $host;
             }
 
             if(isset($_POST['description']))
             {
-                $server->description = $_POST['description'];
+                $description = preg_replace("#<a.*>.*</a>#USi", "", $_POST['description']);
+                $description = preg_replace("#&lt;a.*&gt;.*&lt;/a&gt;#USi", "", $description);
+                $server->description = $description;
             }
 
             if(isset($_POST['site']))
             {
-                $server->site = $_POST['site'];
+                $site = strip_tags($_POST['site']);
+                $server->site = $site;
             }
 
             if(isset($_POST['vk']))
             {
-                $server->vk = $_POST['vk'];
+                $vk = strip_tags($_POST['vk']);
+                $server->vk = $vk;
             }
 
             if(isset($_POST['youtube']))
             {
-                $server->youtube = $_POST['youtube'];
+                $youtube = strip_tags($_POST['youtube']);
+                $server->youtube = $youtube;
             }
 
             if(isset($_POST['version']))
@@ -452,8 +460,6 @@ class Users
         $serverlist->serverDelete($id);
         header('Location: /users/servers/');
         exit;
-
-
 
     }
 
