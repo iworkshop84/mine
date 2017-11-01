@@ -472,12 +472,14 @@ body {
 .suledit{
     float: left;
     padding:10px 0 0 0;
-    width: 110px;
+    width: 100px;
+    text-transform: uppercase;
 }
 .suldelete{
     float: left;
-    padding:10px 0 0 30px;
-    width: 80px;
+    padding:10px 0 0 40px;
+    width: 50px;
+    text-transform: uppercase;
 }
 
 
@@ -501,7 +503,7 @@ body {
     font-size: 16px;
     text-align: left;
     padding: 10px 0 0 0;
-    width:120px;
+    width:90px;
 }
 
 .sulstatus span.offline{
@@ -524,6 +526,7 @@ body {
     text-align: left;
     padding: 10px 0 0 0;
     width:200px;
+    margin-top: -3px;
 }
 
 .sulipport span.host{
@@ -564,7 +567,7 @@ body {
     font-size: 14px;
     padding:10px 0 0 35px;
     float: left;
-    width: 100px;
+    width: 25px;
 }
 
 .slogan{
@@ -864,12 +867,7 @@ a.knopka {
     border-color: #3E5E7F;
 }
 
-.serveruserlist{
-    display: block;
-    text-align: left;
-    border: 1px solid #d1d1d1;
-    height: 40px;
-}
+
 
 #serverapruvtext{
     float: left;
@@ -1851,4 +1849,97 @@ a.knopka {
 
 .serverdesc{
     padding: 10px 0 10px 0;
+}
+
+.serverlist_headposition{
+    padding: 0 0 0 20px;
+    width: 35px;
+    float: left;
+}
+
+
+.serverlist_headname{
+    width: 265px;
+    float: left;
+}
+
+.icon-name{
+    background-position: 0 -24px;
+}
+
+.serverlist_headname span{
+    padding:0 0 0 1px;
+    font-size: 14px;
+    line-height: 14px;
+    margin-left: -3px;
+}
+
+
+.serverlist_ip{
+    padding: 0 0 0 15px;
+    width: 180px;
+    float: left;
+}
+
+.serverlist_ip span{
+    padding:0 0 0 1px;
+    font-size: 14px;
+    line-height: 14px;
+    margin-left: -3px;
+}
+
+.icon-serverlist_ip{
+    background-position: -336px -144px;
+}
+
+.serverlist_status{
+    padding: 0 0 0 15px;
+    width: 90px;
+    float: left;
+}
+
+.serverlist_status span{
+    padding:0 0 0 1px;
+    font-size: 14px;
+    line-height: 14px;
+    margin-left: -3px;
+}
+
+.icon-serverlist_status{
+    background-position: -384px -144px;
+}
+
+.serveruserlist{
+    margin: 2px 0;
+    vertical-align: text-top;
+    background: #f8f8f8;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
+    border-bottom: 1px solid #fff;
+    min-height: 40px;
+    overflow: hidden;
+}
+
+
+.serverlist_headvote{
+    width: 100px;
+    float: left;
+}
+
+.serverlist_headvote span{
+    padding:0 0 0 1px;
+    font-size: 14px;
+    line-height: 14px;
+    margin-left: -3px;
+}
+
+#serverlistcontainer{
+    padding: 20px 0 0 0;
+}
+
+.suluptime{
+    font-size: 14px;
+    font-weight: bold;
+    padding:10px 0 0 35px;
+    float: left;
+    width: 90px;
 }
