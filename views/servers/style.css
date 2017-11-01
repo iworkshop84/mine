@@ -150,6 +150,10 @@ body {
     background: #363639;
 }
 
+#topmenu a.servnew {
+    color: #ffb122;
+}
+
 
 #authmenu{
     float: right;
@@ -196,12 +200,25 @@ body {
 }
 
 #site-about{
+     text-align: left;
+     float: left;
+     width: 400px;
+     height: 160px;
+     padding: 10px 10px 0 0;
+     border-right: 1px solid #ddd;
+ }
+
+#site-aboutnew{
     text-align: left;
     float: left;
-    width: 400px;
-    height: 160px;
+    width: 100%;
     padding: 10px 10px 0 0;
-    border-right: 1px solid #ddd;
+
+}
+
+#site-aboutnew h1{
+    font-size: 20px;
+    color: #4c4a46;
 }
 
 #versionlist{
@@ -211,6 +228,15 @@ body {
     padding: 10px 0 0 0;
     float: left;
     width:830px;
+}
+
+#versionlist_new{
+    font-size: 12px;
+    margin-left: auto;
+    margin-right: auto;
+
+    float: left;
+
 }
 
 #mainproplist{
@@ -229,6 +255,17 @@ body {
     display: inline-block;
     width: 115px;
     text-align: center;
+    border-radius: 2px;
+    padding:2px 0 0 0;
+}
+
+.params_new{
+    float: left;
+    height:70px;
+    display: inline-block;
+    width: 70px;
+    margin-top: -2px;
+    text-align: left;
     border-radius: 2px;
     padding:2px 0 0 0;
 }
@@ -1942,4 +1979,29 @@ a.knopka {
     padding:10px 0 0 35px;
     float: left;
     width: 90px;
+}
+
+.containerservernew{
+    float: left;
+    width: 150px;
+}
+
+.containersnewo{
+    float: left;
+    width: 130px;
+}
+
+.containersnewp{
+    float: left;
+    width: 168px;
+}
+
+.containersnewv{
+     float: left;
+     width: 140px;
+ }
+
+.containersnewvotes{
+    float: left;
+    width: 110px;
 }

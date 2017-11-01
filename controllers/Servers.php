@@ -24,10 +24,6 @@ class Servers
         $items = ServersModel::findAllInColumnOrdVotes('version', $version);
         }
 
-
-
-
-
         $view = new View();
         $view->items = $items;
         $view->versionList = $versionList;
@@ -35,6 +31,27 @@ class Servers
 
         $view->display('servers/all.php');
     }
+
+    public function actionNew($version = null)
+    {
+
+        $versionList = ServersModel::findServerList();
+        $mainpropList = Properties::findAllServmp();
+
+        if(empty($version)){
+            $items = ServersModel::findAllCheckedNoOrdVotes();
+        }else{
+            $items = ServersModel::findAllInColumnCheckedNoOrdVotes('version', $version);
+        }
+
+        $view = new View();
+        $view->items = $items;
+        $view->versionList = $versionList;
+        $view->mainpropList = $mainpropList;
+
+        $view->display('servers/new.php');
+    }
+
 
 
     public function actionProperties($mprop = null)
@@ -55,7 +72,6 @@ class Servers
         $view->mainpropList = $mainpropList;
 
         $view->display('servers/all.php');
-
     }
 
 

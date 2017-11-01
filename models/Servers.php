@@ -20,6 +20,7 @@ class Servers
         $this->maxplayers = $data['MaxPlayers'];
         $this->online = 1;
         $this->regtime = date('Y:m:d H:i:s', time());
+        $this->checked = 'no';
 
         if(!empty($_SESSION['uid']))
         {
@@ -94,7 +95,16 @@ class Servers
     public static function findAllOrdVotes()
     {
         $class = get_called_class();
-        $sql = 'SELECT * FROM '. static::$table .' ORDER BY votes DESC';
+        $sql = 'SELECT * FROM '. static::$table .'  WHERE checked="yes" ORDER BY votes DESC';
+        $db = new DB;
+        $db->setClassName($class);
+        return $db->query($sql);
+    }
+
+    public static function findAllCheckedNoOrdVotes()
+    {
+        $class = get_called_class();
+        $sql = 'SELECT * FROM '. static::$table .'  WHERE checked="no" ORDER BY votes DESC';
         $db = new DB;
         $db->setClassName($class);
         return $db->query($sql);
@@ -104,7 +114,17 @@ class Servers
     public static function findAllInColumnOrdVotes($column, $value)
     {
         $class = get_called_class();
-        $sql = 'SELECT * FROM '. static::$table . ' WHERE '. $column .'=:val ORDER BY votes DESC';
+        $sql = 'SELECT * FROM '. static::$table . ' WHERE '. $column .'=:val AND checked="yes" ORDER BY votes DESC';
+        $db = new DB;
+
+        $db->setClassName($class);
+        return $db->query($sql, [':val' => $value]);
+    }
+
+    public static function findAllInColumnCheckedNoOrdVotes($column, $value)
+    {
+        $class = get_called_class();
+        $sql = 'SELECT * FROM '. static::$table . ' WHERE '. $column .'=:val AND checked="no" ORDER BY votes DESC';
         $db = new DB;
 
         $db->setClassName($class);
@@ -116,7 +136,7 @@ class Servers
     {
         $class = get_called_class();
         $sql = 'SELECT servers.* FROM `servers`, `mainprop`, `servermp`  
-        WHERE mainprop.title =:val AND mainprop.id = servermp.mpropid AND servermp.servid = servers.id ORDER BY votes DESC';
+        WHERE mainprop.title =:val AND mainprop.id = servermp.mpropid AND servermp.servid = servers.id AND servers.checked="yes" ORDER BY votes DESC';
         $db = new DB;
 
         $db->setClassName($class);

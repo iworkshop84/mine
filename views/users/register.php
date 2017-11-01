@@ -20,6 +20,7 @@
             <div id="topmenu">
 
                 <a href="<?= '/' ?>">Сервера Майнкрафт</a>
+                <a href="<?= '/servers/new/' ?>" class="servnew">Новые сервера</a>
                 <a href="<?= '/servers/add/' ?>" class="servadd">Добавить сервер</a>
 
             </div>
