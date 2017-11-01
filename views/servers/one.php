@@ -56,12 +56,18 @@
 
     <div id="posts">
 
+
+
+
+
     <div id="servertitle">
         <h1><?= $items->name ?></h1>
         <div id="serverslogan">
             <?= $items->slogan ?>
         </div>
     </div>
+
+
     <div id="mainserverinfo">
 
         <div class="oservere">
@@ -69,38 +75,100 @@
         </div>
         <div class="clear"></div>
 
+
+
         <div class="serverfullinfo">
-            <p>
-                <span class="header">IP адрес:</span>
-                   <?php if(!empty($items->host)): ?>
-                        <span class="host"><?= $items->host . ':' . $items->port ?></span>
-                        или
+
+           <div class="server_singleline">
+            <div class="serversingle_adress">
+                <i class="icon-serversingle_adress"></i>
+                <span>IP адрес:</span>
+            </div>
+
+             <div class="serversingle_ip">
+                 <?php if(!empty($items->host)): ?>
+                 <div class="server_status">
+                     <div class="server_adres_text"><?= $items->host . ':' . $items->port ?></div>
+                 </div>
+                     или
+                 <?php endif; ?>
+                 <div class="server_status">
+                     <div class="server_adres_text"><?= $items->ip . ':' . $items->port ?></div>
+                 </div>
+             </div>
+           </div>
+
+
+            <div class="server_singleline">
+            <div class="serversingle_vote">
+                <i class="icon-serversingle_vote"></i>
+                <span>Голосов:</span>
+            </div>
+                <div class="serversingle_votetext">
+
+                    <?= $items->votes; ?>
+                </div>
+            </div>
+
+
+            <div class="server_singleline">
+                <div class="serversingle_status">
+                    <i class="icon-serversingle_status"></i>
+                    <span>Статус:</span>
+                </div>
+                <div class="serversingle_statustext">
+
+                    <?php if($items->online == 0): ?>
+                        <span class="offline">Offline</span>
+                    <?php else: ?>
+                        <span class="online">Online</span>
                     <?php endif; ?>
-                        <span class="ip"><?= $items->ip . ':' . $items->port ?></span>
-            </p>
-            <p>
-                <span class="header">Статус:</span>
-                <?php if($items->online == 0): ?>
-                    <span class="offline">Офлайн</span>
-                <?php else: ?>
-                <span class="online">Онлайн</span>
-                <?php endif; ?>
-            </p>
-            <p>
-                <span class="header">Голосов:</span>
-                <span class="players"><?= $items->votes; ?></span>
-            </p>
-            <p>
-                <span class="header">Аптайп:</span>
-                <span class="players"><?= $items->uptime .'%'; ?></span>
-            </p>
-            <p>
-                <span class="header">Игроков:</span>
-                    <span class="players"><?= $items->players . ' из ' . $items->maxplayers ?></span>
-            </p>
-            <p>
-                <span class="header">Проверялся:</span>
-                <span class="players">
+                </div>
+            </div>
+
+
+            <div class="server_singleline">
+                <div class="serversingle_version">
+                    <i class="icon-serversingle_version"></i>
+                    <span>Версия:</span>
+                </div>
+                <div class="serversingle_versiontext">
+                    <a href="<?= '/servers/all/' . $items->version ?>"
+                       title="Сервера Майнкрафт версии <?= $items->version ?>"><?= $items->version; ?></a>
+                </div>
+            </div>
+
+
+            <div class="server_singleline">
+                <div class="serversingle_uptime">
+                    <i class="icon-serversingle_uptime"></i>
+                    <span>Аптайм:</span>
+                </div>
+                <div class="serversingle_uptimetext">
+                    <?= $items->uptime .'%'; ?>
+
+                </div>
+            </div>
+
+
+            <div class="server_singleline">
+                <div class="serversingle_players">
+                    <i class="icon-serversingle_players"></i>
+                    <span>Игроков:</span>
+                </div>
+                <div class="serversingle_playerstext">
+                    <?= $items->players . ' / ' . $items->maxplayers; ?>
+
+                </div>
+            </div>
+
+
+            <div class="server_singleline">
+                <div class="serversingle_check">
+                    <i class="icon-serversingle_check"></i>
+                    <span>Проверялся:</span>
+                </div>
+                <div class="serversingle_checktext">
                     <?php
                     $startTime = date_create($items->updtime);
                     $endTime   = date_create();
@@ -115,78 +183,91 @@
                         echo $timepust . ' минуты назад';
                     }
                     ?>
-                </span>
-            </p>
+                </div>
+            </div>
+
 
             <?php if(!empty($items->site)):?>
-            <p>
-                <span class="header">Сайт сервера:</span>
-                <span class="servsite">
+            <div class="server_singleline">
+                <div class="serversingle_site">
+                    <i class="icon-serversingle_site"></i>
+                    <span>Сайт сервера:</span>
+                </div>
+                <div class="serversingle_sitetext">
                     <?php
                     if((empty(preg_match('~^(http://)|(https://)~', $items->site)) && !empty($items->site))){
                         $items->site = "http://" . $items->site;
                     }
                     ?>
-                    <a href="<?= $items->site ?>"target="_blank"><?= $items->site; ?></a>
-                </span>
-            </p>
+                    <a href="<?= $items->site ?>" target="_blank" rel="nofollow"><?= $items->site; ?></a>
+                </div>
+            </div>
             <?php endif;?>
+
 
             <?php if(!empty($items->vk)):?>
-            <p>
-                <span class="header">Сервер в ВК:</span>
-                <span class="servvk">
-                    <?php
-                    if((empty(preg_match('~^(http://)|(https://)~', $items->vk)) && !empty($items->vk))){
-                        $items->vk = "https://" . $items->vk;
-                    }
-                    ?>
-                    <a href="<?= $items->vk ?>" target="_blank"><?= $items->vk; ?></a>
-                </span>
-            </p>
+                <div class="server_singleline">
+                    <div class="serversingle_vk">
+                        <i class="icon-serversingle_vk"></i>
+                        <span>Сервер в ВК:</span>
+                    </div>
+                    <div class="serversingle_vktext">
+                        <?php
+                        if((empty(preg_match('~^(http://)|(https://)~', $items->vk)) && !empty($items->vk))){
+                            $items->vk = "https://" . $items->vk;
+                        }
+                        ?>
+                        <a href="<?= $items->vk ?>" target="_blank" rel="nofollow"><?= $items->vk; ?></a>
+                    </div>
+                </div>
             <?php endif;?>
+
 
             <?php if(!empty($mainprops)):?>
-            <p>
-                <span class="header">Основное:</span>
-                <div class="servmprop">
-
-                   <?php foreach ($mainprops as $mainprop): ?>
-                       <div class="servermprop">
-                    <a href="<?= '/servers/properties/' . $mainprop->title ?>"
-                       title="Сервера Майнкрафт с настройками <?= $mainprop->name ?>">
-                        <?= $mainprop->name; ?></a>
+                <div class="server_singleline">
+                    <div class="serversingle_mainoprop">
+                        <i class="icon-serversingle_mainoprop"></i>
+                        <span>Основное:</span>
+                    </div>
+                    <div class="serversingle_mainoproptext">
+                        <?php foreach ($mainprops as $mainprop): ?>
+                        <div class="serversingle_servermprop">
+                                <a href="<?= '/servers/properties/' . $mainprop->title ?>"
+                                   title="Сервера Майнкрафт с настройками <?= $mainprop->name ?>">
+                                    <?= $mainprop->name; ?></a>
                         </div>
-                   <?php endforeach; ?>
+                        <?php endforeach; ?>
+                    </div>
                 </div>
-            </p>
             <?php endif;?>
-
-
-            <p>
-                <span class="header">Версия:</span>
-                <span class="servversion">
-                  <a href="<?= '/servers/all/' . $items->version ?>" title="Сервера Майнкрафт версии <?= $items->version ?>"><?= $items->version; ?></a>
-                </span>
-            </p>
-
-
-
+            <div class="clear"></div>
             <div class="oservere">
                 <span>Описание</span>
             </div>
-            <div class="clear"></div>
-                <div class="serverdesc">
-                    <?php
-                    if(!empty($items->description)){
-                        echo $items->description;
-                    }else{
-                        echo 'Владелец сервера «' . $items->name . '» ещё не добавил описание. 
+
+            <div class="serverdesc">
+                <?php
+                if(!empty($items->description)){
+                    echo $items->description;
+                }else{
+                    echo 'Владелец сервера «' . $items->name . '» ещё не добавил описание. 
                               Если это ваш сервер, добавьте к нему описание в <a href="/users/servers">личном кабинете</a>.';
-                    }
-                    ?>
-                </div>
+                }
+                ?>
+            </div>
+
+
         </div>
+        <div class="clear"></div>
+
+
+
+
+
+
+
+
+
 
     </div>
 
@@ -200,21 +281,7 @@
             <button class="serveronevote" href='/servers/vote/<?= $items->id; ?>' onclick="window.open('/servers/vote/<?=$items->id ?>', '', 'toolbar=0,location=0,status=0,left=+500,top=50,menubar=0,scrollbars=yes,resizable=0,width=800,height=600'); return false;">
                 Голосовать за сервер</button>
             <div class="clear"></div>
-            <?php
-            /*
-            $url = 'https://www.youtube.com/watch?v=_imOsDY7X9U&list=PLyq3mTLSYg59wT8Ku1dJ5mqMQeS550CIM';
-            $url1 = 'https://youtu.be/_imOsDY7X9U';
 
-            $parsed_url = parse_url($url);
-            $parsed_url1 = parse_url($url1);
-            var_dump($parsed_url);
-            var_dump($parsed_url1);
-           $res = parse_str($parsed_url['query'], $parsed_query);
-           var_dump($parsed_query);
-            echo '<iframe src="http://www.youtube.com/embed/' . $parsed_query['v'] . '"
-            width="400" height="300" frameborder="0"></iframe>';
-            */
-            ?>
 
 
 
@@ -222,7 +289,10 @@
             <?php if(!empty($items->youtube))
             {
                 $parsed_url = parse_url($items->youtube);
+
+
                 parse_str($parsed_url['query'], $parsed_query);
+
 
                 if(!empty($parsed_url['query']))
                 {
@@ -233,12 +303,8 @@
                 $parsed_path = mb_substr($parsed_url['path'], 1);
                     echo '<iframe src="http://www.youtube.com/embed/' . $parsed_path . '"
                             width="390" height="260" frameborder="0"></iframe>';
-
                 }
-
-
             }
-
             ?>
             </div>
 

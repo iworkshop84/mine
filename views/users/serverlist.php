@@ -70,7 +70,7 @@
                 <div class="serveruserlist">
                     <div class="sulcount"><?= $key + 1 . '.'; ?></div>
                     <div class="sulname">
-                        <a href="<?= '/servers/one/' . $item->id ?>"><?= substr($item->name, 0, 45) . '...' ?></a>
+                        <a href="<?= '/servers/one/' . $item->id ?>"><?= substr($item->name, 0, 30) . '...' ?></a>
                     </div>
                     <div class="sulipport">
 

@@ -75,7 +75,7 @@ h1 a:hover, h2 a:hover {
 
 body {
     color: #4c4a46;
-    font: 300 14px/17px Roboto, sans-serif;
+    font: 300 14px/17px verdana,"Helvetica Neue",Helvetica,Arial,sans-serif;
     line-height: 19px;
     text-align: center;
     margin: 0;
@@ -225,7 +225,7 @@ body {
 
 .params{
     float: left;
-    height:52px;
+    height:70px;
     display: inline-block;
     width: 115px;
     text-align: center;
@@ -297,17 +297,12 @@ body {
 }
 
 .servermprop a{
-
-
     font-size: 14px;
     padding: 1px 5px 1px 5px;
     height: auto;
     color: white;
     background-color: #3E5E7F;
     border: 1px solid #3E5E7F;
-
-
-
 }
 
 .servermprop a:active{
@@ -634,20 +629,7 @@ body {
     width: 110px;
 }
 
-#servertitle {
-    padding: 10px 0 10px 0;
-}
 
-#servertitle h1{
-    font-size: 24px;
-    color: #555 !important;
-}
-
-#serverslogan{
-    font-size: 14px;
-    color: #666;
-    padding: 10px 0 0 0;
-}
 
 .oservere{
     font-size: 20px;
@@ -664,9 +646,6 @@ body {
     padding: 0 10px;
 }
 
-.serverfullinfo{
-
-}
 
 .serverfullinfo span.header{
     width: 120px;
@@ -742,9 +721,7 @@ body {
     display: inline-block;
 }
 
-.serverdesc{
-    padding:10px 0 10px 0px;
-}
+
 
 #userauth{
     width: 300px;
@@ -1198,4 +1175,680 @@ a.knopka {
 .servervideo{
     float: left;
     padding:15px 0 0 0;
+}
+
+/********** Новый диз для списка серверов **********/
+
+.server_info{
+    margin: 2px 0;
+    vertical-align: text-top;
+    background: #f8f8f8;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
+    border-bottom: 1px solid #fff;
+    padding: 18px 0 10px 18px;
+    min-height: 50px;
+    overflow: hidden;
+
+}
+
+.server-info__wrap{
+    width: 350px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.server_num{
+    font-family: "Adobe Garamond Pro", sans-serif;
+    font-size: 48px;
+    line-height: 50px;
+    float: left;
+    position: relative;
+    left: -3px;
+    top: -2px;
+    min-width: 30px;
+    padding-right: 10px;
+}
+
+.server_name{
+    text-overflow: ellipsis;
+    overflow: hidden;
+    margin-bottom: 2px;
+}
+
+.hostname{
+    font: 700 14px/16px verdana,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    color: #0e73c0;
+    display: inline-block;
+    /*margin-bottom: 5px;*/
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 100%;
+    font-weight: 600;
+}
+
+.version_serverlist{
+    width: 80px;
+   /* background: url('images/version_gray.svg') no-repeat;*/
+    padding: 0 15px 0 0;
+    /*font-weight: bold;*/
+    font-size: 14px;
+    line-height: 14px;
+    color: #4a4a4a;
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 3px;
+}
+
+.version_serverlist a{
+    font-size: 14px;
+    padding: 1px 5px 1px 5px;
+    height: auto;
+    text-decoration: none;
+    background: #5cb85c;
+    color: #fff !important;
+    border: 1px solid #4da54d !important;
+}
+
+
+
+.players_serverlist{
+    width: 80px;
+   /* background: url('images/users.png') no-repeat;*/
+    padding: 0 15px 0 0;
+    font-size: 14px;
+    line-height: 14px;
+   /* font-weight: bold;*/
+    color: #379300;
+    display: inline-block;
+}
+
+.uptime_serverlist{
+   /* background: url('images/uptime.png') no-repeat;*/
+    padding: 0 15px 0 0;
+    font-size: 14px;
+    line-height: 14px;
+   /* font-weight: bold;*/
+    color: #4a4a4a;
+    display: inline-block;
+}
+
+.online_serverlist{
+   /* background: url('images/online.png') no-repeat;*/
+    padding: 0 15px 0 18px;
+    font-size: 14px;
+    line-height: 14px;
+  /*  font-weight: bold;*/
+    color: #6eb460;
+    display: inline-block;
+    text-transform: uppercase;
+}
+
+.offline_serverlist{
+   /* background: url('images/offline.png') no-repeat;*/
+    padding: 0 15px 0 18px;
+    font-size: 14px;
+    line-height: 14px;
+    font-weight: bold;
+   /* color: #ff030a;*/
+    display: inline-block;
+    text-transform: uppercase;
+}
+
+.server_vote{
+    width: 30px;
+    display: inline-block;
+    vertical-align: top;
+    /*padding: 0 0 0 10px;*/
+}
+
+.vote_serverlist{
+    font-family: "Adobe Garamond Pro", sans-serif;
+    font-size: 28px;
+    line-height: 30px;
+    float: left;
+    position: relative;
+    left: -3px;
+    top: -2px;
+    min-width: 30px;
+    padding-right: 10px;
+}
+
+.server_propherties{
+    width: 295px;
+    display: inline-block;
+    vertical-align: top;
+    padding: 0 0 0 10px;
+}
+
+.server_slogan{
+    text-overflow: ellipsis;
+    overflow: hidden;
+    margin-bottom: 2px;
+
+}
+
+.server_banner{
+    width: 470px;
+    display: inline-block;
+    vertical-align: top;
+    padding:0 0 0 10px;
+
+}
+.server_banner img{
+    width: 468px;
+    height: 60px;
+}
+
+
+
+
+.server_adres{
+    padding:5px 0 0 45px;
+    font-size: 14px;
+    line-height: 16px;
+}
+
+.server_status {
+    display: inline-block;
+    padding: 2px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    background: #5cb85c;
+    color: #fff !important;
+}
+
+.server_adres_text{
+    padding:1px 3px 1px 3px;
+
+}
+
+.serverpretext{
+    text-align: center;
+    border-right:1px solid #d1d1d1;
+    border-left:1px solid #d1d1d1;
+    margin-bottom: -10px;
+    width: 100%;
+}
+
+.serverpretext h2{
+    font-size: 18px;
+    line-height: 20px;
+    font-weight: bold;
+    color: #4c4a46;
+    padding: 5px 0 5px 0;
+}
+
+.serverprehead{
+    background: #F5F5F5;
+    border: 1px solid #d1d1d1;
+    padding:5px 0 5px 0;
+    float: left;
+    width: 100%;
+    position: sticky;
+    top: 0;
+}
+
+[class*=" icon-"], [class^="icon-"]{
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    line-height: 14px;
+    vertical-align: text-top;
+    background-image: url('images/glyphicons-halflings.png');
+    background-repeat: no-repeat;
+    margin-top: 1px;
+}
+
+
+.server_headposition{
+    padding: 0 0 0 18px;
+    width: 48px;
+    float: left;
+}
+
+.icon-signal{
+    background-position: -264px 0;
+}
+
+.server_headname{
+    width: 300px;
+    float: left;
+}
+
+.icon-name{
+    background-position: 0 -24px;
+}
+
+.server_headname span{
+    padding:0 0 0 1px;
+    font-size: 14px;
+    line-height: 14px;
+    margin-left: -3px;
+}
+
+.server_headbanner{
+    padding: 0 0 0 15px;
+    width: 470px;
+    float: left;
+}
+
+.server_headbanner span{
+    padding:0 0 0 1px;
+    font-size: 14px;
+    line-height: 14px;
+    margin-left: -3px;
+}
+
+.icon-banner{
+    background-position: -457px -48px;
+}
+
+.server_headversion{
+    padding: 0 0 0 15px;
+    width: 100px;
+    float: left;
+}
+
+.server_headversion span{
+    padding:0 0 0 1px;
+    font-size: 14px;
+    line-height: 14px;
+    margin-left: -3px;
+}
+
+.icon-version{
+    background-position: -384px 0;
+}
+
+.server_headplayers{
+    width: 100px;
+    float: left;
+}
+
+.server_headplayers span{
+    padding:0 0 0 1px;
+    font-size: 14px;
+    line-height: 14px;
+    margin-left: -3px;
+}
+
+.icon-players{
+    background-position: -169px 0;
+}
+
+.server_headuptime{
+     width: 100px;
+     float: left;
+ }
+
+.server_headuptime span{
+    padding:0 0 0 1px;
+    font-size: 14px;
+    line-height: 14px;
+    margin-left: -3px;
+}
+
+.icon-uptime{
+    background-position: -408px 0;
+}
+
+.server_headvote{
+    width: 80px;
+    float: left;
+}
+
+.server_headvote span{
+    padding:0 0 0 1px;
+    font-size: 14px;
+    line-height: 14px;
+    margin-left: -3px;
+}
+
+.icon-vote{
+    background-position: -97px -143px;
+}
+
+/********** Новый диз для страницы сервера **********/
+
+#servertitle {
+    padding: 10px 0 10px 0;
+}
+
+#servertitle h1{
+    font-size: 24px;
+    line-height: 26px;
+    color: #555 !important;
+}
+
+#serverslogan{
+    font-size: 14px;
+    line-height: 16px;
+    color: #666;
+    padding: 10px 0 0 0;
+}
+
+.serverfullinfo{
+    float: left;
+    padding: 10px 0 10px 0;
+    width: 100%;
+}
+
+.server_singleline{
+    width: 100%;
+    padding: 5px 0 5px 0;
+    float: left;
+}
+.serversingle_adress{
+    float: left;
+    width: 150px;
+}
+
+.icon-serversingle_adress{
+    background-position: -336px -144px;
+}
+
+.serversingle_adress span{
+    padding:0 0 0 1px;
+    font-size: 14px;
+    line-height: 14px;
+    font-weight: bold;
+    margin-left: -3px;
+}
+
+.serversingle_ip{
+    float: left;
+    width: 700px;
+    margin-top: -4px;
+
+}
+
+.serversingle_vote{
+    float: left;
+    width: 150px;
+}
+
+.icon-serversingle_vote{
+    background-position: -96px -144px;
+}
+
+.serversingle_vote span{
+    padding:0 0 0 1px;
+    font-size: 14px;
+    line-height: 14px;
+    margin-left: -3px;
+}
+
+.serversingle_votetext{
+    float: left;
+    width: 700px;
+    font-size: 16px;
+    line-height: 18px;
+    font-weight: bold;
+    padding: 3px 0 0 0;
+
+}
+
+.serversingle_status{
+    float: left;
+    width: 150px;
+}
+
+.icon-serversingle_status{
+    background-position: -384px -144px;
+}
+
+.serversingle_status span{
+    padding:0 0 0 1px;
+    font-size: 14px;
+    line-height: 14px;
+    margin-left: -3px;
+}
+
+.serversingle_statustext{
+    float: left;
+    width: 700px;
+    font-size: 14px;
+    line-height: 16px;
+    font-weight: bold;
+}
+
+.serversingle_statustext span.offline{
+    margin: 3px 0 0 0;
+    display: inline-block;
+    color: red;
+    font-weight: bold;
+}
+
+.serversingle_statustext span.online{
+    margin: 3px 0 0 0;
+    display: inline-block;
+    color: green;
+    font-weight: bold;
+}
+
+.serversingle_uptime{
+    float: left;
+    width: 150px;
+}
+
+.icon-serversingle_uptime{
+    background-position: -408px 0;
+}
+
+.serversingle_uptime span{
+    padding:0 0 0 1px;
+    font-size: 14px;
+    line-height: 14px;
+    margin-left: -3px;
+}
+
+.serversingle_uptimetext{
+    float: left;
+    width: 700px;
+    font-size: 14px;
+    line-height: 16px;
+    font-weight: bold;
+    padding: 3px 0 0 0;
+}
+
+.serversingle_players{
+    float: left;
+    width: 150px;
+}
+
+.icon-serversingle_players{
+    background-position: -169px 0;
+}
+
+.serversingle_players span{
+    padding:0 0 0 1px;
+    font-size: 14px;
+    line-height: 14px;
+    margin-left: -3px;
+}
+
+.serversingle_playerstext{
+    float: left;
+    width: 700px;
+    font-size: 14px;
+    line-height: 16px;
+    padding: 3px 0 0 0;
+    /*color: #379300;*/
+}
+
+
+.serversingle_check{
+    float: left;
+    width: 150px;
+}
+
+.icon-serversingle_check{
+    background-position: -48px -24px;
+}
+
+.serversingle_check span{
+    padding:0 0 0 1px;
+    font-size: 14px;
+    line-height: 14px;
+    margin-left: -3px;
+}
+
+.serversingle_checktext{
+    float: left;
+    width: 700px;
+    font-size: 14px;
+    line-height: 16px;
+    padding: 3px 0 0 0;
+}
+
+
+
+.serversingle_version{
+    float: left;
+    width: 150px;
+}
+
+.icon-serversingle_version{
+    background-position: -384px 0;
+}
+
+.serversingle_version span{
+    padding:0 0 0 1px;
+    font-size: 14px;
+    line-height: 14px;
+    margin-left: -3px;
+
+}
+
+.serversingle_versiontext{
+    float: left;
+    width: 700px;
+    font-size: 14px;
+    line-height: 16px;
+    padding: 3px 0 0 0;
+    margin-top: -1px;
+}
+
+.serversingle_versiontext a{
+    font-size: 14px;
+    padding: 1px 5px 1px 5px;
+    height: auto;
+    text-decoration: none;
+    background: #5cb85c;
+    color: #fff !important;
+    border: 1px solid #4da54d !important;
+}
+
+
+
+.serversingle_site{
+    float: left;
+    width: 150px;
+}
+
+.icon-serversingle_site{
+    background-position: -96px -120px;
+}
+
+.serversingle_site span{
+    padding:0 0 0 1px;
+    font-size: 14px;
+    line-height: 14px;
+    margin-left: -3px;
+
+}
+
+.serversingle_sitetext{
+    float: left;
+    width: 700px;
+    font-size: 14px;
+    line-height: 16px;
+    padding: 3px 0 0 0;
+    margin-top: -1px;
+}
+
+
+
+
+.serversingle_vk{
+    float: left;
+    width: 150px;
+}
+
+.icon-serversingle_vk{
+    background-position: -120px -120px;
+}
+
+.serversingle_vk span{
+    padding:0 0 0 1px;
+    font-size: 14px;
+    line-height: 14px;
+    margin-left: -3px;
+
+}
+
+.serversingle_vktext{
+    float: left;
+    width: 700px;
+    font-size: 14px;
+    line-height: 16px;
+    padding: 3px 0 0 0;
+    margin-top: -1px;
+}
+
+
+
+.serversingle_mainoprop{
+    float: left;
+    width: 150px;
+}
+
+.icon-serversingle_mainoprop{
+    background-position: -384px 0;
+}
+
+.serversingle_mainoprop span{
+    padding:0 0 0 1px;
+    font-size: 14px;
+    line-height: 14px;
+    margin-left: -3px;
+}
+
+.serversingle_mainoproptext{
+    float: left;
+    width: 700px;
+    font-size: 14px;
+    line-height: 16px;
+    padding: 3px 0 0 0;
+    margin-top: -1px;
+}
+
+.serversingle_servermprop{
+    float: left;
+    padding:0 3px 3px 0;
+}
+
+.serversingle_mainoproptext a{
+    display: inline-block;
+    font-size: 12px;
+    padding: 1px 5px 1px 5px;
+    height: auto;
+    text-decoration: none;
+    color: white;
+    background-color: #3E5E7F;
+    border: 1px solid #3E5E7F;
+}
+
+.serversingle_mainoproptext a:hover{
+
+    text-decoration: none;
+    background: #5cb85c;
+    color: #fff !important;
+    border: 1px solid #4da54d !important;;
+}
+
+
+.serverdesc{
+    padding: 10px 0 10px 0;
 }

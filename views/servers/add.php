@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="/views/servers/style.css" type="text/css" media="screen" />
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
-
+    <meta name="robots" content="index,follow" />
     <title>Добавить сервер Майнкрафт</title>
     <meta name="description" content="MinecraftRait.ru – это самый лучший мониторинг Майнкрафт серверов в рунете. У нас удобный поиск серверов и объективный рейтинг лучших серверов Minecraft." />
     <meta name="keywords" content="мониторинг серверов, майнкрафт, ip адреса, сервера minecraft, айпи серверов, топ, список, лучшие сервера, рейтинг" />

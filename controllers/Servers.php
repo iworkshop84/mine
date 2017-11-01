@@ -24,6 +24,10 @@ class Servers
         $items = ServersModel::findAllInColumnOrdVotes('version', $version);
         }
 
+
+
+
+
         $view = new View();
         $view->items = $items;
         $view->versionList = $versionList;
@@ -43,8 +47,6 @@ class Servers
         }else{
             $items = ServersModel::findAllMPropOrdVotes($mprop);
         }
-
-
 
         $view = new View();
 

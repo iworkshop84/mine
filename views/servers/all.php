@@ -4,10 +4,13 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="/views/servers/style.css" type="text/css" media="screen" />
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
-
+    <meta name="robots" content="index,follow" />
     <title>Сервера Майнкрафт - рейтинг, ip, ТОП серверов Maincraft</title>
     <meta name="description" content="MinecraftRait.ru – это самый лучший мониторинг Майнкрафт серверов в рунете. У нас удобный поиск серверов и объективный рейтинг лучших серверов Minecraft." />
     <meta name="keywords" content="мониторинг серверов, майнкрафт, ip адреса, сервера minecraft, айпи серверов, топ, список, лучшие сервера, рейтинг" />
+
+
+
 </head>
 
 <body>
@@ -75,8 +78,7 @@
                 if($res === $version->version){
                     echo 'class="activeurl"';
                 }
-                ?>
-                ><?= $version->version; ?></a>
+                ?>><?= $version->version; ?></a>
 
             </div>
         <?php endforeach; ?>
@@ -97,8 +99,7 @@
                         if($res){
                             echo 'class="activeurl"';
                         }
-                        ?>
-                    ><?= $mainprop->name; ?></a>
+                        ?>><?= $mainprop->name; ?></a>
                 </div>
             <?php endforeach; ?>
      </div>
@@ -112,57 +113,128 @@
 
     <div id="posts">
 
-        <div id="serverheader">
-            <div id="shcount">#</div>
-            <div id="shname">Сервер</div>
-            <div id="shproph">Баннер</div>
-            <div id="shplayers">Игроков</div>
-            <div id="shversion">Версия</div>
-            <div id="shreith">Рейтинг</div>
+
+        <div class="serverpretext">
+            <h2>
+                Рейтинг и мониторинг серверов Minecraft
+            </h2>
         </div>
-        <div class="clear"></div>
-        <div id="servers">
-        <?php foreach ($items as $key=>$item): ?>
-            <div class="server">
-                <div class="scount"><?= $key + 1 . '.'; ?></div>
-                <div class="namelabel">
-                    <div class="sname">
-                        <a href="<?= '/servers/one/' . $item->id; ?>"><?= substr($item->name, 0, 100) . '...' ?></a>
-                    </div>
-                    <div class="slogan">
-                        <?= substr($item->slogan, 0, 120); ?>
-                    </div>
+        <div class="serverprehead">
 
-
-                <?php if(!empty($item->host)): ?>
-                <div class="shostport"><?= $item->host . ':' . $item->port; ?></div>
-                <?php endif; ?>
-                <div class="sipport"><?= $item->ip . ':' . $item->port; ?></div>
-                </div>
-
-                <div class="smainprop">
-                    <?php if(!empty($item->banner)):?>
-                        <div class="servereditbanner"><img src="/../upload/banners/<?= $item->banner; ?>" alt="Баннер сервера майнкрафт <?= $item->name ?>" title="Баннер сервера майнкрафт <?= $item->name ?>"></div>
-                    <?php endif;?>
-                </div>
-
-
-
-                <div class="splayers"><?= $item->players .' из '. $item->maxplayers;?></div>
-
-
-
-                <div class="sversion">
-                    <a href="<?= '/servers/all/' . $item->version; ?>"
-                       title="Сервера Майнкрафт версии <?= $item->version; ?>"
-
-                    ><?= $item->version; ?></a>
-
-                </div>
-                <div class="svotes"><?= $item->votes; ?></div>
+            <div class="server_headposition">
+            <i class="icon-signal"></i>
             </div>
-        <?php endforeach; ?>
+            <div class="server_headname">
+                <i class="icon-name"></i>
+                <span>Название слоган и адрес</span>
+            </div>
+            <div class="server_headbanner">
+                <i class="icon-banner"></i>
+                <span> Баннер</span>
+            </div>
+
+            <div class="server_headversion">
+                <i class="icon-version"></i>
+                <span> Версия</span>
+            </div>
+
+            <div class="server_headplayers">
+                <i class="icon-players"></i>
+                <span> Игроков</span>
+            </div>
+
+            <div class="server_headuptime">
+                <i class="icon-uptime"></i>
+                <span> Аптайм</span>
+            </div>
+
+            <div class="server_headvote">
+                <i class="icon-vote"></i>
+                <span> Рейтинг</span>
+            </div>
+
         </div>
+
+        <div class="clear"></div>
+
+        <?php foreach ($items as $key=>$item): ?>
+            <div class="server_info" <?php if($item->online == 0){echo 'style="opacity: 0.5"';}?>>
+                <div class="server-info__wrap">
+
+                    <div class="server_num">
+                        <?= $key + 1 . '.'; ?>
+                    </div>
+
+                    <div class="server_name">
+                        <a href="<?= '/servers/one/' . $item->id; ?>" class="hostname"><?= $item->name; ?></a>
+                    </div>
+
+                    <div class="server_slogan">
+                        <?= substr($item->slogan, 0, 70); ?>
+                    </div>
+
+                    <div class="server_adres">
+                            <div class="server_status">
+
+                            <?php if(!empty($item->host)): ?>
+
+                                <div class="server_adres_text"> <?= $item->host . ':' . $item->port; ?></div>
+                            <?php else: ?>
+                                <div class="server_adres_text"><?= $item->ip . ':' . $item->port; ?></div>
+                            <?php endif; ?>
+
+                            </div>
+                    </div>
+
+
+                </div>
+
+
+                <div class="server_banner">
+                    <?php if(!empty($item->banner)):?>
+                        <img src="/../upload/banners/<?= $item->banner; ?>" alt="Баннер сервера майнкрафт <?= $item->name ?>"
+                             title="Баннер сервера майнкрафт <?= $item->name ?>">
+                    <?php endif;?>
+
+
+
+                </div>
+
+
+
+                <div class="server_propherties">
+                    <div class="version_serverlist">
+                        <a href="<?= '/servers/all/' . $item->version; ?>"
+                           title="Сервера Майнкрафт версии <?= $item->version; ?>"><?= $item->version; ?></a>
+                    </div>
+                    <div class="players_serverlist">
+                        <?= $item->players .' / '. $item->maxplayers;?>
+                    </div>
+                    <div class="uptime_serverlist">
+                        <?= $item->uptime . '%';?>
+                    </div>
+
+
+
+                </div>
+
+
+
+
+                <div class="server_vote">
+
+                    <div class="vote_serverlist">
+                        <?= $item->votes; ?>
+                    </div>
+                </div>
+
+            </div>
+
+        <?php endforeach; ?>
+
+
+
+
     </div>
 </div>
 </div>
@@ -180,6 +252,9 @@
         </div>
     </div>
 </div>
+
+
+
 
 </body>
 </html>
