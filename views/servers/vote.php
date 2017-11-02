@@ -14,34 +14,12 @@
 <div id="header">
 
     <div id="headermenu">
-        <div id="headernav">
+        <div id="headernavvote">
 
             <div id="logo"></div>
-            <div id="topmenu">
 
-                <a href="<?= '/' ?>">Сервера Майнкрафт</a>
-                <a href="<?= '/servers/add/' ?>" class="servadd">Добавить сервер</a>
 
-            </div>
 
-            <div id="authmenu">
-
-                <?php if(isset($_SESSION['uid'])): ?>
-                    <ul>
-                        <li> <a href="<?= '/users/logout' ?>">Выйти</a></li>
-                        <li><a href="<?= '/users/profile' ?>">Профиль</a></li>
-                        <li><a href="<?= '/users/servers' ?>">Список серверов</a></li>
-
-                    </ul>
-                <?php else: ?>
-                    <ul>
-                        <li><a href="<?= '/users/register' ?>">Регистрация</a></li>
-                        <li><a href="<?= '/users/login' ?>">Войти</a></li>
-                    </ul>
-
-                <?php endif; ?>
-
-            </div>
 
         </div>
     </div>
@@ -53,7 +31,7 @@
 
 <div id="page">
 
-    <div id="posts">
+    <div id="postsvote">
         <div id="votetitle">
             <span class="text">Голосовать за сервер:</span> <span class="name"><?= $items->name?></span>
         </div>
