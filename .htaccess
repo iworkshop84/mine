@@ -33,7 +33,7 @@ order allow,deny
 deny from all
 </Files>
 
-<Files autoload.php>
+<Files cronmonthcvote.php>
 order allow,deny
 deny from all
 </Files>
