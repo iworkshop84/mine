@@ -16,7 +16,7 @@
     <div id="headermenu">
         <div id="headernavvote">
 
-            <div id="logo"></div>
+            <a href="/"><div id="logo"></div></a>
 
 
 

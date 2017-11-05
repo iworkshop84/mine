@@ -22,7 +22,7 @@
     <div id="headermenu">
     <div id="headernav">
 
-        <div id="logo"></div>
+        <a href="/"><div id="logo"></div></a>
         <div id="topmenu">
 
                 <a href="<?= '/' ?>">Сервера Майнкрафт</a>
@@ -59,7 +59,7 @@
 
     <div id="site-about">
         <h1>Сервера Майнкрафт</h1>
-        <p>Приветствуем вас на лучшем мониторинге серверов Minecraft(Майнкрафт) - Minecraftrait.Ru.
+        <p>Приветствуем вас на лучшем мониторинге серверов Minecraft(Майнкрафт) - MineCraftRait.Ru.
         В нашем рейтинге вы можете найти сервер для игры Minecraft на любой вкус. Большинство серверов рускоязычные.</p>
         <p>Если вы хотите начать играть на интересующем вас сервере узнайте его IP и порт.</p>
     </div>
@@ -193,8 +193,8 @@
 
                 <div class="server_banner">
                     <?php if(!empty($item->banner)):?>
-                        <img src="/../upload/banners/<?= $item->banner; ?>" alt="Баннер сервера майнкрафт <?= $item->name ?>"
-                             title="Баннер сервера майнкрафт <?= $item->name ?>">
+                        <img src="/../upload/banners/<?= $item->banner; ?>" alt="<?= $item->name ?>"
+                             title="<?= $item->name ?>">
                     <?php endif;?>
 
 
@@ -214,9 +214,6 @@
                     <div class="uptime_serverlist">
                         <?= $item->uptime . '%';?>
                     </div>
-
-
-
                 </div>
 
 

@@ -14,8 +14,13 @@ use App\Classes\ServerQuery;
 class Users
 {
 
-    public function actionRegister()
+    public function actionRegister($trash = null)
     {
+        if(!empty($trash)){
+            throw new ExceptionM ('Страница не найдена', 1);
+        }
+
+
         if(isset($_POST['adduser'])){
             $user = new Usermodel();
 
@@ -23,8 +28,25 @@ class Users
                $user->login = $_POST['login'];
             }
 
-            if(!empty($_POST['password'])){
-                $user->password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+            if(!empty($_POST['password']) && !empty($_POST['confpassword'])){
+
+                if($_POST['password'] == $_POST['confpassword']){
+
+                    if(mb_strlen($_POST['password'],'UTF-8') < 5){
+                        $error = 'Пароль должен быть не короче 5ти символов, состоять из латинских букв, цифр или их комбинаций';
+                    }else{
+                        if(preg_match('#^[aA-zZ0-9]+$#', $_POST['password']))
+                        {
+                          $user->password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+                        }else{
+                            $error = 'Пароль должен состоять из латинских букв, цифр или их комбинаций';
+                        }
+                    }
+                }else{
+                    $error = 'Пароли не совпадают!';
+                }
+            }else{
+                $error = 'Введите пароль и подтверждение пароля';
             }
 
             if(!empty($_POST['email'])){
@@ -60,8 +82,12 @@ class Users
     }
 
 
-    public function actionLogin()
+    public function actionLogin($trash = null)
     {
+        if(!empty($trash)){
+            throw new ExceptionM ('Страница не найдена', 1);
+        }
+
 
         if(isset($_POST['loginuser'])) {
             $user = new Usermodel();
@@ -89,13 +115,15 @@ class Users
 
                     header('Location: /');
                     exit;
+                }else{
+                    $error = 'Неверный логин либо пароль';
                 }
             }
         }
 
         $view = new View();
         //$view->items = $userid;
-        //$view->error = $error;
+        $view->error = $error;
         $view->display('users/login.php');
     }
 
@@ -111,7 +139,11 @@ class Users
     }
 
 
-    public function actionProfile(){
+    public function actionProfile($trash = null){
+
+        if(!empty($trash)){
+            throw new ExceptionM ('Страница не найдена', 1);
+        }
 
         $user = new UserModel();
 
@@ -141,11 +173,11 @@ class Users
             if(!empty($_POST['oldpassword']) && !empty($_POST['newpassword']) && !empty($_POST['reppassword'])){
 
                 if($_POST['newpassword'] !== $_POST['reppassword']){
-                    $error = 'Новый пароль указан не верно';
+                    $error = 'Новые пароли не совпадают!';
                 }
 
                 if(!$userupdate->checkUserPassword($userupdate->id, $_POST['oldpassword'])){
-                    $error = 'Пароль указан не верно';
+                    $error = 'Пароль указан не верно!';
                 }
 
                 if(!isset($error)){
@@ -155,7 +187,7 @@ class Users
             }
 
             if(!isset($error)){
-                header('Location: /Users/Profile');
+                header('Location: /users/profile');
                 exit;
             }
         }

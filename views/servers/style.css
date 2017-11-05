@@ -145,19 +145,34 @@ body {
 #topmenu a:hover {
     background: #6A7283;
 }
-/* при наведении курсора мышки */
+
 #topmenu a:active {
     background: #6A7283;
-} /* при нажатии */
+}
 
 
 #topmenu a.servadd {
     color: #6cd046;
-    background: #363639;
-}
+    background: #363639 url('images/icn_add_green.svg') no-repeat;
+    padding: 0 20px 0 55px;
+    background-position: left;
+    background-position-x: 15px;
 
+
+
+}
+/*
+#topmenu ul li.addserver{
+    padding: 0 0 0 50px;
+}
+*/
 #topmenu a.servnew {
     color: #ffb122;
+}
+
+#topmenu ul li.addserver{
+   padding: 0 0 0 20px;
+
 }
 
 
@@ -184,13 +199,17 @@ body {
     outline: none; /* убирать контур в Mozilla */
 }
 
+#authmenu a.activeurl {
+    background: #6A7283;
+}
+
 #authmenu a:hover {
     background: #6A7283;
 }
-/* при наведении курсора мышки */
+
 #authmenu a:active {
     background: #6A7283;
-} /* при нажатии */
+}
 
 #topnav{
     height: 170px;
@@ -361,15 +380,10 @@ body {
 }
 
 
-
-
-
 #page {
     text-align: left;
     margin: 0 auto;
     width: 1250px;
-
-
 }
 
 #posts {
@@ -2016,4 +2030,26 @@ a.knopka {
 .containersnewvotes{
     float: left;
     width: 110px;
+}
+
+.error{
+    border: 1px solid #ebccd1;
+    border-radius: 3px;
+    background-color: #f2dede;
+    display: inline-block;
+    width: 100%;
+    padding: 15px 0 15px 0;
+    margin-top: 10px;
+}
+.error_text{
+    color: #a94442;
+    font-size:14px;
+    line-height: 16px;
+    font-weight: bold;
+    padding: 0 10px 0 10px;
+}
+
+.addserverimg{
+   /* background-image: url('images/icn_add_green.svg');*/
+
 }

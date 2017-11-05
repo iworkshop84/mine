@@ -30,7 +30,7 @@
     <div id="headermenu">
         <div id="headernav">
 
-            <div id="logo"></div>
+            <a href="/"><div id="logo"></div></a>
             <div id="topmenu">
 
                 <a href="<?= '/' ?>">Сервера Майнкрафт</a>

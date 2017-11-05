@@ -11,42 +11,45 @@
 </head>
 
 <body>
-<div id="header">
+<div class="content">
+    <div id="header">
 
-    <div id="headermenu">
-        <div id="headernav">
+        <div id="headermenu">
+            <div id="headernav">
 
-            <div id="logo"></div>
-            <div id="topmenu">
-
-                <a href="<?= '/' ?>">Сервера Майнкрафт</a>
-                <a href="<?= '/servers/new/' ?>" class="servnew">Новые сервера</a>
-                <a href="<?= '/servers/add/' ?>" class="servadd">Добавить сервер</a>
-
-            </div>
-
-            <div id="authmenu">
-
-                <?php if(isset($_SESSION['uid'])): ?>
+                <a href="/"><div id="logo"></div></a>
+                <div id="topmenu">
+                    <?php $activeurl = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);?>
                     <ul>
-                        <li> <a href="<?= '/users/logout' ?>">Выйти</a></li>
-                        <li><a href="<?= '/users/profile' ?>">Профиль</a></li>
-                        <li><a href="<?= '/users/servers' ?>">Список серверов</a></li>
-
-                    </ul>
-                <?php else: ?>
-                    <ul>
-                        <li><a href="<?= '/users/register' ?>">Регистрация</a></li>
-                        <li><a href="<?= '/users/login' ?>">Войти</a></li>
+                        <li><a href="<?= '/' ?>">Все сервера</a></li>
+                        <li><a href="<?= '/servers/new/' ?>" class="servnew">Новые сервера</a></li>
+                        <li><a href="<?= '/servers/add/' ?>" class="servadd">Добавить сервер</a></li>
                     </ul>
 
-                <?php endif; ?>
+                </div>
+
+                <div id="authmenu">
+
+                    <?php if(isset($_SESSION['uid'])): ?>
+                        <ul>
+                            <li><a href="<?= '/users/logout' ?>">Выйти</a></li>
+                            <li><a href="<?= '/users/profile' ?>" <?php if(preg_match('#^/users/profile#', $activeurl) == 1){echo 'class="activeurl"';}?>>Профиль</a></li>
+                            <li><a href="<?= '/users/servers' ?>" <?php if(preg_match('#^/users/servers#', $activeurl) == 1){echo 'class="activeurl"';}?>>Список серверов</a></li>
+
+                        </ul>
+                    <?php else: ?>
+                        <ul>
+                            <li><a href="<?= '/users/register'; ?>" <?php if(preg_match('#^/users/register#', $activeurl) == 1){echo 'class="activeurl"';}?> >Регистрация</a></li>
+                            <li><a href="<?= '/users/login'; ?>" <?php if(preg_match('#^/users/login#', $activeurl) == 1){echo 'class="activeurl"';}?> >Войти</a></li>
+                        </ul>
+
+                    <?php endif; ?>
+
+                </div>
 
             </div>
-
         </div>
     </div>
-</div>
 
 <div class="clear"></div>
 <div id="page">
@@ -54,13 +57,21 @@
     <div id="posts">
 
 
+        <?php if(isset($error)): ?>
+        <div class="error">
+           <div class="error_text"> <?= $error; ?></div>
+        </div>
+        <?php endif; ?>
+
+
         <div id="userauth">
-            <h1>Регистрация</h1>
+            <h1>Регистрация на сайте</h1>
         <form action="/users/register" method="post" enctype="multipart/form-data" id="auth">
 
             <div class="formgrup"><input class="forminput" type="text" id="login" name="login" placeholder="Логин:"></div>
 
             <div class="formgrup"><input class="forminput" type="password" id="password" name="password" placeholder="Пароль:"></div>
+            <div class="formgrup"><input class="forminput" type="password" id="confpassword" name="confpassword" placeholder="Подтвердите пароль:"></div>
 
             <div class="formgrup"><input class="forminput" type="email" id="email" name="email" placeholder="Email:"></div>
 
@@ -68,13 +79,27 @@
         </form>
         </div>
 
-        <?php if(isset($error)): ?>
-            <?= $error; ?>
-        <?php endif; ?>
+
 
 
     </div>
 
+</div>
+
+
+</div>
+<div class="clear"></div>
+<div class="footer">
+    <div id="headermenu">
+        <div id="headernav">
+
+            <div id="logo"></div>
+            <div id="fcopywrait">
+                Сервера майнкрафт с модами - © 2017-<?=  date('Y');?> Minecraft Rait - Мониторинг серверов Майнкрафт
+            </div>
+
+        </div>
+    </div>
 </div>
 
 </body>
