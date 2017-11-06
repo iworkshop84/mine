@@ -39,7 +39,7 @@ class Users
                         {
                           $user->password = password_hash($_POST['password'], PASSWORD_DEFAULT);
                         }else{
-                            $error = 'Пароль должен состоять из латинских букв, цифр или их комбинаций';
+                            $error = 'Пароль может состоять только из латинских букв, цифр или их комбинаций';
                         }
                     }
                 }else{
@@ -202,7 +202,7 @@ class Users
 
 
 
-    public function actionServers(){
+    public function actionServers($trash = null){
 
         $user = new UserModel();
 
@@ -215,6 +215,11 @@ class Users
             header('Location: /users/login');
             exit;
         }
+
+        if(!empty($trash)){
+            throw new ExceptionM ('Страница не найдена', 1);
+        }
+
 
         $serverlist = ServersModel::findAllInColumn('uid', $_SESSION['uid']);
 
@@ -311,7 +316,6 @@ class Users
              }
             }
         }
-
 
         $view = new View();
         $view->items = $serverlist;

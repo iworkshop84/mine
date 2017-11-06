@@ -149,7 +149,9 @@ body {
 #topmenu a:active {
     background: #6A7283;
 }
-
+#topmenu a.activeurl{
+    background: #6A7283;
+}
 
 #topmenu a.servadd {
     color: #6cd046;
@@ -157,10 +159,15 @@ body {
     padding: 0 20px 0 55px;
     background-position: left;
     background-position-x: 15px;
-
-
-
 }
+
+#topmenu a.servaddactiveurl {
+    background: #6A7283 url('images/icn_add_green.svg') no-repeat;
+    padding: 0 20px 0 55px;
+    background-position: left;
+    background-position-x: 15px;
+}
+
 /*
 #topmenu ul li.addserver{
     padding: 0 0 0 50px;
@@ -168,6 +175,11 @@ body {
 */
 #topmenu a.servnew {
     color: #ffb122;
+}
+
+#topmenu a.servnewactiveurl {
+    color: #ffb122;
+    background:#6A7283;
 }
 
 #topmenu ul li.addserver{

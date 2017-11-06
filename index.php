@@ -20,21 +20,13 @@ $ctrl = ucfirst(mb_strtolower($ctrl));
 $act = ucfirst(mb_strtolower($act));
 
 
-/*
-$path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-echo $path;
-echo '<br/>';
-
-$res = preg_match('#^/users/register#', $path);
-var_dump($res);
-
-
-
-die;
-*/
 
 try
 {
+    // !!! Временная заплатка на лишнее в урле
+    if(!empty($pathParts[4])){
+        throw new ExceptionM ('Такой страницы на сайте нет', 1);
+    }
 
 $controllerClassName = 'App\\Controllers\\' . $ctrl;
 

@@ -32,22 +32,25 @@ class Servers
         $view->display('servers/all.php');
     }
 
+
+
     public function actionNew($version = null)
     {
 
         $versionList = ServersModel::findServerList();
-        $mainpropList = Properties::findAllServmp();
+        //$mainpropList = Properties::findAllServmp();
 
         if(empty($version)){
             $items = ServersModel::findAllCheckedNoOrdVotes();
         }else{
             $items = ServersModel::findAllInColumnCheckedNoOrdVotes('version', $version);
+
         }
 
         $view = new View();
         $view->items = $items;
         $view->versionList = $versionList;
-        $view->mainpropList = $mainpropList;
+        //$view->mainpropList = $mainpropList;
 
         $view->display('servers/new.php');
     }
@@ -78,6 +81,13 @@ class Servers
 
     public function actionOne($id = null)
     {
+        // Заплатка для отсечения урлов в которых есть что-то кроме цифр
+        if(preg_match('#[^0-9]+#', $id))
+        {
+            throw new ExceptionM ('Запись не найдена', 1);
+        }
+
+
 
         $item = ServersModel::findOneInColumn('id', $id);
 
