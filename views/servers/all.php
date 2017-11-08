@@ -168,7 +168,16 @@
                     </div>
 
                     <div class="server_name">
-                        <a href="<?= '/servers/one/' . $item->id; ?>" class="hostname"><?= $item->name; ?></a>
+                        <a href="<?= '/servers/one/' . $item->id; ?>" class="hostname">
+                            <?php
+                            $item->name;
+                            if(empty($item->name)){
+                            echo 'Имя сервера не указано';
+                            }else{
+                            echo $item->name;
+                            }
+                            ?>
+                        </a>
                     </div>
 
                     <div class="server_slogan">

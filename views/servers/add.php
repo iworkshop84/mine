@@ -64,8 +64,11 @@
         </form>
         </div>
 
+
         <?php if(!empty($items)): ?>
-            <a href="<?= '/servers/one/' . $items?>">Ваш добавленный сервер</a>
+        <div class="message">
+            <div class="message_text"><a href="<?= '/servers/one/' . $items?>">Ваш добавленный сервер</a></div>
+        </div>
         <?php endif; ?>
 
         <?php if(isset($error)): ?>

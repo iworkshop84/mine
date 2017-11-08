@@ -1,4 +1,4 @@
-HTML, BODY, DIV, SPAN, APPLET, OBJECT, IFRAME, H1, H2, H3, H4, H5, H6, P, BLOCKQUOTE, PRE, A, ABBR, ACRONYM, ADDRESS, BIG, CITE, CODE, DEL, DFN, EM, FONT, IMG, INS, KBD, Q, S, SAMP, SMALL, STRIKE, STRONG, SUB, SUP, TT, VAR, B, U, I, CENTER, DL, DT, DD, OL, UL, LI, FIELDSET, FORM, LABEL, LEGEND {margin: 0;padding: 0;border: 0;outline: 0;font-size: 100%;vertical-align: baseline;background: transparent;}
+HTML, BODY, DIV, SPAN, APPLET, OBJECT, IFRAME, H1, H2, H3, H4, H5, H6, P, BLOCKQUOTE, PRE, A, ABBR, ACRONYM, ADDRESS, BIG, CITE, CODE, DEL, DFN, EM, FONT, IMG, INS, KBD, Q, S, SAMP, SMALL, STRIKE, SUB, SUP, TT, VAR, B, U, I, CENTER, DL, DT, DD, OL, UL, LI, FIELDSET, FORM, LABEL, LEGEND {margin: 0;padding: 0;border: 0;outline: 0;font-size: 100%;vertical-align: baseline;background: transparent;}
 BODY {line-height: 1;}
 UL {list-style: none;}
 :focus {outline: 0;}
@@ -22,7 +22,10 @@ hr.clear {
 a {
     color: #0e73c0;
     text-decoration: none;
+}
 
+strong{
+    font-weight: bold;
 }
 
 a:hover {
@@ -1162,11 +1165,38 @@ a.knopka {
 #rightsidebar button.serveronevote:hover {
     background: green;
     border-color: green;
-} /* при наведении курсора мышки */
+}
 #rightsidebar button.serveronevote:active {
     background: #3E5E7F;
     border-color: #3E5E7F;
 }
+
+#rightsidebar button.serveredit{
+    font-size: 14px;
+    width: 100%;
+    color: #fff; /* цвет текста */
+    text-transform: uppercase;
+    user-select: none; /* убирать выделение текста */
+    background: #478aae;
+    border-color: #478aae;
+
+    border: 1px solid;
+    padding: .7em 1.5em; /* отступ от текста */
+    outline: none; /* убирать контур в Mozilla */
+}
+
+#rightsidebar button.serveredit:hover {
+    background: #3E5E7F;
+    border-color: #3E5E7F;
+    border: 1px solid;
+}
+
+#rightsidebar button.serveredit:active {
+    background: #3eb100; /* фон кнопки */
+    border-color: #379300;
+    border: 1px solid;
+}
+
 
 #votetitle{
     width: 750px;
@@ -2061,7 +2091,27 @@ a.knopka {
     padding: 0 10px 0 10px;
 }
 
+.message{
+    border: 1px solid rgba(25, 255, 23, 0.37);
+    border-radius: 3px;
+    background-color: rgba(25, 255, 23, 0.37);
+    display: inline-block;
+    width: 100%;
+    padding: 15px 0 15px 0;
+    margin-top: 10px;
+}
+.message_text{
+    color: #000000;
+    font-size:14px;
+    line-height: 16px;
+    font-weight: bold;
+    padding: 0 10px 0 10px;
+}
+
 .addserverimg{
    /* background-image: url('images/icn_add_green.svg');*/
+}
 
+.button_container{
+    padding:10px 0 10px 0;
 }

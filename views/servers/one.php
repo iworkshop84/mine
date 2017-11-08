@@ -256,18 +256,12 @@
                               Если это ваш сервер, добавьте к нему описание в <a href="/users/servers">личном кабинете</a>.';
                 }
                 ?>
+
             </div>
 
 
         </div>
         <div class="clear"></div>
-
-
-
-
-
-
-
 
 
 
@@ -284,6 +278,14 @@
                 Голосовать за сервер</button>
             <div class="clear"></div>
 
+            <?php if($_SESSION['uid'] == $items->uid): ?>
+                <div class="button_container">
+                <button class="serveredit" onclick="window.location.href='/users/sedit/<?= $items->id; ?>'">
+                    Редактировать описание сервера</button>
+                </div>
+                <div class="clear"></div>
+
+            <?php endif;?>
 
 
 
