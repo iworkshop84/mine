@@ -21,6 +21,13 @@ $act = ucfirst(mb_strtolower($act));
 
 
 
+/*
+var_dump($_SERVER['HTTP_HOST']);
+die;
+*/
+
+
+
 try
 {
     // !!! Временная заплатка на лишнее в урле

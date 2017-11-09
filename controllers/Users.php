@@ -5,6 +5,7 @@ namespace App\Controllers;
 
 use App\Models\ExceptionM;
 use App\Models\Properties;
+use App\Models\Images;
 use App\Models\Users as UserModel;
 use App\Models\Servers as ServersModel;
 use App\Classes\View;
@@ -128,6 +129,7 @@ class Users
     }
 
 
+
     public function actionLogout()
     {
         unset($_SESSION['uid']);
@@ -137,6 +139,7 @@ class Users
         header('Location: /');
         exit;
     }
+
 
 
     public function actionProfile($trash = null){
@@ -344,6 +347,8 @@ class Users
         $serverlist = ServersModel::findServerList();
         $mainproplistall = ServersModel::findMpropList();
 
+        $imagelist = Images::findAllInColumn('servid', $id);
+
         $mplistexist = Properties::findAllInServmp($server->id);
 
         $mplistarr = [];
@@ -358,6 +363,33 @@ class Users
             header('Location: /users/servers');
             exit;
         }
+
+
+        if(isset($_POST['deleteimg']))
+        {
+            $delimg = new Images();
+
+            unlink(__DIR__ . '/../upload/images/'. $_POST['deleteimg']);
+
+            $delimg->deleteimg($_POST['deleteimg']);
+
+            header('Location: /users/sedit/'. $server->id);
+            exit;
+
+        }
+
+        if(isset($_POST['deletebanner']))
+        {
+            unlink(__DIR__ . '/../upload/banners/'. $_POST['deletebanner']);
+
+            $server->banner = '';
+            $server->update();
+            header('Location: /users/sedit/'. $server->id);
+            exit;
+        }
+
+
+
 
 
         if(isset($_POST['editserver'])) {
@@ -437,6 +469,37 @@ class Users
                 }
             }
 
+            if(!empty($_FILES['screenshot']['name'][0])){
+
+                foreach ($_FILES['screenshot']['type'] as $key=>$value){
+                    if(($value == 'image/jpeg') || ($value == 'image/png') || ($value == 'image/gif'))
+                    {
+                        if ($_FILES['screenshot']['error'][$key] == 0)
+                        {
+                            if($_FILES['screenshot']['size'][$key] < 2000000)
+                            {
+                                if(is_uploaded_file($_FILES['screenshot']['tmp_name'][$key])){
+
+                                    $extension = explode('/', $_FILES['screenshot']['type'][$key]);
+                                    $imagename = 'serverimage' . $key . time() . '.' . $extension[1];
+
+                                    $uploadfile = move_uploaded_file($_FILES['screenshot']['tmp_name'][$key],
+                                        __DIR__ . '/../upload/images/' . $imagename);
+                                    if($uploadfile)
+                                    {
+                                        $serverimage = new Images();
+                                        $serverimage->servid = $server->id;
+                                        $serverimage->imgname = $imagename;
+
+                                        $serverimage->insert();
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
 
             if(isset($_POST['mainprop']))
             {
@@ -445,8 +508,6 @@ class Users
 
                $mplist->deleteMlist($server->id);
                $mplist->insertMlist($server->id);
-
-
             }
 
             $server->update();
@@ -460,6 +521,7 @@ class Users
         $view->serverlist = $serverlist;
         $view->mainproplistall = $mainproplistall;
         $view->mplistarr = $mplistarr;
+        $view->imagelist = $imagelist;
         //$view->error = $error;
         $view->display('users/serveredit.php');
 

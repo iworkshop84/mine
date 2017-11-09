@@ -8,6 +8,15 @@
     <title><?= $items->name ?> - сервер Майнкрафт</title>
     <meta name="description" content="<?= $items->name ?> - айпи адрес, отзывы и описание сервера на мониторинге Майнкрафт" />
     <meta name="keywords" content="ip адрес, сервера minecraft, рейтинг, описание" />
+
+
+
+    <script src="/views/servers/js/jquery-3.2.1.min.js"></script>
+    <script src="/views/servers/js/fancybox/jquery.fancybox.min.js"></script>
+
+    <link  href="/views/servers/js/fancybox/jquery.fancybox.min.css" rel="stylesheet">
+    <script src="/views/servers/js/fancybox/jquery.fancybox.min.js"></script>
+
 </head>
 
 <body>
@@ -294,9 +303,7 @@
             {
                 $parsed_url = parse_url($items->youtube);
 
-
                 parse_str($parsed_url['query'], $parsed_query);
-
 
                 if(!empty($parsed_url['query']))
                 {
@@ -310,6 +317,22 @@
                 }
             }
             ?>
+            </div>
+
+            <div class="servervideo">
+                <?php if(!empty($imagelist)): ?>
+                    <?php foreach ($imagelist as $key=>$value): ?>
+                        <div class="serverimage">
+                            <a data-fancybox="gallery" href="http://<?= $_SERVER['HTTP_HOST'];?>/upload/images/<?= $value->imgname; ?>">
+                            <img src="/../upload/images/<?= $value->imgname; ?>" alt="скриншот <?= $value->imgname ?>">
+                            </a>
+
+                        </div>
+
+                    <?php endforeach; ?>
+               <?php endif; ?>
+
+
             </div>
 
 

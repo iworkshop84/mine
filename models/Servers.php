@@ -11,8 +11,6 @@ class Servers
     protected static $table = 'servers';
 
 
-
-
     public function serverPrepData($data)
     {
         $this->name = $data['HostName'];
@@ -38,7 +36,12 @@ class Servers
         if(!isset($this->version)){
             $this->version = '1.12';
         }
+
+        if((!isset($this->name)) || (empty($this->name))){
+            $this->name = 'Имя сервера не указано';
+        }
     }
+
 
     public function serverUpdData($data)
     {
@@ -46,7 +49,6 @@ class Servers
         $this->maxplayers = $data['MaxPlayers'];
         $this->online = 1;
         $this->updtime = date('Y:m:d H:i:s', time());
-
     }
 
 
@@ -174,7 +176,6 @@ class Servers
 
         $db = new DB();
         return $db->execute($sql, $ins);
-
     }
 
     public function serverDelete($id){
@@ -184,5 +185,6 @@ class Servers
         $db = new DB();
         $db->execute($sql, [':val' => $id]);
     }
+
 
 }

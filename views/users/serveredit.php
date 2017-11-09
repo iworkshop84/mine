@@ -184,8 +184,37 @@
                 <div class="servereditfield"><input class="setextfield" type="file" id="banner" name="banner"></div>
                 <?php if(!empty($items->banner)):?>
                     <div class="servereditbanner"><img src="/../upload/banners/<?= $items->banner; ?>" alt="баннер <?= $items->name ?>" ></div>
+                    <div class="buttonbannerform"><button class="btnimg" type="submit" name="deletebanner" value="<?= $items->banner; ?>">Удалить баннер</button></div>
                 <?php endif;?>
                 <div class="clear"></div>
+
+
+
+
+                <div class="editservertextblock">
+                    <span class="estitle">Скриншоты сервера</span>
+                    <span class="estext">
+                        Заинтересуйте потенциальных игроков достопримечательностями вашего сервера.
+                    </span>
+                </div>
+                <div class="servereditfield"><input class="setextfield" type="file" id="screenshot" multiple name="screenshot[]"></div>
+                <div class="servereditimglist">
+                <?php if(!empty($imagelist)):?>
+                  <?php foreach ($imagelist as $key=>$value): ?>
+
+                        <div class="servereditimage">
+                            <img src="/../upload/images/<?= $value->imgname; ?>" alt="скриншот <?= $value->imgname ?>" >
+                            <div class="buttonimgform"><button class="btnimg" type="submit" name="deleteimg" value="<?= $value->imgname; ?>">Удалить</button></div>
+                        </div>
+
+                    <?php endforeach; ?>
+                <?php endif;?>
+                </div>
+
+                <div class="clear"></div>
+
+
+
 
 
                 <div class="editservertextblock">

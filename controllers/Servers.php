@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\ExceptionM;
+use App\Models\Images;
 use App\Models\Servers as ServersModel;
 use App\Classes\View;
 use App\Classes\ServerPing;
@@ -90,6 +91,7 @@ class Servers
 
 
         $item = ServersModel::findOneInColumn('id', $id);
+        $imagelist = Images::findAllInColumn('servid', $id);
 
         if(empty($item))
         {
@@ -102,6 +104,7 @@ class Servers
         $view = new View();
         $view->items = $item;
         $view->mainprops = $mainprop;
+        $view->imagelist = $imagelist;
         $view->display('servers/one.php');
 
     }

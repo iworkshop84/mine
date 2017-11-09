@@ -923,6 +923,66 @@ a.knopka {
     width: 150px;
 }
 
+.buttonimgform{
+    padding: 5px 0 5px 0;
+    margin-right: auto;
+    margin-left: auto;
+    width: 125px;
+}
+
+
+.buttonimgform .btnimg {
+    font-size: 14px;
+    width: 125px;
+    color: #fff; /* цвет текста */
+    text-transform: uppercase;
+    user-select: none; /* убирать выделение текста */
+    border: 1px solid #3E5E7F;
+    background: #3E5E7F;
+    padding: 5px 0; /* отступ от текста */
+    outline: none; /* убирать контур в Mozilla */
+}
+
+.buttonimgform .btnimg:hover {
+    background: green;
+    border: 1px solid green;
+}
+.buttonimgform .btnimg:active {
+    background: #3eb100; /* фон кнопки */
+    border: 1px solid #379300;
+}
+
+
+
+.buttonbannerform{
+    padding: 10px 0 5px 20px;
+    float: left;
+    width: 230px;
+}
+
+.buttonbannerform .btnimg {
+    font-size: 14px;
+    width: 230px;
+    color: #fff; /* цвет текста */
+    text-transform: uppercase;
+    user-select: none; /* убирать выделение текста */
+    border: 1px solid #3E5E7F;
+    background: #3E5E7F;
+    padding: 5px 0; /* отступ от текста */
+    outline: none; /* убирать контур в Mozilla */
+}
+
+.buttonbannerform .btnimg:hover {
+    background: green;
+    border: 1px solid green;
+}
+.buttonbannerform .btnimg:active {
+    background: #3eb100; /* фон кнопки */
+    border: 1px solid #379300;
+}
+
+
+
 #proph .btn {
     font-size: 14px;
     width: 130px;
@@ -1030,12 +1090,39 @@ a.knopka {
 .servereditbanner{
     padding: 10px 0 10px 0;
     float: left;
-    width: 60%;
+   /* width: 60%;*/
 }
 
 .servereditbanner img{
     width: 468px;
     height: 60px;
+}
+
+.servereditimglist{
+    float: left;
+    width: 740px;
+}
+
+.servereditimage{
+    padding: 10px 20px 10px 0;
+    float: left;
+   /* width: 60%;*/
+}
+
+.servereditimage img{
+    width: 125px;
+    height: 90px;
+}
+
+.serverimage{
+    padding: 10px 10px 10px 10px;
+    float: left;
+    /* width: 60%;*/
+}
+
+.serverimage img{
+    width: 170px;
+    height: 110px;
 }
 
 .serverpagebanner{
@@ -1137,6 +1224,7 @@ a.knopka {
     background: #3E5E7F;
     border-color: #3E5E7F;
 }
+
 
 #mainserverinfo{
    float: left;
